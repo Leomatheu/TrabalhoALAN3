@@ -1,0 +1,120 @@
+object frmEmpresa: TfrmEmpresa
+  Left = 0
+  Top = 0
+  Caption = 'CADASTRO EMPRESAS'
+  ClientHeight = 485
+  ClientWidth = 505
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnBotoes: TPanel
+    Left = 0
+    Top = 424
+    Width = 505
+    Height = 61
+    Align = alBottom
+    Caption = 'pnBotoes'
+    ShowCaption = False
+    TabOrder = 0
+  end
+  object pnAtributosEmpresa: TPanel
+    Left = 0
+    Top = 0
+    Width = 505
+    Height = 424
+    Align = alClient
+    Caption = 'pnAtributosEmpresa'
+    ShowCaption = False
+    TabOrder = 1
+    ExplicitTop = -6
+    object Label1: TLabel
+      Left = 24
+      Top = 41
+      Width = 49
+      Height = 17
+      Caption = 'C'#243'digo '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 24
+      Top = 81
+      Width = 65
+      Height = 17
+      Caption = 'Descri'#231#227'o'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 24
+      Top = 121
+      Width = 51
+      Height = 17
+      Caption = 'Contato'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 24
+      Top = 161
+      Width = 66
+      Height = 17
+      Caption = 'Endere'#231'o '
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object edtCodEmpresa: TEdit
+      Left = 111
+      Top = 40
+      Width = 121
+      Height = 21
+      TabOrder = 0
+    end
+    object edtDescricao: TEdit
+      Left = 111
+      Top = 80
+      Width = 234
+      Height = 22
+      TabOrder = 1
+    end
+    object Edit1: TEdit
+      Left = 111
+      Top = 160
+      Width = 234
+      Height = 22
+      TabOrder = 2
+    end
+    object edtContato: TMaskEdit
+      Left = 113
+      Top = 120
+      Width = 119
+      Height = 21
+      EditMask = '!\(999\)0000-0000;1;_'
+      MaxLength = 14
+      TabOrder = 3
+      Text = '(   )    -    '
+    end
+  end
+end

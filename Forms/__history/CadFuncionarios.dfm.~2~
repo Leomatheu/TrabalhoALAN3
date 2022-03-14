@@ -1,0 +1,41 @@
+object frmCadFuncionario: TfrmCadFuncionario
+  Left = 0
+  Top = 0
+  Caption = 'CADASTRO FUNCION'#193'RIO'
+  ClientHeight = 300
+  ClientWidth = 505
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnBotoes: TPanel
+    Left = 0
+    Top = 245
+    Width = 505
+    Height = 55
+    Align = alBottom
+    Caption = 'pnBotoes'
+    ShowCaption = False
+    TabOrder = 0
+    ExplicitTop = 176
+  end
+  object pnAtributosFuncionarios: TPanel
+    Left = 0
+    Top = 0
+    Width = 505
+    Height = 245
+    Align = alClient
+    Caption = 'pnAtributosFuncionarios'
+    ShowCaption = False
+    TabOrder = 1
+    ExplicitLeft = 248
+    ExplicitTop = 96
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end

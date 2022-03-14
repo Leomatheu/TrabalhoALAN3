@@ -1,0 +1,53 @@
+object frmMenu: TfrmMenu
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'MENU PRINCIPAL'
+  ClientHeight = 309
+  ClientWidth = 460
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 460
+    Height = 309
+    Align = alClient
+    Caption = 'Panel1'
+    Color = clActiveCaption
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitLeft = 248
+    ExplicitTop = 128
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+  object MainMenu1: TMainMenu
+    Left = 8
+    Top = 8
+    object Cadastros1: TMenuItem
+      Caption = 'Cadastros'
+      object Empresas1: TMenuItem
+        Caption = 'Empresas'
+      end
+      object Funcionrios1: TMenuItem
+        Caption = 'Funcion'#225'rios'
+      end
+    end
+    object Consultas1: TMenuItem
+      Caption = 'Consultas'
+    end
+    object Sair1: TMenuItem
+      Caption = 'Sair'
+      OnClick = Sair1Click
+    end
+  end
+end
