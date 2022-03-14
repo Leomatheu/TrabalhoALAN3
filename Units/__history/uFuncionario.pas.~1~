@@ -1,4 +1,4 @@
-unit Unit1;
+unit uFuncionario;
 
 interface
 
@@ -10,7 +10,12 @@ interface
        dataNascimento : String;
        statusFuncionario : String;
        valorHora : String;
-       generoFuncionario : String
+       generoFuncionario : String;
+       cpfFuncionario : String;
+       rgFuncionario : String;
+
+     public
+
 
 
    end;
