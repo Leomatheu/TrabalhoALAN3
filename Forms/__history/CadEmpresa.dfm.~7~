@@ -25,6 +25,7 @@ object frmEmpresa: TfrmEmpresa
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
+    ExplicitTop = 269
     object Image2: TImage
       Left = 91
       Top = 32
@@ -1012,9 +1013,11 @@ object frmEmpresa: TfrmEmpresa
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
+    ExplicitTop = -6
+    ExplicitHeight = 324
     object Label1: TLabel
       Left = 24
-      Top = 17
+      Top = 41
       Width = 49
       Height = 17
       Caption = 'C'#243'digo '
@@ -1027,7 +1030,7 @@ object frmEmpresa: TfrmEmpresa
     end
     object Label2: TLabel
       Left = 24
-      Top = 65
+      Top = 81
       Width = 65
       Height = 17
       Caption = 'Descri'#231#227'o'
@@ -1040,7 +1043,7 @@ object frmEmpresa: TfrmEmpresa
     end
     object Label3: TLabel
       Left = 24
-      Top = 113
+      Top = 121
       Width = 51
       Height = 17
       Caption = 'Contato'
@@ -1053,9 +1056,9 @@ object frmEmpresa: TfrmEmpresa
     end
     object Label4: TLabel
       Left = 24
-      Top = 164
+      Top = 161
       Width = 66
-      Height = 19
+      Height = 17
       Caption = 'Endere'#231'o '
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1065,8 +1068,8 @@ object frmEmpresa: TfrmEmpresa
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 24
-      Top = 218
+      Left = 23
+      Top = 205
       Width = 61
       Height = 17
       Caption = 'Inscri'#231#227'o'
@@ -1458,29 +1461,29 @@ object frmEmpresa: TfrmEmpresa
       Stretch = True
     end
     object edtCodEmpresa: TEdit
-      Left = 25
-      Top = 32
+      Left = 113
+      Top = 40
       Width = 121
       Height = 21
       TabOrder = 0
     end
     object edtDescricao: TEdit
-      Left = 25
+      Left = 113
       Top = 80
       Width = 234
-      Height = 21
+      Height = 22
       TabOrder = 1
     end
     object Edit1: TEdit
-      Left = 25
-      Top = 181
+      Left = 113
+      Top = 160
       Width = 236
-      Height = 21
+      Height = 22
       TabOrder = 2
     end
     object edtContato: TMaskEdit
-      Left = 25
-      Top = 128
+      Left = 113
+      Top = 120
       Width = 88
       Height = 21
       EditMask = '!\(999\)0000-0000;1;_'
@@ -1489,8 +1492,8 @@ object frmEmpresa: TfrmEmpresa
       Text = '(   )    -    '
     end
     object MaskEdit1: TMaskEdit
-      Left = 25
-      Top = 234
+      Left = 113
+      Top = 204
       Width = 121
       Height = 21
       EditMask = '!\ 00.000.000-0000/00;1;_'

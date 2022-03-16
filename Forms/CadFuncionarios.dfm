@@ -3,7 +3,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO FUNCION'#193'RIO'
-  ClientHeight = 482
+  ClientHeight = 534
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 418
+    Top = 470
     Width = 505
     Height = 64
     Align = alBottom
@@ -26,7 +26,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 286
+    ExplicitTop = 418
     object Image2: TImage
       Left = 83
       Top = 14
@@ -1007,17 +1007,17 @@ object frmCadFuncionario: TfrmCadFuncionario
     Left = 0
     Top = 0
     Width = 505
-    Height = 418
+    Height = 470
     Align = alClient
+    BorderStyle = bsSingle
     Caption = 'pnAtributosFuncionarios'
     Color = clActiveCaption
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = -6
     object Label1: TLabel
       Left = 29
-      Top = 25
+      Top = 9
       Width = 49
       Height = 17
       Caption = 'C'#243'digo '
@@ -1043,7 +1043,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label3: TLabel
       Left = 29
-      Top = 113
+      Top = 121
       Width = 130
       Height = 17
       Caption = 'Data de nascimento'
@@ -1056,7 +1056,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label4: TLabel
       Left = 29
-      Top = 169
+      Top = 177
       Width = 42
       Height = 17
       Caption = 'Status'
@@ -1069,7 +1069,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label5: TLabel
       Left = 29
-      Top = 233
+      Top = 257
       Width = 66
       Height = 17
       Caption = 'Valor hora'
@@ -1082,7 +1082,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label6: TLabel
       Left = 29
-      Top = 297
+      Top = 321
       Width = 47
       Height = 17
       Caption = 'G'#234'nero'
@@ -1095,7 +1095,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label7: TLabel
       Left = 29
-      Top = 361
+      Top = 401
       Width = 26
       Height = 17
       Caption = 'CPF'
@@ -1107,8 +1107,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label8: TLabel
-      Left = 239
-      Top = 361
+      Left = 183
+      Top = 401
       Width = 19
       Height = 17
       Caption = 'RG'
@@ -2385,22 +2385,22 @@ object frmCadFuncionario: TfrmCadFuncionario
       Stretch = True
     end
     object edtCodFunc: TEdit
-      Left = 102
-      Top = 24
+      Left = 29
+      Top = 25
       Width = 121
       Height = 21
       TabOrder = 0
     end
     object edtNome: TEdit
-      Left = 102
-      Top = 64
+      Left = 30
+      Top = 80
       Width = 272
       Height = 21
       TabOrder = 1
     end
     object edtDataNasc: TMaskEdit
-      Left = 176
-      Top = 112
+      Left = 32
+      Top = 136
       Width = 97
       Height = 21
       EditMask = '!99/99/00;1;_'
@@ -2410,8 +2410,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       OnChange = edtDataNascChange
     end
     object pnCheckBox: TPanel
-      Left = 101
-      Top = 155
+      Left = 29
+      Top = 195
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
@@ -2449,15 +2449,15 @@ object frmCadFuncionario: TfrmCadFuncionario
       end
     end
     object Edit1: TEdit
-      Left = 101
-      Top = 232
-      Width = 272
+      Left = 29
+      Top = 272
+      Width = 273
       Height = 21
       TabOrder = 4
     end
     object pnGenero: TPanel
-      Left = 101
-      Top = 283
+      Left = 29
+      Top = 339
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
@@ -2495,8 +2495,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       end
     end
     object edtCPF: TMaskEdit
-      Left = 101
-      Top = 360
+      Left = 29
+      Top = 416
       Width = 95
       Height = 21
       EditMask = '!000.000.000-00;1;_'
@@ -2506,8 +2506,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       OnChange = edtDataNascChange
     end
     object edtRG: TEdit
-      Left = 285
-      Top = 360
+      Left = 183
+      Top = 416
       Width = 100
       Height = 21
       TabOrder = 7
