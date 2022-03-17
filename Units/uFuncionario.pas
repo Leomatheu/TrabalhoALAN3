@@ -96,7 +96,7 @@ end;
 
 procedure TFuncionario.setDataNasc(dataNascimento: String);
 begin
-   self.dataNascimento =  dataNascimento;
+   self.dataNascimento :=  dataNascimento;
 end;
 
 procedure TFuncionario.setGeneroFunc(generoFuncionario: String);

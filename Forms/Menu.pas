@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, CadEmpresa, CadFuncionarios,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, CadFuncionarios, CadEmpresa,
   Vcl.Imaging.jpeg;
 
 type
@@ -40,6 +40,7 @@ end;
 
 procedure TfrmMenu.Funcionrios1Click(Sender: TObject);
 begin
+
    CadFuncionarios.frmCadFuncionario.ShowModal;
 end;
 

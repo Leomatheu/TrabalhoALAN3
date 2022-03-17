@@ -11,7 +11,6 @@ object frmCadFuncionario: TfrmCadFuncionario
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
@@ -26,7 +25,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 418
     object Image2: TImage
       Left = 83
       Top = 14

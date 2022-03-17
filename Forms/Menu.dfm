@@ -12,7 +12,6 @@ object frmMenu: TfrmMenu
   Font.Name = 'Tahoma'
   Font.Style = []
   Menu = MainMenu1
-  OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -26,10 +25,6 @@ object frmMenu: TfrmMenu
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitLeft = 248
-    ExplicitTop = 128
-    ExplicitWidth = 185
-    ExplicitHeight = 41
     object Image1: TImage
       AlignWithMargins = True
       Left = 4
