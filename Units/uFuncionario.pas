@@ -9,7 +9,7 @@ interface
        nomeFuncionario : String;
        dataNascimento : String;
        statusFuncionario : String;
-       valorHora : String;
+       valorHora : double;
        generoFuncionario : String;
        cpfFuncionario : String;
        rgFuncionario : String;
@@ -27,8 +27,8 @@ interface
         procedure setStatusFunc(statusFuncionario:String);
         function getStatusFunc:String;
 
-        procedure setValorHora(valorHora: String);
-        function getValorHora:String;
+        procedure setValorHora(valorHora: double);
+        function getValorHora:double;
 
         procedure setGeneroFunc(generoFuncionario:String);
         function getGeneroFunc:String;
@@ -79,7 +79,7 @@ begin
    result := self.statusFuncionario;
 end;
 
-function TFuncionario.getValorHora: String;
+function TFuncionario.getValorHora: double;
 begin
    result := self.valorHora;
 end;
@@ -119,7 +119,7 @@ begin
    self.statusFuncionario :=  statusFuncionario;
 end;
 
-procedure TFuncionario.setValorHora(valorHora: String);
+procedure TFuncionario.setValorHora(valorHora: double);
 begin
    self.valorHora :=  valorHora;
 end;

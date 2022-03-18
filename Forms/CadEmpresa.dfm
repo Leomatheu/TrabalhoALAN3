@@ -11,7 +11,6 @@ object frmEmpresa: TfrmEmpresa
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
@@ -1055,7 +1054,7 @@ object frmEmpresa: TfrmEmpresa
       Left = 24
       Top = 164
       Width = 66
-      Height = 19
+      Height = 17
       Caption = 'Endere'#231'o '
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1471,7 +1470,7 @@ object frmEmpresa: TfrmEmpresa
       Height = 21
       TabOrder = 1
     end
-    object Edit1: TEdit
+    object edtEndereco: TEdit
       Left = 25
       Top = 181
       Width = 236
@@ -1488,7 +1487,7 @@ object frmEmpresa: TfrmEmpresa
       TabOrder = 3
       Text = '(   )    -    '
     end
-    object MaskEdit1: TMaskEdit
+    object edtInscricao: TMaskEdit
       Left = 25
       Top = 234
       Width = 121

@@ -4,7 +4,7 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, CadFuncionarios, CadEmpresa,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, CadFuncionarios, CadEmpresa, LancamentosMensais,
   Vcl.Imaging.jpeg;
 
 type
@@ -17,9 +17,12 @@ type
     Consultas1: TMenuItem;
     Sair1: TMenuItem;
     Image1: TImage;
+    Clculos1: TMenuItem;
+    FolhaMensal1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
     procedure Funcionrios1Click(Sender: TObject);
+    procedure FolhaMensal1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,9 +41,13 @@ begin
   CadEmpresa.frmEmpresa.ShowModal;
 end;
 
+procedure TfrmMenu.FolhaMensal1Click(Sender: TObject);
+begin
+  LancamentosMensais.frmLancamentosMensais.ShowModal;
+end;
+
 procedure TfrmMenu.Funcionrios1Click(Sender: TObject);
 begin
-
    CadFuncionarios.frmCadFuncionario.ShowModal;
 end;
 

@@ -2,6 +2,7 @@ unit uEmpresa;
 
 interface
 
+
   Type TEmpresa = class
 
      private

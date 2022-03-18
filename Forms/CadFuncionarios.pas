@@ -6,7 +6,9 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
   Vcl.Imaging.pngimage, FireDAC.Phys.MySQLDef, FireDAC.Stan.Intf, FireDAC.Phys,
-  FireDAC.Phys.MySQL;
+  FireDAC.Phys.MySQL, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, uFuncionario;
 
 type
   TfrmCadFuncionario = class(TForm)
@@ -27,7 +29,7 @@ type
     ckInativo: TCheckBox;
     ckAtivo: TCheckBox;
     Label5: TLabel;
-    Edit1: TEdit;
+    edtValor: TEdit;
     Label6: TLabel;
     pnGenero: TPanel;
     ckFeminino: TCheckBox;
@@ -37,6 +39,8 @@ type
     Label8: TLabel;
     edtRG: TEdit;
     Image1: TImage;
+    FDConnection1: TFDConnection;
+    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
     procedure FormActivate(Sender: TObject);
     procedure edtDataNascChange(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
@@ -47,7 +51,7 @@ type
   end;
 
 var
-  frmCadFuncionario: TfrmCadFuncionario;
+   frmCadFuncionario: TfrmCadFuncionario;
 
 implementation
 
@@ -72,5 +76,33 @@ begin
    self.pnCheckBox.Enabled := false;
    self.pnCheckBox.Visible := false;
 end;
+
+procedure  pCriaObjetoFuncionario;
+var
+   objFuncionario : TFuncionario;
+begin
+
+   objFuncionario.Create;
+
+   objFuncionario.setCodFunc(StrToInt(frmCadFuncionario.edtCodFunc.text));
+   objFuncionario.setNomeFunc(frmCadFuncionario.edtNome.Text);
+   objFuncionario.setDataNasc(frmCadFuncionario.edtDataNasc.text);
+   objFuncionario.setValorHora(StrToFloat(frmCadFuncionario.edtValor.text));
+   objFuncionario.setCPF(frmCadFuncionario.edtCPF.text);
+   objFuncionario.setRG(frmCadFuncionario.edtRG.text);
+
+   if (frmCadFuncionario.ckAtivo.Checked) then
+      objFuncionario.setStatusFunc('Ativo')
+   else
+      objFuncionario.setStatusFunc('Inativo');
+
+
+   if (frmCadFuncionario.ckMasculino.Checked) then
+      objFuncionario.setGeneroFunc('Masculino')
+   else
+      objFuncionario.setGeneroFunc('Feminino');
+
+end;
+
 
 end.

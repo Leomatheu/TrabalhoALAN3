@@ -2446,7 +2446,7 @@ object frmCadFuncionario: TfrmCadFuncionario
         TabOrder = 1
       end
     end
-    object Edit1: TEdit
+    object edtValor: TEdit
       Left = 29
       Top = 272
       Width = 273
@@ -2510,5 +2510,19 @@ object frmCadFuncionario: TfrmCadFuncionario
       Height = 21
       TabOrder = 7
     end
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=dbalan'
+      'User_Name=root'
+      'Password=root'
+      'DriverID=MySQL')
+    Left = 376
+    Top = 264
+  end
+  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
+    VendorLib = 'C:\Alan\libmySQL.dll'
+    Left = 376
+    Top = 328
   end
 end

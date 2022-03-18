@@ -105,6 +105,23 @@
             <Form>frmMenu</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\CadEmpresa.pas">
+            <Form>frmEmpresa</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Forms\CadFuncionarios.pas">
+            <Form>frmCadFuncionario</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\uEmpresa.pas"/>
+        <DCCReference Include="..\Units\uFuncionario.pas"/>
+        <DCCReference Include="..\Forms\LancamentosMensais.pas">
+            <Form>frmLancamentosMensais</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\uLancamentosMensais.pas">
+            <Form>$R *.res</Form>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
