@@ -1,0 +1,45 @@
+unit uControler;
+
+interface
+
+uses
+  uLancamentosMensais, uFuncionario, uEmpresa,
+  LancamentosMensais, CadFuncionarios, CadEmpresa, System.SysUtils;
+
+  Type TControler = class
+
+     public
+       procedure pCadastroDeEmpresa;
+       procedure pFechaFormularioCadEmp;
+
+
+
+  end;
+
+implementation
+
+{ TControler }
+
+procedure TControler.pCadastroDeEmpresa;
+var
+   frmCadEmp : TfrmEmpresa;
+   objEmpresa : TEmpresa;
+begin
+   CadEmpresa.frmEmpresa.ShowModal;
+
+   objEmpresa := TEmpresa.Create;
+   objEmpresa.setCodEmp(StrToInt(frmCadEmp.edtCodEmpresa.Text));
+   objEmpresa.setDescEmp(frmCadEmp.edtDescricao.Text);
+   objEmpresa.setContatoEmp(frmCadEmp.edtContato.Text);
+   objEmpresa.setEndEmp(frmCadEmp.edtEndereco.Text);
+   objEmpresa.setInscEmp(frmCadEmp.edtInscricao.Text);
+end;
+
+
+
+procedure TControler.pFechaFormularioCadEmp;
+begin
+   CadEmpresa.frmEmpresa.close;
+end;
+
+end.

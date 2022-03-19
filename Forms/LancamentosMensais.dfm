@@ -11,6 +11,7 @@
   Font.Height = -12
   Font.Name = 'Segoe UI'
   Font.Style = []
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 15
   object pnCalculos: TPanel
@@ -24,11 +25,10 @@
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitLeft = 8
     ExplicitTop = -6
     object Label1: TLabel
       Left = 16
-      Top = 96
+      Top = 142
       Width = 86
       Height = 17
       Caption = 'Compet'#234'ncia'
@@ -41,7 +41,7 @@
     end
     object Label2: TLabel
       Left = 19
-      Top = 168
+      Top = 200
       Width = 38
       Height = 17
       Caption = 'Horas'
@@ -56,7 +56,7 @@
       Left = 16
       Top = 24
       Width = 77
-      Height = 15
+      Height = 17
       Caption = 'Funcion'#225'rio'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -67,7 +67,7 @@
     end
     object Label3: TLabel
       Left = 16
-      Top = 232
+      Top = 256
       Width = 48
       Height = 17
       Caption = 'L'#237'quido'
@@ -728,9 +728,22 @@
         0049454E44AE426082}
       Stretch = True
     end
+    object Label4: TLabel
+      Left = 16
+      Top = 82
+      Width = 66
+      Height = 17
+      Caption = 'Valor hora'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
     object edtCompetencia: TMaskEdit
       Left = 16
-      Top = 111
+      Top = 159
       Width = 86
       Height = 23
       EditMask = '!99/0000;1;_'
@@ -740,32 +753,29 @@
     end
     object edtHora: TMaskEdit
       Left = 19
-      Top = 183
+      Top = 215
       Width = 50
       Height = 23
-      EditMask = '!90:00;1;_'
-      MaxLength = 5
       TabOrder = 1
-      Text = '  :  '
+      Text = ''
     end
     object edtLiquido: TMaskEdit
       Left = 16
-      Top = 249
+      Top = 273
       Width = 105
       Height = 38
-      EditMask = '!####,00;0'
+      Enabled = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -21
       Font.Name = 'Segoe UI'
       Font.Style = []
-      MaxLength = 7
       ParentFont = False
       TabOrder = 2
       Text = ''
     end
     object cbFuncionario: TComboBox
-      Left = 19
+      Left = 17
       Top = 45
       Width = 145
       Height = 23
@@ -776,6 +786,15 @@
         '1 - Jessica'
         '2- Leonardo'
         '3 - Maria')
+    end
+    object edtValorHora: TEdit
+      Left = 16
+      Top = 98
+      Width = 121
+      Height = 23
+      Enabled = False
+      TabOrder = 4
+      Text = '...'
     end
   end
   object pnBotoes: TPanel
@@ -789,9 +808,6 @@
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitLeft = -4
-    ExplicitTop = 263
-    ExplicitWidth = 505
     object Image2: TImage
       Left = 91
       Top = 32

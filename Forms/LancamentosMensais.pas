@@ -24,6 +24,8 @@ type
     Image3: TImage;
     btnSalvar: TButton;
     btnCancelar: TButton;
+    edtValorHora: TEdit;
+    Label4: TLabel;
     procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }

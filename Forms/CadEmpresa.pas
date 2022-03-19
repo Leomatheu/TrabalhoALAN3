@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Mask, Vcl.StdCtrls, Vcl.ExtCtrls,
-  Vcl.Imaging.jpeg, Vcl.Imaging.pngimage, uEmpresa;
+  Vcl.Imaging.jpeg, Vcl.Imaging.pngimage;
 
 type
   TfrmEmpresa = class(TForm)
@@ -27,6 +27,7 @@ type
     Image2: TImage;
     Image3: TImage;
     procedure btnCancelarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,25 +38,19 @@ var
   frmEmpresa: TfrmEmpresa;
 
 implementation
+   uses
+     uControler;
 
 {$R *.dfm}
 
 procedure TfrmEmpresa.btnCancelarClick(Sender: TObject);
 begin
-  close;
+   ModalResult := mrCancel;
 end;
 
-procedure pCriaObjetoEmpresa;
-var
-    objEmpresa : TEmpresa;
+procedure TfrmEmpresa.btnSalvarClick(Sender: TObject);
 begin
-      objEmpresa.Create;
-
-      objEmpresa.setCodEmp(StrToInt(frmEmpresa.edtCodEmpresa.text));
-      objEmpresa.setDescEmp(frmEmpresa.edtDescricao.Text);
-      objEmpresa.setContatoEmp(frmEmpresa.edtContato.text);
-      objEmpresa.setEndEmp(frmEmpresa.edtEndereco.text);
-      objEmpresa.setInscEmp(frmEmpresa.edtInscricao.text);
+   ModalResult := mrOK;
 end;
 
 end.

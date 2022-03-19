@@ -1,0 +1,48 @@
+unit uControler;
+
+interface
+
+uses
+  uLancamentosMensais, uFuncionario, uEmpresa,
+  LancamentosMensais, CadFuncionarios, CadEmpresa, System.SysUtils;
+
+  Type TControler = class
+
+     public
+       procedure pCadastroDeEmpresa;
+
+
+
+
+  end;
+
+implementation
+
+{ TControler }
+
+procedure TControler.pCadastroDeEmpresa;
+var
+   frmCadEmp : TfrmEmpresa;
+   objEmpresa : TEmpresa;
+begin
+    if(frmEmpresa = nil)then
+       frmEmpresa := TfrmEmpresa.Create(nil);
+
+   frmEmpresa.ShowModal;
+
+
+   objEmpresa := TEmpresa.Create;
+   objEmpresa.setCodEmp(StrToInt(frmCadEmp.edtCodEmpresa.Text));
+   objEmpresa.setDescEmp(frmEmpresa.edtDescricao.Text);
+   objEmpresa.setContatoEmp(frmEmpresa.edtContato.Text);
+   objEmpresa.setEndEmp(frmEmpresa.edtEndereco.Text);
+   objEmpresa.setInscEmp(frmEmpresa.edtInscricao.Text);
+
+      FreeAndNil(frmEmpresa);
+end;
+
+
+
+
+
+end.

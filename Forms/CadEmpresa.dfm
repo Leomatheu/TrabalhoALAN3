@@ -11,6 +11,7 @@ object frmEmpresa: TfrmEmpresa
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
@@ -983,6 +984,7 @@ object frmEmpresa: TfrmEmpresa
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 312

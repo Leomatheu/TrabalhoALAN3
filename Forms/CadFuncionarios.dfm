@@ -11,6 +11,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
+  OldCreateOrder = True
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
@@ -1013,6 +1014,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
+    ExplicitTop = -6
     object Label1: TLabel
       Left = 29
       Top = 9
@@ -2510,19 +2512,5 @@ object frmCadFuncionario: TfrmCadFuncionario
       Height = 21
       TabOrder = 7
     end
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=dbalan'
-      'User_Name=root'
-      'Password=root'
-      'DriverID=MySQL')
-    Left = 376
-    Top = 264
-  end
-  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
-    VendorLib = 'C:\Alan\libmySQL.dll'
-    Left = 376
-    Top = 328
   end
 end

@@ -4,8 +4,9 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, CadFuncionarios, CadEmpresa, LancamentosMensais,
-  Vcl.Imaging.jpeg;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg, uControler;
+  //Vcl.Imaging.jpeg;
 
 type
   TfrmMenu = class(TForm)
@@ -22,7 +23,6 @@ type
     procedure Sair1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
     procedure Funcionrios1Click(Sender: TObject);
-    procedure FolhaMensal1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,18 +37,16 @@ implementation
 {$R *.dfm}
 
 procedure TfrmMenu.Empresas1Click(Sender: TObject);
+var
+   controler : TControler;
 begin
-  CadEmpresa.frmEmpresa.ShowModal;
-end;
-
-procedure TfrmMenu.FolhaMensal1Click(Sender: TObject);
-begin
-  LancamentosMensais.frmLancamentosMensais.ShowModal;
+   controler := TControler.Create;
+   controler.pCadastroDeEmpresa;
 end;
 
 procedure TfrmMenu.Funcionrios1Click(Sender: TObject);
 begin
-   CadFuncionarios.frmCadFuncionario.ShowModal;
+   //CadFuncionarios.frmCadFuncionario.ShowModal;
 end;
 
 procedure TfrmMenu.Sair1Click(Sender: TObject);
