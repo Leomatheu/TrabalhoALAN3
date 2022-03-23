@@ -42,6 +42,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure edtDataNascChange(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -52,12 +53,18 @@ var
    frmCadFuncionario: TfrmCadFuncionario;
 
 implementation
-
+uses
+   uControler;
 {$R *.dfm}
 
 procedure TfrmCadFuncionario.btnCancelarClick(Sender: TObject);
 begin
-  close;
+  ModalResult := mrCancel;
+end;
+
+procedure TfrmCadFuncionario.btnSalvarClick(Sender: TObject);
+begin
+   ModalResult := mrOk;
 end;
 
 procedure TfrmCadFuncionario.edtDataNascChange(Sender: TObject);
@@ -74,33 +81,5 @@ begin
    self.pnCheckBox.Enabled := false;
    self.pnCheckBox.Visible := false;
 end;
-
-procedure  pCriaObjetoFuncionario;
-var
-   objFuncionario : TFuncionario;
-begin
-
-   objFuncionario.Create;
-
-   objFuncionario.setCodFunc(StrToInt(frmCadFuncionario.edtCodFunc.text));
-   objFuncionario.setNomeFunc(frmCadFuncionario.edtNome.Text);
-   objFuncionario.setDataNasc(frmCadFuncionario.edtDataNasc.text);
-   objFuncionario.setValorHora(StrToFloat(frmCadFuncionario.edtValor.text));
-   objFuncionario.setCPF(frmCadFuncionario.edtCPF.text);
-   objFuncionario.setRG(frmCadFuncionario.edtRG.text);
-
-   if (frmCadFuncionario.ckAtivo.Checked) then
-      objFuncionario.setStatusFunc('Ativo')
-   else
-      objFuncionario.setStatusFunc('Inativo');
-
-
-   if (frmCadFuncionario.ckMasculino.Checked) then
-      objFuncionario.setGeneroFunc('Masculino')
-   else
-      objFuncionario.setGeneroFunc('Feminino');
-
-end;
-
 
 end.

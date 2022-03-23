@@ -23,6 +23,7 @@ type
     procedure Sair1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
     procedure Funcionrios1Click(Sender: TObject);
+    procedure FolhaMensal1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -44,9 +45,20 @@ begin
    controler.pCadastroDeEmpresa;
 end;
 
-procedure TfrmMenu.Funcionrios1Click(Sender: TObject);
+procedure TfrmMenu.FolhaMensal1Click(Sender: TObject);
+var
+   controler : TControler;
 begin
-   //CadFuncionarios.frmCadFuncionario.ShowModal;
+    controler := TControler.Create;
+    controler.pCadastroLancamento;
+end;
+
+procedure TfrmMenu.Funcionrios1Click(Sender: TObject);
+var
+   controler : TControler;
+begin
+   controler := TControler.Create;
+   controler.pCadastroDeFuncionario;
 end;
 
 procedure TfrmMenu.Sair1Click(Sender: TObject);

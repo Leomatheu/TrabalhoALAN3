@@ -413,6 +413,7 @@ object frmMenu: TfrmMenu
       Caption = 'C'#225'lculos'
       object FolhaMensal1: TMenuItem
         Caption = 'Folha Mensal'
+        OnClick = FolhaMensal1Click
       end
     end
     object Consultas1: TMenuItem

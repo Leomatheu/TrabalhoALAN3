@@ -27,6 +27,7 @@ type
     edtValorHora: TEdit;
     Label4: TLabel;
     procedure btnCancelarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,22 +43,14 @@ implementation
 
 procedure TfrmLancamentosMensais.btnCancelarClick(Sender: TObject);
 begin
-    close;
+  ModalResult := mrCancel;
 end;
 
-procedure pCriaLancamentos;
-var
-    objLancamentos : TLancamento;
 
+
+procedure TfrmLancamentosMensais.btnSalvarClick(Sender: TObject);
 begin
-      objLancamentos.Create;
-
-      objLancamentos.setFuncionario(frmLancamentosMensais.cbFuncionario.ItemIndex);
-      objLancamentos.setComp(frmLancamentosMensais.edtCompetencia.text);
-      objLancamentos.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
-      objLancamentos.setLiquido(StrToFloat(frmLancamentosMensais.edtLiquido.text));
+   ModalResult := mrOk;
 end;
-
-
 
 end.

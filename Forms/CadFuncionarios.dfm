@@ -985,6 +985,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 320
@@ -2386,7 +2387,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object edtCodFunc: TEdit
       Left = 29
-      Top = 25
+      Top = 32
       Width = 121
       Height = 21
       TabOrder = 0

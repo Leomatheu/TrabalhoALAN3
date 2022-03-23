@@ -775,8 +775,8 @@
       Text = ''
     end
     object cbFuncionario: TComboBox
-      Left = 17
-      Top = 45
+      Left = 16
+      Top = 39
       Width = 145
       Height = 23
       TabOrder = 3
@@ -1767,6 +1767,7 @@
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 312
