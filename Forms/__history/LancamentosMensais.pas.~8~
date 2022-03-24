@@ -38,8 +38,6 @@ var
   frmLancamentosMensais: TfrmLancamentosMensais;
 
 implementation
-uses
-   uControler;
 
 {$R *.dfm}
 

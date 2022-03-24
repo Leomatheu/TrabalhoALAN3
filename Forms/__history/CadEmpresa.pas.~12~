@@ -38,8 +38,8 @@ var
   frmEmpresa: TfrmEmpresa;
 
 implementation
-uses
-   uControler;
+   uses
+     uControler;
 
 {$R *.dfm}
 

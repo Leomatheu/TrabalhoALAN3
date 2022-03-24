@@ -9,9 +9,9 @@ uses
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client;
 
 type
-  TDAO = class(TDataModule)
-    Connection: TFDConnection;
-    FDMySQLDriverLink: TFDPhysMySQLDriverLink;
+  TDataModule1 = class(TDataModule)
+    FDConnection1: TFDConnection;
+    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
   private
     { Private declarations }
   public
@@ -19,7 +19,7 @@ type
   end;
 
 var
-  DAO: TDAO;
+  DataModule1: TDataModule1;
 
 implementation
 
