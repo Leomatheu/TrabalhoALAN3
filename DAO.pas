@@ -6,12 +6,19 @@ uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
   FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
-  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client;
+  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
+  Data.FMTBcd, Data.Bind.Components, Data.Bind.DBScope, FireDAC.Comp.UI,
+  Data.SqlExpr, uFuncionario, Data.Bind.EngExt, Vcl.Bind.DBEngExt;
 
 type
   TDataModule1 = class(TDataModule)
     FDConnection1: TFDConnection;
-    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
+    DataSource1: TDataSource;
+    SQLQuery1: TSQLQuery;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    BindSourceDB1: TBindSourceDB;
+    BindingsList1: TBindingsList;
+    procedure pInsereFuncionario(objFuncionario : TFuncionario);
   private
     { Private declarations }
   public
@@ -26,5 +33,25 @@ implementation
 {%CLASSGROUP 'Vcl.Controls.TControl'}
 
 {$R *.dfm}
+
+
+
+{ TDataModule1 }
+
+procedure TDataModule1.pInsereFuncionario(objFuncionario: TFuncionario);
+var
+  conexao : TFDConnection;
+  query : TSQLQuery;
+begin
+   conexao := TFDConnection.Create(nil);
+   conexao.Connected := true;
+
+   query := TSQLQuery.Create(nil);
+   query.Text('insert into cadEmpresa(nomeFuncionario, dataNascimento, statusFuncionario, valorHora, generoFuncionario, cpfFuncionario, rgFuncionario) values '+
+             objFuncionario.getNomeFunc+','+objFuncionario.getDataNasc+','+objFuncionario.getStatusFunc+','+objFuncionario.getValorHora+','+objFuncionario.getCPF+','+objFuncionario.getRG);
+
+   query.ExecSQL();
+
+end;
 
 end.

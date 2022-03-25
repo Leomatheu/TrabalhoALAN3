@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, FireDAC.Phys.MySQLDef, FireDAC.Stan.Intf, FireDAC.Phys,
   FireDAC.Phys.MySQL, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
-  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, uFuncionario;
+  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, uFuncionario, Vcl.DBCtrls;
 
 type
   TfrmCadFuncionario = class(TForm)
@@ -39,6 +39,8 @@ type
     ckMasculino: TCheckBox;
     edtCPF: TMaskEdit;
     edtRG: TEdit;
+    Label9: TLabel;
+    cbEmpresa: TDBComboBox;
     procedure FormActivate(Sender: TObject);
     procedure edtDataNascChange(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);

@@ -8,7 +8,6 @@ uses
   uFuncionario in '..\Units\uFuncionario.pas',
   LancamentosMensais in '..\Forms\LancamentosMensais.pas' {frmLancamentosMensais},
   uLancamentosMensais in '..\Units\uLancamentosMensais.pas' {$R *.res},
-  controle in '..\Units\controle.pas',
   CadEmpresa in '..\Forms\CadEmpresa.pas' {frmEmpresa},
   uControler in '..\Units\uControler.pas',
   DAO in '..\DAO.pas' {DataModule1: TDataModule};

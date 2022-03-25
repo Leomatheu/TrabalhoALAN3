@@ -1,7 +1,7 @@
 object DataModule1: TDataModule1
   OldCreateOrder = False
-  Height = 236
-  Width = 319
+  Height = 623
+  Width = 626
   object FDConnection1: TFDConnection
     Params.Strings = (
       'User_Name=root'
@@ -10,14 +10,42 @@ object DataModule1: TDataModule1
       'Database=alan'
       'DriverID=MySQL')
     Connected = True
-    Left = 32
-    Top = 24
+    LoginPrompt = False
+    Left = 40
+    Top = 48
   end
-  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
-    VendorLib = 
-      'C:\Users\progvisual33\Documents\Pessoal\Exerc'#237'cios Aula\PZIMexer' +
-      'cicio\DELPHI\TrabalhoAlan\Projeto\Win32\Debug\libmysql.dll'
-    Left = 136
-    Top = 24
+  object DataSource1: TDataSource
+    Left = 40
+    Top = 104
+  end
+  object SQLQuery1: TSQLQuery
+    GetMetadata = True
+    DataSource = DataSource1
+    Params = <
+      item
+        DataType = ftUnknown
+        ParamType = ptUnknown
+      end>
+    SQL.Strings = (
+      'select * from empresa ')
+    Left = 40
+    Top = 168
+  end
+  object FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 528
+    Top = 216
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = SQLQuery1
+    ScopeMappings = <>
+    Left = 40
+    Top = 232
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 40
+    Top = 304
   end
 end
