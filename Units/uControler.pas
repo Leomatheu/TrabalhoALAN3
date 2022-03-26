@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.Imaging.jpeg,
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO;
 
   Type TControler = class
 
@@ -18,13 +18,14 @@ uses
   end;
 
 implementation
-uses
-   DAO;
+
+
 { TControler }
 
 procedure TControler.pCadastroDeEmpresa;
 var
    objEmpresa : TEmpresa;
+   BD : TDataModule1;
 begin
    if(frmEmpresa = nil)then
        frmEmpresa := TfrmEmpresa.Create(nil);
@@ -32,12 +33,15 @@ begin
    if(frmEmpresa.ShowModal = mrOK)then
      begin
        objEmpresa := TEmpresa.Create;
-       objEmpresa.setCodEmp(StrToInt(frmEmpresa.edtCodEmpresa.Text));
        objEmpresa.setDescEmp(frmEmpresa.edtDescricao.Text);
        objEmpresa.setContatoEmp(frmEmpresa.edtContato.Text);
        objEmpresa.setEndEmp(frmEmpresa.edtEndereco.Text);
        objEmpresa.setInscEmp(frmEmpresa.edtInscricao.Text);
      end;
+
+   BD := TDataModule1.Create(nil);
+   BD.pInsertEmpresa(objEmpresa);
+
    FreeAndNil(frmEmpresa);
 end;
 

@@ -11,6 +11,7 @@ object DataModule1: TDataModule1
       'Server=localhost'
       'Password=root'
       'DriverID=MySQL')
+    Connected = True
     LoginPrompt = False
     Transaction = transacoes
     Left = 40
@@ -23,6 +24,7 @@ object DataModule1: TDataModule1
   end
   object query: TFDQuery
     Connection = Conexao
+    Transaction = transacoes
     Left = 320
     Top = 48
   end

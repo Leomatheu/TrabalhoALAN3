@@ -54,7 +54,7 @@ begin
    query := TFDQuery.Create(nil);
    query.Connection := DataModule1.Conexao;
 
-   query.SQL.Add('insert into cadEmpresa values(0, :descricaoEmpresa, :contatoEmpresa, :enderecoEmpresa, :inscricaoEmpresa');
+   query.SQL.Add('insert into cadEmpresa values(0, :descricaoEmpresa, :contatoEmpresa, :enderecoEmpresa, :inscricaoEmpresa);');
 
    query.Params[0].AsString := objEmpresa.getDescEmp;
    query.Params[1].AsString := objEmpresa.getContatoEmp;

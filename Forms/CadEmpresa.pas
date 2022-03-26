@@ -11,8 +11,6 @@ type
   TfrmEmpresa = class(TForm)
     pnBotoes: TPanel;
     pnAtributosEmpresa: TPanel;
-    Label1: TLabel;
-    edtCodEmpresa: TEdit;
     edtDescricao: TEdit;
     Label2: TLabel;
     Label3: TLabel;
