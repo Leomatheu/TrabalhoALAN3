@@ -9,8 +9,8 @@ uses
   LancamentosMensais in '..\Forms\LancamentosMensais.pas' {frmLancamentosMensais},
   uLancamentosMensais in '..\Units\uLancamentosMensais.pas' {$R *.res},
   CadEmpresa in '..\Forms\CadEmpresa.pas' {frmEmpresa},
-  uControler in '..\Units\uControler.pas',
-  DAO in '..\DAO.pas' {DataModule1: TDataModule};
+  uControler in '..\Units\uControler.pas' {$R *.res},
+  DAO in '..\DAO\DAO.pas' {DataModule1: TDataModule};
 
 {$R *.res}
 

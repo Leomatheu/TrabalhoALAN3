@@ -396,12 +396,14 @@ object frmMenu: TfrmMenu
     end
   end
   object MainMenu1: TMainMenu
+    Images = DataModule1.listaImagens
     Left = 16
     Top = 16
     object Cadastros1: TMenuItem
       Caption = 'Cadastros'
       object Empresas1: TMenuItem
         Caption = 'Empresas'
+        ImageIndex = 0
         OnClick = Empresas1Click
       end
       object Funcionrios1: TMenuItem

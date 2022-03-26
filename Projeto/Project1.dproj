@@ -122,8 +122,10 @@
             <Form>frmEmpresa</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="..\Units\uControler.pas"/>
-        <DCCReference Include="..\DAO.pas">
+        <DCCReference Include="..\Units\uControler.pas">
+            <Form>$R *.res</Form>
+        </DCCReference>
+        <DCCReference Include="..\DAO\DAO.pas">
             <Form>DataModule1</Form>
             <FormType>dfm</FormType>
             <DesignClass>TDataModule</DesignClass>
