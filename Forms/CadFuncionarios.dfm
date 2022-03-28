@@ -26,7 +26,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 535
     object Image2: TImage
       Left = 83
       Top = 14
@@ -975,7 +974,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object btnSalvar: TButton
       Left = 118
-      Top = 14
+      Top = 6
       Width = 75
       Height = 25
       Caption = 'Salvar'
@@ -1016,7 +1015,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = 8
     object Label1: TLabel
       Left = 29
       Top = 76

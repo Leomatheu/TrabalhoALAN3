@@ -7,48 +7,49 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.Imaging.jpeg,
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO;
 
   Type TControler = class
 
      public
        procedure pCadastroDeEmpresa;
        procedure pCadastroDeFuncionario;
-
-
-
-
+       procedure pCadastroLancamento;
   end;
 
 implementation
-uses
-   DAO;
+
+
 { TControler }
 
 procedure TControler.pCadastroDeEmpresa;
 var
    objEmpresa : TEmpresa;
+   BD : TDataModule1;
 begin
-    if(frmEmpresa = nil)then
+   if(frmEmpresa = nil)then
        frmEmpresa := TfrmEmpresa.Create(nil);
 
    if(frmEmpresa.ShowModal = mrOK)then
      begin
        objEmpresa := TEmpresa.Create;
-       objEmpresa.setCodEmp(StrToInt(frmEmpresa.edtCodEmpresa.Text));
        objEmpresa.setDescEmp(frmEmpresa.edtDescricao.Text);
        objEmpresa.setContatoEmp(frmEmpresa.edtContato.Text);
        objEmpresa.setEndEmp(frmEmpresa.edtEndereco.Text);
        objEmpresa.setInscEmp(frmEmpresa.edtInscricao.Text);
      end;
 
-      FreeAndNil(frmEmpresa);
+   BD := TDataModule1.Create(nil);
+   BD.pInsertEmpresa(objEmpresa);
+
+   FreeAndNil(frmEmpresa);
 end;
 
 
 procedure TControler.pCadastroDeFuncionario;
 var
    objFuncionario : TFuncionario;
+   BD : TDataModule1;
 begin
    if(frmCadFuncionario = nil)then
      frmCadFuncionario := TfrmCadFuncionario.Create(nil);
@@ -75,7 +76,26 @@ begin
         objFuncionario.setCPF(frmCadFuncionario.edtCPF.Text);
         objFuncionario.setRG(frmCadFuncionario.edtRG.Text);
      end;
+     BD := TDataModule1.Create(nil);
+     BD.pInsereFuncionario(objFuncionario);
+end;
 
+procedure TControler.pCadastroLancamento;
+var
+   objLancamento : TLancamento;
+begin
+   if(frmLancamentosMensais = nil)then
+     frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
+
+   if(frmLancamentosMensais.ShowModal = mrOk)then
+     begin
+       objLancamento := TLancamento.Create;
+
+       objLancamento.setFuncionario(StrToInt(frmLancamentosMensais.cbFuncionario.Text));
+       objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
+       objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
+       objLancamento.setLiquido(StrToFloat(frmLancamentosMensais.edtLiquido.Text));
+     end;
 end;
 
 end.

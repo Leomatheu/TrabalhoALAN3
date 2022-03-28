@@ -25,6 +25,7 @@ object frmEmpresa: TfrmEmpresa
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
+    ExplicitTop = 263
     object Image2: TImage
       Left = 91
       Top = 32
@@ -1013,6 +1014,7 @@ object frmEmpresa: TfrmEmpresa
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
+    ExplicitHeight = 263
     object Label2: TLabel
       Left = 24
       Top = 33

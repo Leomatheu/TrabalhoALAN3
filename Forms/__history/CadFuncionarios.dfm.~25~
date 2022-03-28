@@ -3,7 +3,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO FUNCION'#193'RIO'
-  ClientHeight = 534
+  ClientHeight = 593
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 470
+    Top = 529
     Width = 505
     Height = 64
     Align = alBottom
@@ -26,6 +26,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
+    ExplicitTop = 535
     object Image2: TImage
       Left = 83
       Top = 14
@@ -985,6 +986,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 320
@@ -1006,7 +1008,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     Left = 0
     Top = 0
     Width = 505
-    Height = 470
+    Height = 529
     Align = alClient
     BorderStyle = bsSingle
     Caption = 'pnAtributosFuncionarios'
@@ -1014,9 +1016,10 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
+    ExplicitTop = 8
     object Label1: TLabel
       Left = 29
-      Top = 9
+      Top = 76
       Width = 49
       Height = 17
       Caption = 'C'#243'digo '
@@ -1029,7 +1032,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label2: TLabel
       Left = 29
-      Top = 65
+      Top = 129
       Width = 38
       Height = 17
       Caption = 'Nome'
@@ -1042,7 +1045,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label3: TLabel
       Left = 29
-      Top = 121
+      Top = 185
       Width = 130
       Height = 17
       Caption = 'Data de nascimento'
@@ -1055,7 +1058,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label4: TLabel
       Left = 29
-      Top = 177
+      Top = 241
       Width = 42
       Height = 17
       Caption = 'Status'
@@ -1068,7 +1071,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label5: TLabel
       Left = 29
-      Top = 257
+      Top = 321
       Width = 66
       Height = 17
       Caption = 'Valor hora'
@@ -1081,7 +1084,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label6: TLabel
       Left = 29
-      Top = 321
+      Top = 385
       Width = 47
       Height = 17
       Caption = 'G'#234'nero'
@@ -1094,7 +1097,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label7: TLabel
       Left = 29
-      Top = 401
+      Top = 465
       Width = 26
       Height = 17
       Caption = 'CPF'
@@ -1107,7 +1110,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label8: TLabel
       Left = 183
-      Top = 401
+      Top = 465
       Width = 19
       Height = 17
       Caption = 'RG'
@@ -2383,23 +2386,36 @@ object frmCadFuncionario: TfrmCadFuncionario
         86619490FF01E6F5C95D82A0F22C0000000049454E44AE426082}
       Stretch = True
     end
+    object Label9: TLabel
+      Left = 29
+      Top = 22
+      Width = 57
+      Height = 17
+      Caption = 'Empresa'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
     object edtCodFunc: TEdit
       Left = 29
-      Top = 25
+      Top = 91
       Width = 121
       Height = 21
       TabOrder = 0
     end
     object edtNome: TEdit
-      Left = 30
-      Top = 80
+      Left = 29
+      Top = 144
       Width = 272
       Height = 21
       TabOrder = 1
     end
     object edtDataNasc: TMaskEdit
-      Left = 32
-      Top = 136
+      Left = 30
+      Top = 200
       Width = 97
       Height = 21
       EditMask = '!99/99/00;1;_'
@@ -2410,7 +2426,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object pnCheckBox: TPanel
       Left = 29
-      Top = 195
+      Top = 259
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
@@ -2449,14 +2465,14 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object edtValor: TEdit
       Left = 29
-      Top = 272
+      Top = 336
       Width = 273
       Height = 21
       TabOrder = 4
     end
     object pnGenero: TPanel
       Left = 29
-      Top = 339
+      Top = 403
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
@@ -2495,7 +2511,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object edtCPF: TMaskEdit
       Left = 29
-      Top = 416
+      Top = 480
       Width = 95
       Height = 21
       EditMask = '!000.000.000-00;1;_'
@@ -2506,25 +2522,17 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object edtRG: TEdit
       Left = 183
-      Top = 416
+      Top = 480
       Width = 100
       Height = 21
       TabOrder = 7
     end
-  end
-  object FDConnection1: TFDConnection
-    Params.Strings = (
-      'Database=alan'
-      'User_Name=root'
-      'Password=root'
-      'Server=localhost'
-      'DriverID=MySQL')
-    Left = 376
-    Top = 264
-  end
-  object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
-    VendorLib = 'C:\Program Files\MySQL\MySQL Server 8.0\lib\libmysql.dll'
-    Left = 376
-    Top = 328
+    object cbEmpresa: TDBComboBox
+      Left = 29
+      Top = 39
+      Width = 145
+      Height = 21
+      TabOrder = 8
+    end
   end
 end

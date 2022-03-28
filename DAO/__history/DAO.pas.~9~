@@ -59,7 +59,7 @@ begin
    query.Params[0].AsString := objFuncionario.getNomeFunc;
    query.Params[1].AsString := objFuncionario.getDataNasc;
    query.Params[2].AsString := objFuncionario.getStatusFunc;
-   query.Params[3].AsFloat := objFuncionario.getValorHora;
+   query.Params[3].AsString := objFuncionario.getValorHora;
    query.Params[4].AsString := objFuncionario.getGeneroFunc;
    query.Params[5].AsString := objFuncionario.getCPF;
    query.Params[6].AsString := objFuncionario.getRG;

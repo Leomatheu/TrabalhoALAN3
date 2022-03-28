@@ -49,6 +49,7 @@ end;
 procedure TControler.pCadastroDeFuncionario;
 var
    objFuncionario : TFuncionario;
+   BD : TDataModule1;
 begin
    if(frmCadFuncionario = nil)then
      frmCadFuncionario := TfrmCadFuncionario.Create(nil);
@@ -75,6 +76,10 @@ begin
         objFuncionario.setCPF(frmCadFuncionario.edtCPF.Text);
         objFuncionario.setRG(frmCadFuncionario.edtRG.Text);
      end;
+     BD := TDataModule1.Create(nil);
+     BD.pInsereFuncionario(objFuncionario);
+
+     FreeAndNil(frmCadFuncionario);
 end;
 
 procedure TControler.pCadastroLancamento;
