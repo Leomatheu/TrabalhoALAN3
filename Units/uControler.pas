@@ -37,10 +37,12 @@ begin
        objEmpresa.setContatoEmp(frmEmpresa.edtContato.Text);
        objEmpresa.setEndEmp(frmEmpresa.edtEndereco.Text);
        objEmpresa.setInscEmp(frmEmpresa.edtInscricao.Text);
+
+       BD := TDataModule1.Create(nil);
+       BD.pInsertEmpresa(objEmpresa);
      end;
 
-   BD := TDataModule1.Create(nil);
-   BD.pInsertEmpresa(objEmpresa);
+
 
    FreeAndNil(frmEmpresa);
 end;
@@ -57,7 +59,7 @@ begin
    if(frmCadFuncionario.ShowModal = mrOK)then
      begin
         objFuncionario := TFuncionario.Create;
-        objFuncionario.setCodFunc(StrToInt(frmCadFuncionario.edtCodFunc.Text));
+
         objFuncionario.setNomeFunc(frmCadFuncionario.edtNome.Text);
         objFuncionario.setDataNasc(frmCadFuncionario.edtDataNasc.Text);
 
@@ -75,9 +77,11 @@ begin
 
         objFuncionario.setCPF(frmCadFuncionario.edtCPF.Text);
         objFuncionario.setRG(frmCadFuncionario.edtRG.Text);
+
+        BD := TDataModule1.Create(nil);
+        BD.pInsereFuncionario(objFuncionario);
      end;
-     BD := TDataModule1.Create(nil);
-     BD.pInsereFuncionario(objFuncionario);
+
 
      FreeAndNil(frmCadFuncionario);
 end;

@@ -18,7 +18,6 @@ type
     Image3: TImage;
     btnCancelar: TButton;
     pnAtributosFuncionarios: TPanel;
-    Label1: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -27,7 +26,6 @@ type
     Label7: TLabel;
     Label8: TLabel;
     Image1: TImage;
-    edtCodFunc: TEdit;
     edtNome: TEdit;
     edtDataNasc: TMaskEdit;
     pnCheckBox: TPanel;
@@ -40,11 +38,12 @@ type
     edtCPF: TMaskEdit;
     edtRG: TEdit;
     Label9: TLabel;
-    cbEmpresa: TDBComboBox;
+    cbEmpresa: TComboBox;
     procedure FormActivate(Sender: TObject);
     procedure edtDataNascChange(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure pPopulaComboBox;
   private
     { Private declarations }
   public
@@ -56,7 +55,7 @@ var
 
 implementation
 uses
-   uControler;
+   uControler, DAO, uEmpresa;
 {$R *.dfm}
 
 procedure TfrmCadFuncionario.btnCancelarClick(Sender: TObject);
@@ -82,6 +81,21 @@ procedure TfrmCadFuncionario.FormActivate(Sender: TObject);
 begin
    self.pnCheckBox.Enabled := false;
    self.pnCheckBox.Visible := false;
+   self.pPopulaComboBox;
+end;
+
+procedure TfrmCadFuncionario.pPopulaComboBox;
+var
+  i : integer;
+  lista : TList;
+begin
+   lista := DAO.DataModule1.fSelecaoEmpresa;
+   cbEmpresa.Clear;
+    for i := 0 to lista.Count -1 do
+       begin
+         cbEmpresa.AddItem(IntToStr(TEmpresa(lista[i]).getCodEmp)+'-'+TEmpresa(lista[i]).getDescEmp, lista[i]);
+       end;
+
 end;
 
 end.

@@ -3,7 +3,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO FUNCION'#193'RIO'
-  ClientHeight = 593
+  ClientHeight = 504
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 529
+    Top = 440
     Width = 505
     Height = 64
     Align = alBottom
@@ -26,6 +26,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
+    ExplicitTop = 529
     object Image2: TImage
       Left = 83
       Top = 14
@@ -974,7 +975,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object btnSalvar: TButton
       Left = 118
-      Top = 6
+      Top = 14
       Width = 75
       Height = 25
       Caption = 'Salvar'
@@ -1007,7 +1008,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     Left = 0
     Top = 0
     Width = 505
-    Height = 529
+    Height = 440
     Align = alClient
     BorderStyle = bsSingle
     Caption = 'pnAtributosFuncionarios'
@@ -1015,22 +1016,10 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    object Label1: TLabel
-      Left = 29
-      Top = 76
-      Width = 49
-      Height = 17
-      Caption = 'C'#243'digo '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      ParentFont = False
-    end
+    ExplicitHeight = 529
     object Label2: TLabel
       Left = 29
-      Top = 129
+      Top = 81
       Width = 38
       Height = 17
       Caption = 'Nome'
@@ -1043,7 +1032,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label3: TLabel
       Left = 29
-      Top = 185
+      Top = 137
       Width = 130
       Height = 17
       Caption = 'Data de nascimento'
@@ -1056,7 +1045,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label4: TLabel
       Left = 29
-      Top = 241
+      Top = 193
       Width = 42
       Height = 17
       Caption = 'Status'
@@ -1069,7 +1058,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label5: TLabel
       Left = 29
-      Top = 321
+      Top = 273
       Width = 66
       Height = 17
       Caption = 'Valor hora'
@@ -1082,7 +1071,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label6: TLabel
       Left = 29
-      Top = 385
+      Top = 337
       Width = 47
       Height = 17
       Caption = 'G'#234'nero'
@@ -2397,41 +2386,34 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Style = []
       ParentFont = False
     end
-    object edtCodFunc: TEdit
-      Left = 29
-      Top = 91
-      Width = 121
+    object edtNome: TEdit
+      Left = 30
+      Top = 96
+      Width = 315
       Height = 21
       TabOrder = 0
     end
-    object edtNome: TEdit
-      Left = 29
-      Top = 144
-      Width = 272
-      Height = 21
-      TabOrder = 1
-    end
     object edtDataNasc: TMaskEdit
       Left = 30
-      Top = 200
+      Top = 152
       Width = 97
       Height = 21
       EditMask = '!99/99/00;1;_'
       MaxLength = 8
-      TabOrder = 2
+      TabOrder = 1
       Text = '  /  /  '
       OnChange = edtDataNascChange
     end
     object pnCheckBox: TPanel
       Left = 29
-      Top = 259
+      Top = 211
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
       Color = clActiveCaption
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 3
+      TabOrder = 2
       object ckInativo: TCheckBox
         Left = 119
         Top = 16
@@ -2463,21 +2445,21 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object edtValor: TEdit
       Left = 29
-      Top = 336
-      Width = 273
+      Top = 288
+      Width = 316
       Height = 21
-      TabOrder = 4
+      TabOrder = 3
     end
     object pnGenero: TPanel
       Left = 29
-      Top = 403
+      Top = 355
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
       Color = clActiveCaption
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 5
+      TabOrder = 4
       object ckFeminino: TCheckBox
         Left = 119
         Top = 16
@@ -2514,7 +2496,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       Height = 21
       EditMask = '!000.000.000-00;1;_'
       MaxLength = 14
-      TabOrder = 6
+      TabOrder = 5
       Text = '   .   .   -  '
       OnChange = edtDataNascChange
     end
@@ -2523,14 +2505,14 @@ object frmCadFuncionario: TfrmCadFuncionario
       Top = 480
       Width = 100
       Height = 21
-      TabOrder = 7
+      TabOrder = 6
     end
-    object cbEmpresa: TDBComboBox
+    object cbEmpresa: TComboBox
       Left = 29
-      Top = 39
-      Width = 145
+      Top = 37
+      Width = 316
       Height = 21
-      TabOrder = 8
+      TabOrder = 7
     end
   end
 end

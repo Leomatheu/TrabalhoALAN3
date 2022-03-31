@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, uEmpresa, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.Controls, uFuncionario;
+  Vcl.Controls, uFuncionario, Datasnap.DBClient;
 
 type
   TDataModule1 = class(TDataModule)
@@ -18,6 +18,7 @@ type
     query: TFDQuery;
     Driver: TFDPhysMySQLDriverLink;
     listaImagens: TImageList;
+    DataSet: TClientDataSet;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -25,6 +26,8 @@ type
   public
     procedure pInsertEmpresa(objEmpresa: TEmpresa);
     procedure pInsereFuncionario(objFuncionario : TFuncionario);
+    function fSelecaoEmpresa: TList;
+
   end;
 
 var
@@ -46,6 +49,43 @@ end;
 procedure TDataModule1.DataModuleDestroy(Sender: TObject);
 begin
    Conexao.Connected := false;
+end;
+
+function TDataModule1.fSelecaoEmpresa: TList;
+var
+   query : TFDQuery;
+   objEmpresa : TEmpresa;
+   listaEmpresa : Tlist;
+begin
+   query := TFDQuery.Create(nil);
+   query.Connection := DataModule1.Conexao;
+
+   query.SQL.Add('Select * from cadEmpresa;');
+
+   try
+     query.Open;
+     objEmpresa := TEmpresa.Create;
+
+     while(query.Eof)do
+        begin
+           objEmpresa.setCodEmp(query.Fields[0].asInteger);
+           objEmpresa.setDescEmp(query.Fields[1].AsString);
+           objEmpresa.setContatoEmp(query.Fields[2].asString);
+           objEmpresa.setEndEmp(query.Fields[3].asString);
+           objEmpresa.setInscEmp(query.Fields[4].asString);
+
+           listaEmpresa := Tlist.Create;
+           listaEmpresa.Add(objEmpresa);
+        end;
+     result := listaEmpresa;
+   except
+      on e: Exception do
+         ShowMessage('Falha na busca por empresasas : '+e.ToString);
+
+   end;
+
+   query.Close;
+   query.Free;
 end;
 
 procedure TDataModule1.pInsereFuncionario(objFuncionario: TFuncionario);
@@ -71,6 +111,9 @@ begin
      on e:Exception do
         ShowMessage('Erro na inserção do funcionário: '+e.ToString);
    end;
+
+   query.Close;
+   query.Free;
 end;
 
 procedure TDataModule1.pInsertEmpresa(objEmpresa: TEmpresa);
@@ -94,6 +137,11 @@ begin
       on e:Exception do
          showMessage('Erro na inserção da empresa : ' + e.ToString);
    end;
+
+   query.Close;
+   query.Free;
 end;
+
+
 
 end.
