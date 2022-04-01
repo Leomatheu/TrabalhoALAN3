@@ -13,6 +13,7 @@ interface
        generoFuncionario : String;
        cpfFuncionario : String;
        rgFuncionario : String;
+       codigoEmpresa : integer;
 
      public
         procedure setCodFunc(codigoFuncionario:integer);
@@ -38,6 +39,9 @@ interface
 
         procedure setRG(rgFuncionario:String);
         function getRG:String;
+
+        procedure setCodigoEmpresa(codigoEmpresa:integer);
+        function getCodigoEmpresa:integer;
    end;
 
 implementation
@@ -47,6 +51,11 @@ implementation
 function TFuncionario.getCodFunc: integer;
 begin
    result := self.codigoFuncionario;
+end;
+
+function TFuncionario.getCodigoEmpresa: integer;
+begin
+   result := self.codigoEmpresa;
 end;
 
 function TFuncionario.getCPF: String;
@@ -87,6 +96,11 @@ end;
 procedure TFuncionario.setCodFunc(codigoFuncionario: integer);
 begin
    self.codigoFuncionario :=  codigoFuncionario;
+end;
+
+procedure TFuncionario.setCodigoEmpresa(codigoEmpresa: integer);
+begin
+   self.codigoEmpresa := codigoEmpresa;
 end;
 
 procedure TFuncionario.setCPF(cpfFuncionario: String);

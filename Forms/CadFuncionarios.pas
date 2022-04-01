@@ -35,10 +35,12 @@ type
     pnGenero: TPanel;
     ckFeminino: TCheckBox;
     ckMasculino: TCheckBox;
-    edtCPF: TMaskEdit;
-    edtRG: TEdit;
     Label9: TLabel;
     cbEmpresa: TComboBox;
+    edtRegistroGeral: TEdit;
+    Label1: TLabel;
+    edtPF: TEdit;
+    Label10: TLabel;
     procedure FormActivate(Sender: TObject);
     procedure edtDataNascChange(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);

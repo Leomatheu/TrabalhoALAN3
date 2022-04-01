@@ -27,6 +27,7 @@ type
     procedure pInsertEmpresa(objEmpresa: TEmpresa);
     procedure pInsereFuncionario(objFuncionario : TFuncionario);
     function fSelecaoEmpresa: TList;
+    function fSelecaoFuncionario(codigoEmpresa : integer) : Tlist;
 
   end;
 
@@ -64,18 +65,20 @@ begin
 
    try
      query.Open;
-     objEmpresa := TEmpresa.Create;
+     query.First;
+     listaEmpresa := Tlist.Create;
 
-     while(query.Eof)do
+     while not(query.Eof)do
         begin
+           objEmpresa := TEmpresa.Create;
            objEmpresa.setCodEmp(query.Fields[0].asInteger);
            objEmpresa.setDescEmp(query.Fields[1].AsString);
            objEmpresa.setContatoEmp(query.Fields[2].asString);
            objEmpresa.setEndEmp(query.Fields[3].asString);
            objEmpresa.setInscEmp(query.Fields[4].asString);
 
-           listaEmpresa := Tlist.Create;
            listaEmpresa.Add(objEmpresa);
+           query.Next;
         end;
      result := listaEmpresa;
    except
@@ -88,6 +91,49 @@ begin
    query.Free;
 end;
 
+function TDataModule1.fSelecaoFuncionario(codigoEmpresa : integer): Tlist;
+var
+   query : TFDQuery;
+   listaFuncionario : Tlist;
+   objFuncionario : TFuncionario;
+
+begin
+   query := TFDQuery.Create(nil);
+   query.Connection := DataModule1.Conexao;
+
+   query.SQL.Add('select * from cadFuncionario where :codigoEmpresa = cadEmpresa.codigoEmpresa;');
+   query.Params[0].asString := codigoEmpresa;
+
+   try
+      query.Open;
+      query.First;
+      listaFuncionario := Tlist.Create;
+
+      while not(query.Eof) do
+         begin
+           objFuncionario := TFuncionario.Create;
+           objFuncionario.setCodFunc(query.Fields[0].AsInteger);
+           objFuncionario.setNomeFunc(query.Fields[1].asString);
+           objFuncionario.setDataNasc(query.Fields[2].asString);
+           objFuncionario.setStatusFunc(query.Fields[3].asString);
+           objFuncionario.setValorHora(query.Fields[4].asFloat);
+           objFuncionario.setGeneroFunc(query.Fields[5].asString);
+           objFuncionario.setCPF(query.Fields[6].asString);
+           objFuncionario.setRG(query.Fields[7].asString);
+           objFuncionario.setCodigoEmpresa(query.Fields[8].asInteger);
+
+           listaFuncionario.Add(objFuncionario);
+           query.Next;
+         end;
+
+         result := listaFuncionario;
+   except
+        on e: Exception do
+           ShowMessage('Falha na consulta do banco : ' + e.ToString);
+   end;
+
+end;
+
 procedure TDataModule1.pInsereFuncionario(objFuncionario: TFuncionario);
 var
    query : TFDQuery;
@@ -95,7 +141,7 @@ begin
    query := TFDQuery.Create(nil);
    query.Connection := DataModule1.Conexao;
 
-   query.SQL.Add('insert into cadFuncionario values(0, :nomeFuncionario, :dataNascimento, :statusFuncionario, :valorHora, :generoFuncionario, :cpfFuncionario, :rgFuncionario);');
+   query.SQL.Add('insert into cadFuncionario values(0, :nomeFuncionario, :dataNascimento, :statusFuncionario, :valorHora, :generoFuncionario, :cpfFuncionario, :rgFuncionario, :codigoEmpresa);');
    query.Params[0].AsString := objFuncionario.getNomeFunc;
    query.Params[1].AsString := objFuncionario.getDataNasc;
    query.Params[2].AsString := objFuncionario.getStatusFunc;
@@ -103,6 +149,7 @@ begin
    query.Params[4].AsString := objFuncionario.getGeneroFunc;
    query.Params[5].AsString := objFuncionario.getCPF;
    query.Params[6].AsString := objFuncionario.getRG;
+   query.Params[7].AsInteger := objFuncionario.getCodigoEmpresa;
 
    try
      query.ExecSQL;

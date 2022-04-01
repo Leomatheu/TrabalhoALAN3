@@ -26,6 +26,8 @@ type
     btnCancelar: TButton;
     edtValorHora: TEdit;
     Label4: TLabel;
+    Label5: TLabel;
+    cbEmpresa: TComboBox;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
   private

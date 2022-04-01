@@ -3,7 +3,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO FUNCION'#193'RIO'
-  ClientHeight = 504
+  ClientHeight = 527
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 440
+    Top = 463
     Width = 505
     Height = 64
     Align = alBottom
@@ -26,7 +26,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 529
+    ExplicitTop = 440
     object Image2: TImage
       Left = 83
       Top = 14
@@ -1008,17 +1008,23 @@ object frmCadFuncionario: TfrmCadFuncionario
     Left = 0
     Top = 0
     Width = 505
-    Height = 440
+    Height = 463
     Align = alClient
     BorderStyle = bsSingle
     Caption = 'pnAtributosFuncionarios'
     Color = clActiveCaption
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
     ParentBackground = False
+    ParentFont = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitHeight = 529
+    ExplicitTop = 8
     object Label2: TLabel
-      Left = 29
+      Left = 30
       Top = 81
       Width = 38
       Height = 17
@@ -1032,7 +1038,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label3: TLabel
       Left = 29
-      Top = 137
+      Top = 135
       Width = 130
       Height = 17
       Caption = 'Data de nascimento'
@@ -1071,7 +1077,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label6: TLabel
       Left = 29
-      Top = 337
+      Top = 324
       Width = 47
       Height = 17
       Caption = 'G'#234'nero'
@@ -2386,18 +2392,44 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Style = []
       ParentFont = False
     end
+    object Label1: TLabel
+      Left = 183
+      Top = 136
+      Width = 19
+      Height = 17
+      Caption = 'RG'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 331
+      Top = 135
+      Width = 26
+      Height = 17
+      Caption = 'CPF'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
     object edtNome: TEdit
       Left = 30
       Top = 96
       Width = 315
-      Height = 21
+      Height = 23
       TabOrder = 0
     end
     object edtDataNasc: TMaskEdit
       Left = 30
       Top = 152
       Width = 97
-      Height = 21
+      Height = 23
       EditMask = '!99/99/00;1;_'
       MaxLength = 8
       TabOrder = 1
@@ -2447,12 +2479,12 @@ object frmCadFuncionario: TfrmCadFuncionario
       Left = 29
       Top = 288
       Width = 316
-      Height = 21
+      Height = 23
       TabOrder = 3
     end
     object pnGenero: TPanel
       Left = 29
-      Top = 355
+      Top = 347
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
@@ -2493,7 +2525,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       Left = 29
       Top = 480
       Width = 95
-      Height = 21
+      Height = 23
       EditMask = '!000.000.000-00;1;_'
       MaxLength = 14
       TabOrder = 5
@@ -2504,15 +2536,29 @@ object frmCadFuncionario: TfrmCadFuncionario
       Left = 183
       Top = 480
       Width = 100
-      Height = 21
+      Height = 23
       TabOrder = 6
     end
     object cbEmpresa: TComboBox
       Left = 29
       Top = 37
       Width = 316
-      Height = 21
+      Height = 23
       TabOrder = 7
+    end
+    object edtRegistroGeral: TEdit
+      Left = 181
+      Top = 152
+      Width = 92
+      Height = 23
+      TabOrder = 8
+    end
+    object edtPF: TEdit
+      Left = 331
+      Top = 152
+      Width = 150
+      Height = 23
+      TabOrder = 9
     end
   end
 end

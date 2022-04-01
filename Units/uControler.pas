@@ -59,7 +59,7 @@ begin
    if(frmCadFuncionario.ShowModal = mrOK)then
      begin
         objFuncionario := TFuncionario.Create;
-
+        objFuncionario.setCodigoEmpresa(frmCadFuncionario.cbEmpresa.ItemIndex + 1);
         objFuncionario.setNomeFunc(frmCadFuncionario.edtNome.Text);
         objFuncionario.setDataNasc(frmCadFuncionario.edtDataNasc.Text);
 
@@ -75,8 +75,8 @@ begin
         else
            objFuncionario.setGeneroFunc('Feminino');
 
-        objFuncionario.setCPF(frmCadFuncionario.edtCPF.Text);
-        objFuncionario.setRG(frmCadFuncionario.edtRG.Text);
+        objFuncionario.setCPF(frmCadFuncionario.edtPF.Text);
+        objFuncionario.setRG(frmCadFuncionario.edtRegistroGeral.Text);
 
         BD := TDataModule1.Create(nil);
         BD.pInsereFuncionario(objFuncionario);
@@ -89,6 +89,9 @@ end;
 procedure TControler.pCadastroLancamento;
 var
    objLancamento : TLancamento;
+   BD : TDataModule1;
+   objFuncionario : TFuncionario;
+   i : integer;
 begin
    if(frmLancamentosMensais = nil)then
      frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
@@ -97,10 +100,19 @@ begin
      begin
        objLancamento := TLancamento.Create;
 
-       objLancamento.setFuncionario(StrToInt(frmLancamentosMensais.cbFuncionario.Text));
+       objLancamento.setFuncionario(frmLancamentosMensais.cbFuncionario.ItemIndex +1);
+
+       if(frmLancamentosMensais.cbFuncionario.ItemIndex <> nil)then
+         frmLancamentosMensais.edtValorHora.Text :=
+         frmLancamentosMensais.cbFuncionario.Items.IndexOfObject(TFuncionario(objLancamento.getFuncionario).getValorHora);
+
        objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
-       objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
-       objLancamento.setLiquido(StrToFloat(frmLancamentosMensais.edtLiquido.Text));
+       objLancamento.setHorasTrab(frmLancamentosMensais.edtHora.Text);
+
+       frmLancamentosMensais.edtLiquido := frmLancamentosMensais.edtHora * frmLancamentosMensais.edtValorHora;
+
+
+
      end;
 end;
 

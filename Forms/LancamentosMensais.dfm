@@ -3,7 +3,7 @@
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'C'#193'LCULOS'
-  ClientHeight = 407
+  ClientHeight = 476
   ClientWidth = 487
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -18,17 +18,17 @@
     Left = 0
     Top = 0
     Width = 487
-    Height = 322
+    Height = 391
     Align = alClient
     Caption = 'pnCalculos'
     Color = clActiveCaption
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = -6
+    ExplicitHeight = 322
     object Label1: TLabel
       Left = 16
-      Top = 142
+      Top = 198
       Width = 86
       Height = 17
       Caption = 'Compet'#234'ncia'
@@ -41,7 +41,7 @@
     end
     object Label2: TLabel
       Left = 19
-      Top = 200
+      Top = 256
       Width = 38
       Height = 17
       Caption = 'Horas'
@@ -54,7 +54,7 @@
     end
     object Funcionário: TLabel
       Left = 16
-      Top = 24
+      Top = 80
       Width = 77
       Height = 17
       Caption = 'Funcion'#225'rio'
@@ -67,7 +67,7 @@
     end
     object Label3: TLabel
       Left = 16
-      Top = 256
+      Top = 312
       Width = 48
       Height = 17
       Caption = 'L'#237'quido'
@@ -730,7 +730,7 @@
     end
     object Label4: TLabel
       Left = 16
-      Top = 82
+      Top = 138
       Width = 66
       Height = 17
       Caption = 'Valor hora'
@@ -741,9 +741,22 @@
       Font.Style = []
       ParentFont = False
     end
+    object Label5: TLabel
+      Left = 16
+      Top = 24
+      Width = 57
+      Height = 17
+      Caption = 'Empresa'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
     object edtCompetencia: TMaskEdit
       Left = 16
-      Top = 159
+      Top = 215
       Width = 86
       Height = 23
       EditMask = '!99/0000;1;_'
@@ -753,7 +766,7 @@
     end
     object edtHora: TMaskEdit
       Left = 19
-      Top = 215
+      Top = 271
       Width = 50
       Height = 23
       TabOrder = 1
@@ -761,7 +774,7 @@
     end
     object edtLiquido: TMaskEdit
       Left = 16
-      Top = 273
+      Top = 329
       Width = 105
       Height = 38
       Enabled = False
@@ -776,7 +789,7 @@
     end
     object cbFuncionario: TComboBox
       Left = 16
-      Top = 39
+      Top = 95
       Width = 145
       Height = 23
       TabOrder = 3
@@ -789,17 +802,30 @@
     end
     object edtValorHora: TEdit
       Left = 16
-      Top = 98
+      Top = 154
       Width = 121
       Height = 23
       Enabled = False
       TabOrder = 4
       Text = '...'
     end
+    object cbEmpresa: TComboBox
+      Left = 16
+      Top = 39
+      Width = 145
+      Height = 23
+      TabOrder = 5
+      Text = 'Selecione'
+      Items.Strings = (
+        'Selecione...'
+        '1 - Jessica'
+        '2- Leonardo'
+        '3 - Maria')
+    end
   end
   object pnBotoes: TPanel
     Left = 0
-    Top = 322
+    Top = 391
     Width = 487
     Height = 85
     Align = alBottom
@@ -808,6 +834,7 @@
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
+    ExplicitTop = 322
     object Image2: TImage
       Left = 91
       Top = 32
