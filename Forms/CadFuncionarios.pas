@@ -98,6 +98,8 @@ begin
          cbEmpresa.AddItem(IntToStr(TEmpresa(lista[i]).getCodEmp)+'-'+TEmpresa(lista[i]).getDescEmp, lista[i]);
        end;
 
+    FreeAndNil(lista);
+
 end;
 
 end.

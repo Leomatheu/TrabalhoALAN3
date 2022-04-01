@@ -34,7 +34,6 @@ type
     procedure pPopulaComboBoxEmpresa;
     procedure FormActivate(Sender: TObject);
     procedure cbEmpresaChange(Sender: TObject);
-    procedure cbFuncionarioChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -65,13 +64,6 @@ begin
    pPopulaComboBoxFuncionario(frmLancamentosMensais.cbEmpresa.ItemIndex +1);
 end;
 
-
-procedure TfrmLancamentosMensais.cbFuncionarioChange(Sender: TObject);
-begin
-   frmLancamentosMensais.edtValorHora.Text :=
-   FloatToStr(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getValorHora);
-end;
-
 procedure TfrmLancamentosMensais.FormActivate(Sender: TObject);
 begin
    pPopulaComboBoxEmpresa;
@@ -89,7 +81,7 @@ begin
        cbEmpresa.AddItem(intToStr(TEmpresa(lista[i]).getCodEmp)+' - '+TEmpresa(lista[i]).getDescEmp, lista[i]);
      end;
 
-   lista.Clear;
+   FreeAndNil(lista);
 end;
 
 procedure TfrmLancamentosMensais.pPopulaComboBoxFuncionario(prEmpresa : integer);
@@ -104,7 +96,7 @@ begin
        cbFuncionario.AddItem(intToStr(TFuncionario(lista[i]).getCodFunc)+' - '+TFuncionario(lista[i]).getNomeFunc, lista[i]);
      end;
 
-  lista.Clear;
+  FreeAndNil(lista);
 
 end;
 

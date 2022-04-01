@@ -30,11 +30,8 @@ type
     cbEmpresa: TComboBox;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
-    procedure pPopulaComboBoxFuncionario(prEmpresa : integer);
+    procedure pPopulaComboBoxFuncionario;
     procedure pPopulaComboBoxEmpresa;
-    procedure FormActivate(Sender: TObject);
-    procedure cbEmpresaChange(Sender: TObject);
-    procedure cbFuncionarioChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -60,51 +57,30 @@ begin
    ModalResult := mrOk;
 end;
 
-procedure TfrmLancamentosMensais.cbEmpresaChange(Sender: TObject);
-begin
-   pPopulaComboBoxFuncionario(frmLancamentosMensais.cbEmpresa.ItemIndex +1);
-end;
-
-
-procedure TfrmLancamentosMensais.cbFuncionarioChange(Sender: TObject);
-begin
-   frmLancamentosMensais.edtValorHora.Text :=
-   FloatToStr(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getValorHora);
-end;
-
-procedure TfrmLancamentosMensais.FormActivate(Sender: TObject);
-begin
-   pPopulaComboBoxEmpresa;
-end;
-
 procedure TfrmLancamentosMensais.pPopulaComboBoxEmpresa;
 var
    lista : Tlist;
    i : integer;
 begin
    lista := DAO.DataModule1.fSelecaoEmpresa;
-   cbEmpresa.Clear;
+   cbFuncionario.Clear;
    for i := 0 to lista.Count-1 do
      begin
-       cbEmpresa.AddItem(intToStr(TEmpresa(lista[i]).getCodEmp)+' - '+TEmpresa(lista[i]).getDescEmp, lista[i]);
+       cbEmpresa.AddItem(intToStr(TEmpresa(lista[i]).getCodEmp)+' - '+TEmpresa(lista[i]).getDescEmp);
      end;
-
-   lista.Clear;
 end;
 
-procedure TfrmLancamentosMensais.pPopulaComboBoxFuncionario(prEmpresa : integer);
+procedure TfrmLancamentosMensais.pPopulaComboBoxFuncionario;
 var
    lista : Tlist;
    i : integer;
 begin
-  lista := DAO.DataModule1.fSelecaoFuncionario(prEmpresa);
-  cbFuncionario.Clear;
+  lista := DAO.DataModule1.fSelecaoFuncionario(frmLancamentosMensais.cbEmpresa.ItemIndex);
+  cbEmpresa.Clear;
   for i := 0 to lista.Count -1 do
      begin
-       cbFuncionario.AddItem(intToStr(TFuncionario(lista[i]).getCodFunc)+' - '+TFuncionario(lista[i]).getNomeFunc, lista[i]);
+       cbFuncionario.AddItem(intToStr(TFuncionario(lista[i]).getCodFunc+' - '+TFuncionario(lista[i]).getNomeFunc));
      end;
-
-  lista.Clear;
 
 end;
 

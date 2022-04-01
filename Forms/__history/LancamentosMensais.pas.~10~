@@ -24,7 +24,12 @@ type
     Image3: TImage;
     btnSalvar: TButton;
     btnCancelar: TButton;
+    edtValorHora: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    cbEmpresa: TComboBox;
     procedure btnCancelarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,27 +40,21 @@ var
   frmLancamentosMensais: TfrmLancamentosMensais;
 
 implementation
+uses
+   uControler;
 
 {$R *.dfm}
 
 procedure TfrmLancamentosMensais.btnCancelarClick(Sender: TObject);
 begin
-    close;
+  ModalResult := mrCancel;
 end;
 
-procedure pCriaLancamentos;
-var
-    objLancamentos : TLancamento;
 
+
+procedure TfrmLancamentosMensais.btnSalvarClick(Sender: TObject);
 begin
-      objLancamentos.Create;
-
-      objLancamentos.setFuncionario(frmLancamentosMensais.cbFuncionario.ItemIndex);
-      objLancamentos.setComp(frmLancamentosMensais.edtCompetencia.text);
-      objLancamentos.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
-      objLancamentos.setLiquido(StrToFloat(frmLancamentosMensais.edtLiquido.text);
+   ModalResult := mrOk;
 end;
-
-
 
 end.

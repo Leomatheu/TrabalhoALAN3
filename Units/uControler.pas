@@ -102,14 +102,13 @@ begin
 
        objLancamento.setFuncionario(frmLancamentosMensais.cbFuncionario.ItemIndex +1);
 
-       if(frmLancamentosMensais.cbFuncionario.ItemIndex <> nil)then
-         frmLancamentosMensais.edtValorHora.Text :=
-         frmLancamentosMensais.cbFuncionario.Items.IndexOfObject(TFuncionario(objLancamento.getFuncionario).getValorHora);
+       if(frmLancamentosMensais.cbFuncionario.Items.Count > 0)then
+         
 
-       objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
-       objLancamento.setHorasTrab(frmLancamentosMensais.edtHora.Text);
 
-       frmLancamentosMensais.edtLiquido := frmLancamentosMensais.edtHora * frmLancamentosMensais.edtValorHora;
+
+
+
 
 
 

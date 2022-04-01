@@ -26,8 +26,13 @@ type
     btnCancelar: TButton;
     edtValorHora: TEdit;
     Label4: TLabel;
+    Label5: TLabel;
+    cbEmpresa: TComboBox;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure pPopulaComboBoxFuncionario;
+    procedure pPopulaComboBoxEmpresa;
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -38,6 +43,8 @@ var
   frmLancamentosMensais: TfrmLancamentosMensais;
 
 implementation
+uses
+   uControler, DAO, uFuncionario, uEmpresa;
 
 {$R *.dfm}
 
@@ -46,11 +53,42 @@ begin
   ModalResult := mrCancel;
 end;
 
-
-
 procedure TfrmLancamentosMensais.btnSalvarClick(Sender: TObject);
 begin
    ModalResult := mrOk;
+end;
+
+procedure TfrmLancamentosMensais.FormActivate(Sender: TObject);
+begin
+   pPopulaComboBoxEmpresa;
+   pPopulaComboBoxFuncionario;
+end;
+
+procedure TfrmLancamentosMensais.pPopulaComboBoxEmpresa;
+var
+   lista : Tlist;
+   i : integer;
+begin
+   lista := DAO.DataModule1.fSelecaoEmpresa;
+   cbFuncionario.Clear;
+   for i := 0 to lista.Count-1 do
+     begin
+       cbEmpresa.AddItem(intToStr(TEmpresa(lista[i]).getCodEmp)+' - '+TEmpresa(lista[i]).getDescEmp);
+     end;
+end;
+
+procedure TfrmLancamentosMensais.pPopulaComboBoxFuncionario;
+var
+   lista : Tlist;
+   i : integer;
+begin
+  lista := DAO.DataModule1.fSelecaoFuncionario(frmLancamentosMensais.cbEmpresa.ItemIndex);
+  cbEmpresa.Clear;
+  for i := 0 to lista.Count -1 do
+     begin
+       cbFuncionario.AddItem(intToStr(TFuncionario(lista[i]).getCodFunc+' - '+TFuncionario(lista[i]).getNomeFunc));
+     end;
+
 end;
 
 end.

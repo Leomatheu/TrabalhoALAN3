@@ -37,10 +37,12 @@ begin
        objEmpresa.setContatoEmp(frmEmpresa.edtContato.Text);
        objEmpresa.setEndEmp(frmEmpresa.edtEndereco.Text);
        objEmpresa.setInscEmp(frmEmpresa.edtInscricao.Text);
+
+       BD := TDataModule1.Create(nil);
+       BD.pInsertEmpresa(objEmpresa);
      end;
 
-   BD := TDataModule1.Create(nil);
-   BD.pInsertEmpresa(objEmpresa);
+
 
    FreeAndNil(frmEmpresa);
 end;
@@ -49,6 +51,7 @@ end;
 procedure TControler.pCadastroDeFuncionario;
 var
    objFuncionario : TFuncionario;
+   BD : TDataModule1;
 begin
    if(frmCadFuncionario = nil)then
      frmCadFuncionario := TfrmCadFuncionario.Create(nil);
@@ -56,7 +59,7 @@ begin
    if(frmCadFuncionario.ShowModal = mrOK)then
      begin
         objFuncionario := TFuncionario.Create;
-        objFuncionario.setCodFunc(StrToInt(frmCadFuncionario.edtCodFunc.Text));
+        objFuncionario.setCodigoEmpresa(frmCadFuncionario.cbEmpresa.ItemIndex + 1);
         objFuncionario.setNomeFunc(frmCadFuncionario.edtNome.Text);
         objFuncionario.setDataNasc(frmCadFuncionario.edtDataNasc.Text);
 
@@ -72,14 +75,23 @@ begin
         else
            objFuncionario.setGeneroFunc('Feminino');
 
-        objFuncionario.setCPF(frmCadFuncionario.edtCPF.Text);
-        objFuncionario.setRG(frmCadFuncionario.edtRG.Text);
+        objFuncionario.setCPF(frmCadFuncionario.edtPF.Text);
+        objFuncionario.setRG(frmCadFuncionario.edtRegistroGeral.Text);
+
+        BD := TDataModule1.Create(nil);
+        BD.pInsereFuncionario(objFuncionario);
      end;
+
+
+     FreeAndNil(frmCadFuncionario);
 end;
 
 procedure TControler.pCadastroLancamento;
 var
    objLancamento : TLancamento;
+   BD : TDataModule1;
+   objFuncionario : TFuncionario;
+   i : integer;
 begin
    if(frmLancamentosMensais = nil)then
      frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
@@ -88,10 +100,19 @@ begin
      begin
        objLancamento := TLancamento.Create;
 
-       objLancamento.setFuncionario(StrToInt(frmLancamentosMensais.cbFuncionario.Text));
-       objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
-       objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
-       objLancamento.setLiquido(StrToFloat(frmLancamentosMensais.edtLiquido.Text));
+       objLancamento.setFuncionario(frmLancamentosMensais.cbFuncionario.ItemIndex +1);
+
+       if(frmLancamentosMensais.cbFuncionario.Items.Count > 0)then
+         frmLancamentosMensais.edtValorHora.Text :=
+         FloatToStr(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getValorHora);
+
+
+
+
+
+
+
+
      end;
 end;
 

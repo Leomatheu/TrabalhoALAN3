@@ -12,7 +12,6 @@
   Font.Name = 'Segoe UI'
   Font.Style = []
   OldCreateOrder = True
-  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 15
   object pnCalculos: TPanel
@@ -794,7 +793,6 @@
       Height = 23
       TabOrder = 3
       Text = 'Selecione'
-      OnChange = cbFuncionarioChange
       Items.Strings = (
         'Selecione...'
         '1 - Jessica'
@@ -817,7 +815,6 @@
       Height = 23
       TabOrder = 5
       Text = 'Selecione'
-      OnChange = cbEmpresaChange
       Items.Strings = (
         'Selecione...'
         '1 - Jessica'

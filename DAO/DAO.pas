@@ -101,8 +101,8 @@ begin
    query := TFDQuery.Create(nil);
    query.Connection := DataModule1.Conexao;
 
-   query.SQL.Add('select * from cadFuncionario where :codigoEmpresa = cadEmpresa.codigoEmpresa;');
-   query.Params[0].asString := codigoEmpresa;
+   query.SQL.Add('select * from cadFuncionario where cadFuncionario.codigoEmpresa = :codigoEmpresa;');
+   query.Params[0].asInteger := codigoEmpresa;
 
    try
       query.Open;
