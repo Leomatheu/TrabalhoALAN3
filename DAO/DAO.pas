@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, uEmpresa, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.Controls, uFuncionario, Datasnap.DBClient;
+  Vcl.Controls, uFuncionario, Datasnap.DBClient, uLancamentosMensais;
 
 type
   TDataModule1 = class(TDataModule)
@@ -26,6 +26,7 @@ type
   public
     procedure pInsertEmpresa(objEmpresa: TEmpresa);
     procedure pInsereFuncionario(objFuncionario : TFuncionario);
+    procedure pInsereLancamento(objLancamento : TLancamento);
     function fSelecaoEmpresa: TList;
     function fSelecaoFuncionario(codigoEmpresa : integer) : Tlist;
 
@@ -161,6 +162,30 @@ begin
 
    query.Close;
    query.Free;
+end;
+
+procedure TDataModule1.pInsereLancamento(objLancamento: TLancamento);
+var
+   query : TFDQuery;
+begin
+   query := TFDQuery.Create(nil);
+   query.Connection := DataModule1.Conexao;
+
+   query.SQL.Add('insert into lancamentosMensais values(0, :codigoFuncionario, :codigoEmpresa, :horaTrabalhada, :competecia, :valorLiquido);');
+
+   query.Params[0].AsInteger := objLancamento.getFuncionario;
+   query.Params[1].AsInteger := objLancamento.getEmpresa;
+   query.Params[2].AsFloat := objLancamento.getHorasTrab;
+   query.Params[3].AsString := objLancamento.getComp;
+   query.Params[4].AsFloat := objLancamento.getLiquido;
+
+   try
+     query.ExecSQL;
+     ShowMessage('Cálculo salvo com sucesso !!');
+   except
+      on e:Exception do
+         ShowMessage('Erro ao gravar o cálculo: '+e.ToString);
+   end;
 end;
 
 procedure TDataModule1.pInsertEmpresa(objEmpresa: TEmpresa);

@@ -92,6 +92,7 @@ var
    BD : TDataModule1;
    objFuncionario : TFuncionario;
    i : integer;
+   liquido : Float32;
 begin
    if(frmLancamentosMensais = nil)then
      frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
@@ -100,16 +101,11 @@ begin
      begin
        objLancamento := TLancamento.Create;
 
+       objLancamento.setEmpresa(frmLancamentosMensais.cbEmpresa.ItemIndex +1);
        objLancamento.setFuncionario(frmLancamentosMensais.cbFuncionario.ItemIndex +1);
-
-       if(frmLancamentosMensais.cbFuncionario.Items.Count > 0)then
-         
-
-
-
-
-
-
+       objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
+       objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
+       liquido := StrToFloat(Copy(frmLancamentosMensais.edtLiquido.Text, 3, 11));
 
 
      end;

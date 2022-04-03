@@ -13,10 +13,8 @@ type
     Label1: TLabel;
     edtCompetencia: TMaskEdit;
     Label2: TLabel;
-    edtHora: TMaskEdit;
     Funcionário: TLabel;
     Label3: TLabel;
-    edtLiquido: TMaskEdit;
     cbFuncionario: TComboBox;
     Image1: TImage;
     pnBotoes: TPanel;
@@ -28,6 +26,8 @@ type
     Label4: TLabel;
     Label5: TLabel;
     cbEmpresa: TComboBox;
+    edtHora: TEdit;
+    edtLiquido: TEdit;
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure pPopulaComboBoxFuncionario(prEmpresa : integer);
@@ -35,6 +35,7 @@ type
     procedure FormActivate(Sender: TObject);
     procedure cbEmpresaChange(Sender: TObject);
     procedure cbFuncionarioChange(Sender: TObject);
+    procedure edtHoraChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,7 +70,12 @@ end;
 procedure TfrmLancamentosMensais.cbFuncionarioChange(Sender: TObject);
 begin
    frmLancamentosMensais.edtValorHora.Text :=
-   FloatToStr(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getValorHora);
+   FormatFloat('R$ #,###,#00.00' , TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getValorHora);
+end;
+
+procedure TfrmLancamentosMensais.edtHoraChange(Sender: TObject);
+begin
+  frmLancamentosMensais.edtLiquido.Text := FormatFloat('R$ #,###,#00.00', StrToFloat(frmLancamentosMensais.edtHora.Text) * StrToFloat(Copy(frmLancamentosMensais.edtValorHora.Text, 3, 5)));
 end;
 
 procedure TfrmLancamentosMensais.FormActivate(Sender: TObject);

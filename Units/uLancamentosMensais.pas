@@ -5,6 +5,7 @@ interface
 
     private
       codigoFunc:Integer;
+      codigoEmpresa:Integer;
       competencia:String;
       hora:double;
       liquido:double;
@@ -13,6 +14,8 @@ interface
     public
        procedure setFuncionario(codigoFunc:integer);
        function getFuncionario:integer;
+       procedure setEmpresa(codigoEmpresa:integer);
+       function getEmpresa:integer;
        procedure setComp(competencia:String);
        function getComp:String;
        procedure setHorasTrab(hora:double);
@@ -29,6 +32,11 @@ implementation
 function TLancamento.getComp: String;
 begin
     result := self.competencia;
+end;
+
+function TLancamento.getEmpresa: integer;
+begin
+  result := self.codigoEmpresa;
 end;
 
 function TLancamento.getFuncionario: integer;
@@ -54,6 +62,11 @@ end;
 procedure TLancamento.setComp(competencia: String);
 begin
     self.competencia := competencia;
+end;
+
+procedure TLancamento.setEmpresa(codigoEmpresa: integer);
+begin
+    self.codigoEmpresa := codigoEmpresa;
 end;
 
 procedure TLancamento.setFuncionario(codigoFunc: integer);

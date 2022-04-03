@@ -41,7 +41,7 @@
     end
     object Label2: TLabel
       Left = 19
-      Top = 256
+      Top = 258
       Width = 38
       Height = 17
       Caption = 'Horas'
@@ -755,7 +755,7 @@
       ParentFont = False
     end
     object edtCompetencia: TMaskEdit
-      Left = 16
+      Left = 18
       Top = 215
       Width = 86
       Height = 23
@@ -764,65 +764,60 @@
       TabOrder = 0
       Text = '  /    '
     end
-    object edtHora: TMaskEdit
-      Left = 19
-      Top = 271
-      Width = 50
-      Height = 23
-      TabOrder = 1
-      Text = ''
-    end
-    object edtLiquido: TMaskEdit
-      Left = 16
-      Top = 329
-      Width = 105
-      Height = 38
-      Enabled = False
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -21
-      Font.Name = 'Segoe UI'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-      Text = ''
-    end
     object cbFuncionario: TComboBox
-      Left = 16
+      Left = 18
       Top = 95
       Width = 145
       Height = 23
-      TabOrder = 3
+      TabOrder = 1
       Text = 'Selecione'
       OnChange = cbFuncionarioChange
       Items.Strings = (
-        'Selecione...'
-        '1 - Jessica'
-        '2- Leonardo'
-        '3 - Maria')
+        'Selecione...')
     end
     object edtValorHora: TEdit
-      Left = 16
+      Left = 18
       Top = 154
       Width = 121
       Height = 23
       Enabled = False
-      TabOrder = 4
-      Text = '...'
+      TabOrder = 2
     end
     object cbEmpresa: TComboBox
-      Left = 16
+      Left = 19
       Top = 39
       Width = 145
       Height = 23
-      TabOrder = 5
+      TabOrder = 3
       Text = 'Selecione'
       OnChange = cbEmpresaChange
       Items.Strings = (
         'Selecione...'
-        '1 - Jessica'
-        '2- Leonardo'
-        '3 - Maria')
+        '')
+    end
+    object edtHora: TEdit
+      Left = 18
+      Top = 274
+      Width = 121
+      Height = 23
+      TabOrder = 4
+      Text = '...'
+      OnChange = edtHoraChange
+    end
+    object edtLiquido: TEdit
+      Left = 18
+      Top = 330
+      Width = 162
+      Height = 29
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 5
+      Text = '...'
     end
   end
   object pnBotoes: TPanel
