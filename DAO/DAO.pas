@@ -17,8 +17,8 @@ type
     transacoes: TFDTransaction;
     query: TFDQuery;
     Driver: TFDPhysMySQLDriverLink;
-    listaImagens: TImageList;
     DataSet: TClientDataSet;
+    listaImagem: TImageList;
     procedure DataModuleCreate(Sender: TObject);
     procedure DataModuleDestroy(Sender: TObject);
   private
@@ -29,6 +29,8 @@ type
     procedure pInsereLancamento(objLancamento : TLancamento);
     function fSelecaoEmpresa: TList;
     function fSelecaoFuncionario(codigoEmpresa : integer) : Tlist;
+    function fSelecaoSomaSalario(referencia : string) : String;
+    function fSelecaoMediaHoras(referencia : String) : String;
 
   end;
 
@@ -133,6 +135,52 @@ begin
            ShowMessage('Falha na consulta do banco : ' + e.ToString);
    end;
 
+end;
+
+function TDataModule1.fSelecaoMediaHoras(referencia: String): String;
+var
+   query : TFDQuery;
+   retorno : String;
+begin
+   query := TFDQuery.Create(nil);
+   query.Connection := DataModule1.Conexao;
+
+   query.SQL.Add('select sum(lancamentosmensais.horaTrabalhada)/(select count(lancamentosmensais.codigoFuncionario)) from lancamentosmensais where lancamentosmensais.competecia = :referencia;');
+   query.Params[0].AsString := referencia;
+
+   try
+      query.Open;
+      query.First;
+      retorno := query.Fields[0].AsString;
+      result := retorno;
+   except
+      on e: Exception do
+         ShowMessage('Falha na consulta da média de horas : '+ e.ToString);
+   end;
+end;
+
+function TDataModule1.fSelecaoSomaSalario(referencia: string): String;
+var
+   query : TFDQuery;
+   retorno : String;
+begin
+  query := TFDQuery.Create(nil);
+  query.Connection := DataModule1.Conexao;
+
+  query.SQL.Add('select sum(lancamentosmensais.valorLiquido) from lancamentosmensais where lancamentosmensais.competecia = :referencia;');
+  query.Params[0].AsString := referencia;
+
+  try
+    query.Open;
+    query.First;
+    retorno := query.Fields[0].AsString;
+    result := retorno;
+
+  except
+    on e: Exception do
+       ShowMessage('Falha na consulta de soma dos salários : '+ e.ToString);
+
+  end;
 end;
 
 procedure TDataModule1.pInsereFuncionario(objFuncionario: TFuncionario);

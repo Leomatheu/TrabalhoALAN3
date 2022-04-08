@@ -20,10 +20,12 @@ type
     Image1: TImage;
     Clculos1: TMenuItem;
     FolhaMensal1: TMenuItem;
+    Lucroatual1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
     procedure Funcionrios1Click(Sender: TObject);
     procedure FolhaMensal1Click(Sender: TObject);
+    procedure Lucroatual1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -59,6 +61,13 @@ var
 begin
    controler := TControler.Create;
    controler.pCadastroDeFuncionario;
+end;
+
+procedure TfrmMenu.Lucroatual1Click(Sender: TObject);
+var
+  controler : TControler;
+begin
+  controler := Tcontroler.Create;
 end;
 
 procedure TfrmMenu.Sair1Click(Sender: TObject);

@@ -1013,9 +1013,10 @@ object frmEmpresa: TfrmEmpresa
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
+    ExplicitTop = -6
     object Label2: TLabel
       Left = 24
-      Top = 33
+      Top = 24
       Width = 65
       Height = 17
       Caption = 'Descri'#231#227'o'
@@ -1027,8 +1028,8 @@ object frmEmpresa: TfrmEmpresa
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 24
-      Top = 81
+      Left = 25
+      Top = 142
       Width = 51
       Height = 17
       Caption = 'Contato'
@@ -1040,8 +1041,8 @@ object frmEmpresa: TfrmEmpresa
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 24
-      Top = 132
+      Left = 23
+      Top = 83
       Width = 66
       Height = 17
       Caption = 'Endere'#231'o '
@@ -1053,9 +1054,9 @@ object frmEmpresa: TfrmEmpresa
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 24
-      Top = 186
-      Width = 61
+      Left = 25
+      Top = 201
+      Width = 65
       Height = 17
       Caption = 'Inscri'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
@@ -1067,7 +1068,7 @@ object frmEmpresa: TfrmEmpresa
     end
     object Image1: TImage
       Left = 368
-      Top = 16
+      Top = 24
       Width = 121
       Height = 122
       Picture.Data = {
@@ -1447,34 +1448,34 @@ object frmEmpresa: TfrmEmpresa
     end
     object edtDescricao: TEdit
       Left = 25
-      Top = 48
+      Top = 42
       Width = 234
       Height = 21
       TabOrder = 0
     end
     object edtEndereco: TEdit
       Left = 25
-      Top = 149
+      Top = 101
       Width = 236
       Height = 21
       TabOrder = 1
     end
     object edtContato: TMaskEdit
       Left = 25
-      Top = 96
-      Width = 88
+      Top = 159
+      Width = 117
       Height = 21
-      EditMask = '!\(999\)0000-0000;1;_'
+      EditMask = '!\(999\)0000-0000;1; '
       MaxLength = 14
       TabOrder = 2
       Text = '(   )    -    '
     end
     object edtInscricao: TMaskEdit
       Left = 25
-      Top = 202
-      Width = 121
+      Top = 219
+      Width = 117
       Height = 21
-      EditMask = '!\ 00.000.000-0000/00;1;_'
+      EditMask = '!\ 00.000.000-0000/00;1; '
       MaxLength = 19
       TabOrder = 3
       Text = '   .   .   -    /  '

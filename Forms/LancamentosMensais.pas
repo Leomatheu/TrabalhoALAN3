@@ -80,6 +80,13 @@ end;
 
 procedure TfrmLancamentosMensais.FormActivate(Sender: TObject);
 begin
+   frmLancamentosMensais.cbEmpresa.Text := 'Selecione';
+   frmLancamentosMensais.cbFuncionario.Text := 'Selecione';
+   frmLancamentosMensais.edtValorHora.Text := '';
+   frmLancamentosMensais.edtCompetencia.Text := '';
+   frmLancamentosMensais.edtHora.Text := '';
+   frmLancamentosMensais.edtLiquido.Text := '';
+
    pPopulaComboBoxEmpresa;
 end;
 

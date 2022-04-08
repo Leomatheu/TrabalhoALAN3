@@ -23,15 +23,12 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
     Image1: TImage;
     edtNome: TEdit;
     edtDataNasc: TMaskEdit;
     pnCheckBox: TPanel;
     ckInativo: TCheckBox;
     ckAtivo: TCheckBox;
-    edtValor: TEdit;
     pnGenero: TPanel;
     ckFeminino: TCheckBox;
     ckMasculino: TCheckBox;
@@ -39,8 +36,9 @@ type
     cbEmpresa: TComboBox;
     edtRegistroGeral: TEdit;
     Label1: TLabel;
-    edtPF: TEdit;
     Label10: TLabel;
+    edtValor: TMaskEdit;
+    edtPF: TMaskEdit;
     procedure FormActivate(Sender: TObject);
     procedure edtDataNascChange(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);

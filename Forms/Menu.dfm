@@ -396,18 +396,20 @@ object frmMenu: TfrmMenu
     end
   end
   object MainMenu1: TMainMenu
-    Images = DataModule1.listaImagens
+    Images = DataModule1.listaImagem
     Left = 16
     Top = 16
     object Cadastros1: TMenuItem
       Caption = 'Cadastros'
       object Empresas1: TMenuItem
         Caption = 'Empresas'
-        ImageIndex = 0
+        ImageIndex = 2
         OnClick = Empresas1Click
       end
       object Funcionrios1: TMenuItem
         Caption = 'Funcion'#225'rios'
+        SubMenuImages = DataModule1.listaImagem
+        ImageIndex = 0
         OnClick = Funcionrios1Click
       end
     end
@@ -415,11 +417,16 @@ object frmMenu: TfrmMenu
       Caption = 'C'#225'lculos'
       object FolhaMensal1: TMenuItem
         Caption = 'Folha Mensal'
+        ImageIndex = 1
         OnClick = FolhaMensal1Click
       end
     end
     object Consultas1: TMenuItem
       Caption = 'Consultas'
+      object Lucroatual1: TMenuItem
+        Caption = 'Lucro atual'
+        OnClick = Lucroatual1Click
+      end
     end
     object Sair1: TMenuItem
       Caption = 'Sair'

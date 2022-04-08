@@ -3,7 +3,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO FUNCION'#193'RIO'
-  ClientHeight = 527
+  ClientHeight = 537
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 463
+    Top = 473
     Width = 505
     Height = 64
     Align = alBottom
@@ -26,7 +26,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 440
+    ExplicitTop = 463
     object Image2: TImage
       Left = 83
       Top = 14
@@ -999,6 +999,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Height = -11
       Font.Name = 'Arial Black'
       Font.Style = []
+      Images = DataModule1.listaImagens
       ParentFont = False
       TabOrder = 1
       OnClick = btnCancelarClick
@@ -1008,7 +1009,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     Left = 0
     Top = 0
     Width = 505
-    Height = 463
+    Height = 473
     Align = alClient
     BorderStyle = bsSingle
     Caption = 'pnAtributosFuncionarios'
@@ -1022,10 +1023,11 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentFont = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = 8
+    ExplicitTop = -6
+    ExplicitHeight = 561
     object Label2: TLabel
-      Left = 30
-      Top = 81
+      Left = 31
+      Top = 73
       Width = 38
       Height = 17
       Caption = 'Nome'
@@ -1038,7 +1040,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label3: TLabel
       Left = 29
-      Top = 135
+      Top = 127
       Width = 130
       Height = 17
       Caption = 'Data de nascimento'
@@ -1050,8 +1052,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 29
-      Top = 193
+      Left = 30
+      Top = 368
       Width = 42
       Height = 17
       Caption = 'Status'
@@ -1063,8 +1065,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 29
-      Top = 273
+      Left = 261
+      Top = 392
       Width = 66
       Height = 17
       Caption = 'Valor hora'
@@ -1076,8 +1078,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 29
-      Top = 324
+      Left = 30
+      Top = 288
       Width = 47
       Height = 17
       Caption = 'G'#234'nero'
@@ -1088,35 +1090,9 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Style = []
       ParentFont = False
     end
-    object Label7: TLabel
-      Left = 29
-      Top = 465
-      Width = 26
-      Height = 17
-      Caption = 'CPF'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label8: TLabel
-      Left = 183
-      Top = 465
-      Width = 19
-      Height = 17
-      Caption = 'RG'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      ParentFont = False
-    end
     object Image1: TImage
-      Left = 380
-      Top = 17
+      Left = 372
+      Top = 22
       Width = 113
       Height = 113
       Picture.Data = {
@@ -2393,8 +2369,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label1: TLabel
-      Left = 183
-      Top = 136
+      Left = 31
+      Top = 178
       Width = 19
       Height = 17
       Caption = 'RG'
@@ -2406,8 +2382,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 331
-      Top = 135
+      Left = 30
+      Top = 231
       Width = 26
       Height = 17
       Caption = 'CPF'
@@ -2420,25 +2396,25 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object edtNome: TEdit
       Left = 30
-      Top = 96
+      Top = 88
       Width = 315
       Height = 23
       TabOrder = 0
     end
     object edtDataNasc: TMaskEdit
       Left = 30
-      Top = 152
-      Width = 97
+      Top = 144
+      Width = 95
       Height = 23
-      EditMask = '!99/99/00;1;_'
-      MaxLength = 8
+      EditMask = '!99/99/0000;1; '
+      MaxLength = 10
       TabOrder = 1
-      Text = '  /  /  '
+      Text = '  /  /    '
       OnChange = edtDataNascChange
     end
     object pnCheckBox: TPanel
       Left = 29
-      Top = 211
+      Top = 387
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
@@ -2475,23 +2451,16 @@ object frmCadFuncionario: TfrmCadFuncionario
         TabOrder = 1
       end
     end
-    object edtValor: TEdit
-      Left = 29
-      Top = 288
-      Width = 316
-      Height = 23
-      TabOrder = 3
-    end
     object pnGenero: TPanel
-      Left = 29
-      Top = 347
+      Left = 30
+      Top = 307
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
       Color = clActiveCaption
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 4
+      TabOrder = 3
       object ckFeminino: TCheckBox
         Left = 119
         Top = 16
@@ -2521,44 +2490,39 @@ object frmCadFuncionario: TfrmCadFuncionario
         TabOrder = 1
       end
     end
-    object edtCPF: TMaskEdit
-      Left = 29
-      Top = 480
-      Width = 95
-      Height = 23
-      EditMask = '!000.000.000-00;1;_'
-      MaxLength = 14
-      TabOrder = 5
-      Text = '   .   .   -  '
-      OnChange = edtDataNascChange
-    end
-    object edtRG: TEdit
-      Left = 183
-      Top = 480
-      Width = 100
-      Height = 23
-      TabOrder = 6
-    end
     object cbEmpresa: TComboBox
       Left = 29
       Top = 37
       Width = 316
       Height = 23
-      TabOrder = 7
+      TabOrder = 4
     end
     object edtRegistroGeral: TEdit
-      Left = 181
-      Top = 152
-      Width = 92
+      Left = 30
+      Top = 194
+      Width = 148
       Height = 23
-      TabOrder = 8
+      TabOrder = 5
     end
-    object edtPF: TEdit
-      Left = 331
-      Top = 152
-      Width = 150
+    object edtValor: TMaskEdit
+      Left = 261
+      Top = 408
+      Width = 115
       Height = 23
-      TabOrder = 9
+      EditMask = 'R$ ########## ;0; '
+      MaxLength = 14
+      TabOrder = 6
+      Text = ''
+    end
+    object edtPF: TMaskEdit
+      Left = 30
+      Top = 248
+      Width = 147
+      Height = 23
+      EditMask = '###.###.###-##;1; '
+      MaxLength = 14
+      TabOrder = 7
+      Text = '   .   .   -  '
     end
   end
 end

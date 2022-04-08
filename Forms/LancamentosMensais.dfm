@@ -1,6 +1,7 @@
 ﻿object frmLancamentosMensais: TfrmLancamentosMensais
   Left = 0
   Top = 0
+  ActiveControl = edtCompetencia
   BorderIcons = [biSystemMenu]
   Caption = 'C'#193'LCULOS'
   ClientHeight = 476
@@ -66,8 +67,8 @@
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 16
-      Top = 312
+      Left = 19
+      Top = 314
       Width = 48
       Height = 17
       Caption = 'L'#237'quido'
@@ -742,7 +743,7 @@
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 16
+      Left = 18
       Top = 24
       Width = 57
       Height = 17
@@ -757,9 +758,9 @@
     object edtCompetencia: TMaskEdit
       Left = 18
       Top = 215
-      Width = 86
+      Width = 84
       Height = 23
-      EditMask = '!99/0000;1;_'
+      EditMask = '!99/0000;1; '
       MaxLength = 7
       TabOrder = 0
       Text = '  /    '
@@ -767,10 +768,10 @@
     object cbFuncionario: TComboBox
       Left = 18
       Top = 95
-      Width = 145
+      Width = 271
       Height = 23
       TabOrder = 1
-      Text = 'Selecione'
+      Text = 'Selecione...'
       OnChange = cbFuncionarioChange
       Items.Strings = (
         'Selecione...')
@@ -786,10 +787,10 @@
     object cbEmpresa: TComboBox
       Left = 19
       Top = 39
-      Width = 145
+      Width = 270
       Height = 23
       TabOrder = 3
-      Text = 'Selecione'
+      Text = 'Selecione...'
       OnChange = cbEmpresaChange
       Items.Strings = (
         'Selecione...'
@@ -801,13 +802,12 @@
       Width = 121
       Height = 23
       TabOrder = 4
-      Text = '...'
       OnChange = edtHoraChange
     end
     object edtLiquido: TEdit
-      Left = 18
-      Top = 330
-      Width = 162
+      Left = 16
+      Top = 332
+      Width = 123
       Height = 29
       Enabled = False
       Font.Charset = DEFAULT_CHARSET

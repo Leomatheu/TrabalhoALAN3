@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.Imaging.jpeg,
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual;
 
   Type TControler = class
 
@@ -15,12 +15,51 @@ uses
        procedure pCadastroDeEmpresa;
        procedure pCadastroDeFuncionario;
        procedure pCadastroLancamento;
+       function fTiraPonto(prValor : String): String;
+       function fGetLucroReal(prReferencia : String) : String;
   end;
 
 implementation
 
 
 { TControler }
+
+function TControler.fGetLucroReal(prReferencia: String): String;
+var
+   BD : TDataModule1;
+   faturamentoReal, maoDeObraTotal, custoOp, lucroAtual : Double;
+   retorno : String;
+
+begin
+  BD := TDataModule1.Create(nil);
+  faturamentoReal := strToFloat(frmLucroAtual.edtFat.Text) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
+  maoDeObraTotal := StrToFloat(BD.fSelecaoSomaSalario(prReferencia));
+  custoOp := StrToFloat(frmLucroAtual.edtFat.Text) * StrToInt(frmLucroAtual.edtCustoOp.Text);
+  lucroAtual := faturamentoReal - maoDeObraTotal - custoOp;
+
+  retorno := 'Faturamento real : ' + FloatToStr(faturamentoReal) + '#13#10' +
+             'Mão de obra total : ' + FloatToStr(maoDeObraTotal) + '#13#10' +
+             'Custo operacional : ' + FloatToStr(custoOp) + '#13#10' +
+             '#13#10'+
+             'O lucro atual é : ' + FloatToStr(lucroAtual);
+
+  result := retorno;
+
+end;
+
+function TControler.fTiraPonto(prValor: String): String;
+var
+   i : integer;
+begin
+     for i := 0 to Length(prValor) do
+       begin
+       if prValor[i]='.' then
+          begin
+               delete(prValor,i,1);
+          end
+       end;
+       Result := prValor;
+end;
 
 procedure TControler.pCadastroDeEmpresa;
 var
@@ -92,7 +131,7 @@ var
    BD : TDataModule1;
    objFuncionario : TFuncionario;
    i : integer;
-   liquido : Float32;
+   liquido : String;
 begin
    if(frmLancamentosMensais = nil)then
      frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
@@ -101,14 +140,16 @@ begin
      begin
        objLancamento := TLancamento.Create;
 
-       objLancamento.setEmpresa(frmLancamentosMensais.cbEmpresa.ItemIndex +1);
-       objLancamento.setFuncionario(frmLancamentosMensais.cbFuncionario.ItemIndex +1);
+       objLancamento.setEmpresa(TEmpresa(frmLancamentosMensais.cbEmpresa.Items.Objects[frmLancamentosMensais.cbEmpresa.ItemIndex]).getCodEmp);
+       objLancamento.setFuncionario(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getCodFunc);
        objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
        objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
-       liquido := StrToFloat(Copy(frmLancamentosMensais.edtLiquido.Text, 3, 11));
-
-
+       liquido := fTiraPonto(Copy(frmLancamentosMensais.edtLiquido.Text, 3, 11));
+       objLancamento.setLiquido(StrToFloat(Copy(liquido, 1, 5)));
+       BD := TDataModule1.Create(nil);
+       BD.pInsereLancamento(objLancamento);
      end;
 end;
+
 
 end.
