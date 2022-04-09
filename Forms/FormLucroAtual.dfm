@@ -26,6 +26,12 @@ object frmLucroAtual: TfrmLucroAtual
     Font.Style = []
     ParentFont = False
   end
+  object Image4: TImage
+    Left = 208
+    Top = 176
+    Width = 105
+    Height = 129
+  end
   object pnBotoes: TPanel
     Left = 0
     Top = 385
@@ -37,10 +43,9 @@ object frmLucroAtual: TfrmLucroAtual
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 146
-    ExplicitWidth = 487
+    ExplicitTop = 386
     object Image2: TImage
-      Left = 91
+      Left = 27
       Top = 32
       Width = 29
       Height = 25
@@ -665,7 +670,7 @@ object frmLucroAtual: TfrmLucroAtual
       Stretch = True
     end
     object Image3: TImage
-      Left = 277
+      Left = 195
       Top = 32
       Width = 29
       Height = 25
@@ -985,8 +990,51 @@ object frmLucroAtual: TfrmLucroAtual
         EA05082DDFE0F3DF0000000049454E44AE426082}
       Stretch = True
     end
+    object Image5: TImage
+      Left = 363
+      Top = 32
+      Width = 29
+      Height = 25
+      Center = True
+      Picture.Data = {
+        0954506E67496D61676589504E470D0A1A0A0000000D49484452000000400000
+        00400806000000AA6971DE00000006624B474400FF00FF00FFA0BDA793000003
+        CD4944415478DAEDDB494C13511C06F06FA6954259CA26525702064DC1FD64F4
+        A006175C22C168BC88241A8807D768623C7820462F6A889A200413B718974434
+        1ED0C4E5A2890737A4801B8658C3260A882D2DB433BEF78C48DD48E9D0CE0CEF
+        BBCCCB7BD374DE6FE6F5FDD3B402467984705F40B8C301027D417D7DED2A402C
+        07E409A1B8C08A4BD58F4A0FED5BA81A80BA3ABB431030311493A7D971F034B2
+        A74F193184613C0176395493FF094033D396FEF878C99EF9A31660A410340530
+        12089A03501A4193004A2268164029044D032881A0798060117401100C826E00
+        868BA07A804063B3650734270EC001380007E0001C80037080A0004A2BABF0FE
+        435B48279A3ED98A5D5BD7AA05E0260168092940C6142B766E5109809AC20138
+        0007E0BB401800F82EA09A70000EC0013880E200DDF939AB44A09C3443F2AB90
+        E0237C14255F51F48DFBD58A00F4E42F750072C87E15A2501CB1D7EF4E560820
+        47D58FFDBF4200869C1F07500A40160D70CD9A07188D7F1D179D3D886AB0C335
+        630E046F3FA2EA6BFDC67B6D33201B8C30DB5FA0777A36A498D8BFBF91D70B73
+        CD5308924F5D00EEA9D3F0A970DB7FCFB1DCB985EEE56B88968C7165C711D1EC
+        60FD7DE327A16DDB1E723502E2ABABD0B5228FB5FF95B167CB10F9EEB5BA00BC
+        F189E8D85C0C89DC45984CF045C7B07E637717649F0F068F1B09372EA3BD7837
+        795A44989A1A915279929DD3BE753B3C6919E4AE4A04E6183A57AF8337D602C1
+        6080D712CFCE3138BF011E0F449F17C9E7CA61ECFAA22E80C17192A5F065FD26
+        D6B6961E86B1A37D60AC2B772D7A162C66EDA4CB67D9F1F3C642768C7BF80096
+        DB377FA126A7A065D701D64EBC7601D1E4D10F24AA0490234C68DDB99FDCD904
+        183A7FDC455F422279523A915A7A04427F9FBE01687A336DE82828F2EB4BBE58
+        89A85776BF3EDD02D0D089D109D2D0717ADEEFD12D806BE65C7CDE50E0D79774
+        F53CCC2F9FE91F4022BB43EB8EFD6C9718D3DACCFAFA53C7933AC109EB8923E4
+        F84DDF00B49F8ED3A49C39454424B60DD27D3FBAE60999E845FD020C2E96CCB5
+        CF9174E51C6BD3E54097050DDDE3A3DE36681BC0953D7B606FB71E2D19285ABE
+        2E5A86EE9C956CAB4BA530A448A2F1C559D844E91669B9578DB807777E0090E2
+        AA65EF41D6A635032D933501402B3D4F462644B71B118E26BFFE5E8223BA9C7F
+        94B2EEF44C486633CCF5356459FC7ABBBE4969902223616A7CC32A454D00A825
+        0A028CF22F449C794B7225D150A121048720CB453155F76E2B023038A3F24B51
+        0E3028A1FEDB5C8071108021D77D900075B9E4B3A04285080E59168AB2B2B286
+        5CF74101E82D1C20DC1710EE7C073BDA735F1A39915D0000000049454E44AE42
+        6082}
+      Stretch = True
+    end
     object btnCalcular: TButton
-      Left = 126
+      Left = 62
       Top = 32
       Width = 75
       Height = 25
@@ -998,13 +1046,14 @@ object frmLucroAtual: TfrmLucroAtual
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnCalcularClick
     end
     object btnCancelar: TButton
-      Left = 312
+      Left = 230
       Top = 32
       Width = 75
       Height = 25
-      Caption = 'Cancelar'
+      Caption = 'Sair'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -11
@@ -1012,6 +1061,22 @@ object frmLucroAtual: TfrmLucroAtual
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      OnClick = btnCancelarClick
+    end
+    object btnExport: TButton
+      Left = 398
+      Top = 32
+      Width = 83
+      Height = 25
+      Caption = 'Exportar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 2
+      OnClick = btnExportClick
     end
   end
   object pnFLucroAtual: TPanel
@@ -1025,7 +1090,6 @@ object frmLucroAtual: TfrmLucroAtual
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = -6
     object Label4: TLabel
       Left = 40
       Top = 16
@@ -1042,8 +1106,8 @@ object frmLucroAtual: TfrmLucroAtual
     object Label2: TLabel
       Left = 40
       Top = 76
-      Width = 118
-      Height = 24
+      Width = 117
+      Height = 17
       Caption = 'Valor faturamento'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1106,17 +1170,16 @@ object frmLucroAtual: TfrmLucroAtual
     end
     object edtCustoOp: TEdit
       Left = 40
-      Top = 154
+      Top = 153
       Width = 137
-      Height = 23
-      Enabled = False
+      Height = 21
       TabOrder = 0
     end
     object edtRef: TMaskEdit
       Left = 40
       Top = 32
       Width = 135
-      Height = 23
+      Height = 21
       EditMask = '!99/0000;1; '
       MaxLength = 7
       TabOrder = 1
@@ -1124,13 +1187,13 @@ object frmLucroAtual: TfrmLucroAtual
     end
     object edtFat: TMaskEdit
       Left = 40
-      Top = 93
-      Width = 132
-      Height = 23
-      EditMask = 'R$000000000;1; '
-      MaxLength = 11
+      Top = 92
+      Width = 120
+      Height = 21
+      EditMask = 'R$ 00000;1; '
+      MaxLength = 8
       TabOrder = 2
-      Text = 'R$         '
+      Text = 'R$      '
     end
   end
   object Panel1: TPanel
@@ -1144,18 +1207,33 @@ object frmLucroAtual: TfrmLucroAtual
     ParentBackground = False
     ShowCaption = False
     TabOrder = 2
-    ExplicitLeft = 272
-    ExplicitTop = 296
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitTop = 192
+    ExplicitHeight = 193
     object mmResultado: TMemo
-      Left = 8
-      Top = 17
-      Width = 489
-      Height = 153
-      Lines.Strings = (
-        'Memo1')
+      Left = 6
+      Top = 6
+      Width = 494
+      Height = 173
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
       TabOrder = 0
     end
+  end
+  object OpenDialog1: TOpenDialog
+    DefaultExt = 'txt'
+    Filter = 'Arquivos de text|*.txt'
+    Left = 456
+    Top = 8
+  end
+  object SaveDialog1: TSaveDialog
+    DefaultExt = 'txt'
+    Filter = 'Arquivos de texto|*.txt'
+    Left = 456
+    Top = 64
   end
 end

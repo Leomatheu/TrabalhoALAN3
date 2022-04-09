@@ -15,6 +15,7 @@ uses
        procedure pCadastroDeEmpresa;
        procedure pCadastroDeFuncionario;
        procedure pCadastroLancamento;
+       procedure pFormLucroAtual;
        function fTiraPonto(prValor : String): String;
        function fGetLucroReal(prReferencia : String) : String;
   end;
@@ -32,16 +33,16 @@ var
 
 begin
   BD := TDataModule1.Create(nil);
-  faturamentoReal := strToFloat(frmLucroAtual.edtFat.Text) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
+  faturamentoReal := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
   maoDeObraTotal := StrToFloat(BD.fSelecaoSomaSalario(prReferencia));
-  custoOp := StrToFloat(frmLucroAtual.edtFat.Text) * StrToInt(frmLucroAtual.edtCustoOp.Text);
+  custoOp := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * StrToInt(frmLucroAtual.edtCustoOp.Text);
   lucroAtual := faturamentoReal - maoDeObraTotal - custoOp;
 
-  retorno := 'Faturamento real : ' + FloatToStr(faturamentoReal) + '#13#10' +
-             'Mão de obra total : ' + FloatToStr(maoDeObraTotal) + '#13#10' +
-             'Custo operacional : ' + FloatToStr(custoOp) + '#13#10' +
-             '#13#10'+
-             'O lucro atual é : ' + FloatToStr(lucroAtual);
+  retorno := 'Faturamento real : ' + FormatFloat('R$ #,###,#0.00', faturamentoReal) + #13#10 +
+             'Mão de obra total : ' + FormatFloat('R$ #,###,#0.00', maoDeObraTotal) + #13#10 +
+             'Custo operacional : ' + FormatFloat('R$ #,###,#0.00', custoOp) + #13#10 +
+             #13#10+
+             'O lucro atual é : ' + FormatFloat('R$ #,###,#0.00', lucroAtual);
 
   result := retorno;
 
@@ -151,5 +152,11 @@ begin
      end;
 end;
 
+
+procedure TControler.pFormLucroAtual;
+begin
+      frmLucroAtual := TfrmLucroAtual.Create(nil);
+      frmLucroAtual.ShowModal;
+end;
 
 end.

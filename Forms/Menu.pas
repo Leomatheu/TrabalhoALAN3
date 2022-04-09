@@ -68,6 +68,7 @@ var
   controler : TControler;
 begin
   controler := Tcontroler.Create;
+  controler.pFormLucroAtual;
 end;
 
 procedure TfrmMenu.Sair1Click(Sender: TObject);

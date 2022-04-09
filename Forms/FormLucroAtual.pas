@@ -25,6 +25,14 @@ type
     edtFat: TMaskEdit;
     Panel1: TPanel;
     mmResultado: TMemo;
+    OpenDialog1: TOpenDialog;
+    SaveDialog1: TSaveDialog;
+    Image4: TImage;
+    Image5: TImage;
+    btnExport: TButton;
+    procedure btnCancelarClick(Sender: TObject);
+    procedure btnCalcularClick(Sender: TObject);
+    procedure btnExportClick(Sender : TObject);
   private
     { Private declarations }
   public
@@ -35,7 +43,29 @@ var
   frmLucroAtual: TfrmLucroAtual;
 
 implementation
+uses
+   uControler;
 
 {$R *.dfm}
+
+procedure TfrmLucroAtual.btnCalcularClick(Sender: TObject);
+var
+   controler : TControler;
+begin
+   controler := TControler.create;
+   //self.mmResultado.Lines.Add(controler.fGetLucroReal(self.edtRef));
+   self.mmResultado.Text := controler.fGetLucroReal(self.edtRef.Text);
+end;
+
+procedure TfrmLucroAtual.btnCancelarClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
+procedure TfrmLucroAtual.btnExportClick(Sender: TObject);
+begin
+   if(SaveDialog1.Execute)then
+     mmResultado.lines.SaveToFile(SaveDialog1.FileName);
+end;
 
 end.
