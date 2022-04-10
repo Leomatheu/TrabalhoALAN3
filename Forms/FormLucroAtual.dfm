@@ -11,6 +11,7 @@ object frmLucroAtual: TfrmLucroAtual
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel
@@ -43,9 +44,8 @@ object frmLucroAtual: TfrmLucroAtual
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 386
     object Image2: TImage
-      Left = 27
+      Left = 43
       Top = 32
       Width = 29
       Height = 25
@@ -991,7 +991,7 @@ object frmLucroAtual: TfrmLucroAtual
       Stretch = True
     end
     object Image5: TImage
-      Left = 363
+      Left = 347
       Top = 32
       Width = 29
       Height = 25
@@ -1034,7 +1034,7 @@ object frmLucroAtual: TfrmLucroAtual
       Stretch = True
     end
     object btnCalcular: TButton
-      Left = 62
+      Left = 78
       Top = 32
       Width = 75
       Height = 25
@@ -1064,7 +1064,7 @@ object frmLucroAtual: TfrmLucroAtual
       OnClick = btnCancelarClick
     end
     object btnExport: TButton
-      Left = 398
+      Left = 382
       Top = 32
       Width = 83
       Height = 25
@@ -1188,7 +1188,7 @@ object frmLucroAtual: TfrmLucroAtual
     object edtFat: TMaskEdit
       Left = 40
       Top = 92
-      Width = 120
+      Width = 135
       Height = 21
       EditMask = 'R$ 00000;1; '
       MaxLength = 8
@@ -1207,8 +1207,6 @@ object frmLucroAtual: TfrmLucroAtual
     ParentBackground = False
     ShowCaption = False
     TabOrder = 2
-    ExplicitTop = 192
-    ExplicitHeight = 193
     object mmResultado: TMemo
       Left = 6
       Top = 6

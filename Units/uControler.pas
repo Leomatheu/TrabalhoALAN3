@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.Imaging.jpeg,
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual, FormRelComparativo;
 
   Type TControler = class
 
@@ -18,6 +18,7 @@ uses
        procedure pFormLucroAtual;
        function fTiraPonto(prValor : String): String;
        function fGetLucroReal(prReferencia : String) : String;
+       function fGetLucroSContratar(prReferencia : String) : String;
   end;
 
 implementation
@@ -35,7 +36,7 @@ begin
   BD := TDataModule1.Create(nil);
   faturamentoReal := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
   maoDeObraTotal := StrToFloat(BD.fSelecaoSomaSalario(prReferencia));
-  custoOp := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * StrToInt(frmLucroAtual.edtCustoOp.Text);
+  custoOp := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * StrToInt(frmLucroAtual.edtCustoOp.Text) / 100;
   lucroAtual := faturamentoReal - maoDeObraTotal - custoOp;
 
   retorno := 'Faturamento real : ' + FormatFloat('R$ #,###,#0.00', faturamentoReal) + #13#10 +
@@ -46,6 +47,36 @@ begin
 
   result := retorno;
 
+end;
+
+function TControler.fGetLucroSContratar(prReferencia: String): String;
+var
+   BD : TDataModule1;
+   faturamento, mediaCustoMaoDeObra, mediaCustoComAumento,
+   fatOldMaquina, fatNewMaquina, custoOpTotal, custoOpNewMaquina,
+   custoOldMaquina, custoMaoDeObraComAumento : Double;
+   retorno : String;
+begin
+  BD := TDataModule1.Create(nil);
+  faturamento :=  strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
+  fatOldMaquina := faturamento / strToFloat(RelComparativo.edtQtdMaquina.Text);
+  fatNewMaquina := (fatOldMaquina * strToFloat(RelComparativo.edtFatNovaMaquina.Text) / 100) +  fatOldMaquina;
+  custoOpTotal :=  strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * StrToInt(RelComparativo.edtCustoOp.Text) / 100;
+  custoOpNewMaquina :=  custoOldMaquina - (custoOldMaquina * strToFloat(RelComparativo.edtCustoOpNovaMaquina.Text)/ 100);
+  custoOldMaquina :=  custoOpTotal / StrToFloat(RelComparativo.edtQtdMaquina.Text);
+  mediaCustoMaoDeObra :=  StrToFloat(BD.fSelecaoSomaSalario(RelComparativo.edtRef.Text)) / StrToFloat(RelComparativo.edtQtdMaquina.Text);
+  mediaCustoComAumento := mediaCustoMaoDeObra + (mediaCustoMaoDeObra * StrToFloat(RelComparativo.edtAumentoFunc.Text));
+  custoMaoDeObraComAumento :=  mediaCustoComAumento * StrToFloat(RelComparativo.edtQtdMaquina.Text);
+
+
+  retorno := 'Faturamento real: '+ FormatFloat('R$ #,###,#0.00', faturamento) + #13#10 +
+             'Faturamento máquina nova: '+ FormatFloat('R$ #,###,#0.00',  fatNewMaquina) + #13#10 +
+             'Custo op. nova máquina: '+ FormatFloat('R$ #,###,#0.00', custoOpNewMaquina) + #13#10 +
+             'Custo mão de obra com aumento: '+ FormatFloat('R$ #,###,#0.00', custoMaoDeObraComAumento) + #13#10 +
+             #13#10+
+             'Lucro sem contratação: ' + FormatFloat('R$ #,###,#0.00', faturamento + fatNewMaquina - custoOpNewMaquina - custoMaoDeObraComAumento);
+
+  result := retorno;
 end;
 
 function TControler.fTiraPonto(prValor: String): String;

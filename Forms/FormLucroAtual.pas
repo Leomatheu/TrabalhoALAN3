@@ -33,6 +33,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnCalcularClick(Sender: TObject);
     procedure btnExportClick(Sender : TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -66,6 +67,15 @@ procedure TfrmLucroAtual.btnExportClick(Sender: TObject);
 begin
    if(SaveDialog1.Execute)then
      mmResultado.lines.SaveToFile(SaveDialog1.FileName);
+end;
+
+procedure TfrmLucroAtual.FormActivate(Sender: TObject);
+begin
+   self.edtCustoOp.Text := '';
+   self.edtRef.Text := '';
+   self.edtFat.Text := '';
+
+   self.edtRef.SetFocus;
 end;
 
 end.
