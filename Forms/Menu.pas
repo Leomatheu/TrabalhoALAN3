@@ -4,8 +4,9 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, CadEmpresa, CadFuncionarios,
-  Vcl.Imaging.jpeg;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
+  Vcl.Imaging.jpeg, uControler, DAO;
+  //Vcl.Imaging.jpeg;
 
 type
   TfrmMenu = class(TForm)
@@ -17,9 +18,14 @@ type
     Consultas1: TMenuItem;
     Sair1: TMenuItem;
     Image1: TImage;
+    Clculos1: TMenuItem;
+    FolhaMensal1: TMenuItem;
+    Lucroatual1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
     procedure Funcionrios1Click(Sender: TObject);
+    procedure FolhaMensal1Click(Sender: TObject);
+    procedure Lucroatual1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,13 +40,35 @@ implementation
 {$R *.dfm}
 
 procedure TfrmMenu.Empresas1Click(Sender: TObject);
+var
+   controler : TControler;
 begin
-  CadEmpresa.frmEmpresa.ShowModal;
+   controler := TControler.Create;
+   controler.pCadastroDeEmpresa;
+end;
+
+procedure TfrmMenu.FolhaMensal1Click(Sender: TObject);
+var
+   controler : TControler;
+begin
+    controler := TControler.Create;
+    controler.pCadastroLancamento;
 end;
 
 procedure TfrmMenu.Funcionrios1Click(Sender: TObject);
+var
+   controler : TControler;
 begin
-   CadFuncionarios.frmCadFuncionario.ShowModal;
+   controler := TControler.Create;
+   controler.pCadastroDeFuncionario;
+end;
+
+procedure TfrmMenu.Lucroatual1Click(Sender: TObject);
+var
+  controler : TControler;
+begin
+  controler := Tcontroler.Create;
+  controler.pFormLucroAtual;
 end;
 
 procedure TfrmMenu.Sair1Click(Sender: TObject);

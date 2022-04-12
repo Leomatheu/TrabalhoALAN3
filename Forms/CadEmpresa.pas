@@ -11,22 +11,21 @@ type
   TfrmEmpresa = class(TForm)
     pnBotoes: TPanel;
     pnAtributosEmpresa: TPanel;
-    Label1: TLabel;
-    edtCodEmpresa: TEdit;
     edtDescricao: TEdit;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
-    Edit1: TEdit;
+    edtEndereco: TEdit;
     edtContato: TMaskEdit;
     Label5: TLabel;
-    MaskEdit1: TMaskEdit;
+    edtInscricao: TMaskEdit;
     Image1: TImage;
     btnSalvar: TButton;
     btnCancelar: TButton;
     Image2: TImage;
     Image3: TImage;
     procedure btnCancelarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -37,12 +36,19 @@ var
   frmEmpresa: TfrmEmpresa;
 
 implementation
+uses
+   uControler;
 
 {$R *.dfm}
 
 procedure TfrmEmpresa.btnCancelarClick(Sender: TObject);
 begin
-  close;
+   ModalResult := mrCancel;
+end;
+
+procedure TfrmEmpresa.btnSalvarClick(Sender: TObject);
+begin
+   ModalResult := mrOK;
 end;
 
 end.

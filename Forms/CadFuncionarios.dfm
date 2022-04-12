@@ -3,7 +3,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO FUNCION'#193'RIO'
-  ClientHeight = 534
+  ClientHeight = 537
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,13 +11,13 @@ object frmCadFuncionario: TfrmCadFuncionario
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  OldCreateOrder = True
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 470
+    Top = 473
     Width = 505
     Height = 64
     Align = alBottom
@@ -26,7 +26,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 418
+    ExplicitTop = 463
     object Image2: TImage
       Left = 83
       Top = 14
@@ -986,6 +986,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 320
@@ -998,6 +999,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Height = -11
       Font.Name = 'Arial Black'
       Font.Style = []
+      Images = DataModule1.listaImagens
       ParentFont = False
       TabOrder = 1
       OnClick = btnCancelarClick
@@ -1007,30 +1009,25 @@ object frmCadFuncionario: TfrmCadFuncionario
     Left = 0
     Top = 0
     Width = 505
-    Height = 470
+    Height = 473
     Align = alClient
     BorderStyle = bsSingle
     Caption = 'pnAtributosFuncionarios'
     Color = clActiveCaption
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -12
+    Font.Name = 'Arial'
+    Font.Style = [fsBold]
     ParentBackground = False
+    ParentFont = False
     ShowCaption = False
     TabOrder = 1
-    object Label1: TLabel
-      Left = 29
-      Top = 9
-      Width = 49
-      Height = 17
-      Caption = 'C'#243'digo '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      ParentFont = False
-    end
+    ExplicitTop = -6
+    ExplicitHeight = 561
     object Label2: TLabel
-      Left = 29
-      Top = 65
+      Left = 31
+      Top = 73
       Width = 38
       Height = 17
       Caption = 'Nome'
@@ -1043,7 +1040,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label3: TLabel
       Left = 29
-      Top = 121
+      Top = 127
       Width = 130
       Height = 17
       Caption = 'Data de nascimento'
@@ -1055,8 +1052,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 29
-      Top = 177
+      Left = 30
+      Top = 368
       Width = 42
       Height = 17
       Caption = 'Status'
@@ -1068,8 +1065,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 29
-      Top = 257
+      Left = 261
+      Top = 392
       Width = 66
       Height = 17
       Caption = 'Valor hora'
@@ -1081,8 +1078,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 29
-      Top = 321
+      Left = 30
+      Top = 288
       Width = 47
       Height = 17
       Caption = 'G'#234'nero'
@@ -1093,35 +1090,9 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Style = []
       ParentFont = False
     end
-    object Label7: TLabel
-      Left = 29
-      Top = 401
-      Width = 26
-      Height = 17
-      Caption = 'CPF'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label8: TLabel
-      Left = 183
-      Top = 401
-      Width = 19
-      Height = 17
-      Caption = 'RG'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      ParentFont = False
-    end
     object Image1: TImage
-      Left = 380
-      Top = 17
+      Left = 372
+      Top = 22
       Width = 113
       Height = 113
       Picture.Data = {
@@ -2384,41 +2355,73 @@ object frmCadFuncionario: TfrmCadFuncionario
         86619490FF01E6F5C95D82A0F22C0000000049454E44AE426082}
       Stretch = True
     end
-    object edtCodFunc: TEdit
+    object Label9: TLabel
       Left = 29
-      Top = 25
-      Width = 121
-      Height = 21
-      TabOrder = 0
+      Top = 22
+      Width = 57
+      Height = 17
+      Caption = 'Empresa'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label1: TLabel
+      Left = 31
+      Top = 178
+      Width = 19
+      Height = 17
+      Caption = 'RG'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 30
+      Top = 231
+      Width = 26
+      Height = 17
+      Caption = 'CPF'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
     end
     object edtNome: TEdit
       Left = 30
-      Top = 80
-      Width = 272
-      Height = 21
-      TabOrder = 1
+      Top = 88
+      Width = 315
+      Height = 23
+      TabOrder = 0
     end
     object edtDataNasc: TMaskEdit
-      Left = 32
-      Top = 136
-      Width = 97
-      Height = 21
-      EditMask = '!99/99/00;1;_'
-      MaxLength = 8
-      TabOrder = 2
-      Text = '  /  /  '
+      Left = 30
+      Top = 144
+      Width = 95
+      Height = 23
+      EditMask = '!99/99/0000;1; '
+      MaxLength = 10
+      TabOrder = 1
+      Text = '  /  /    '
       OnChange = edtDataNascChange
     end
     object pnCheckBox: TPanel
       Left = 29
-      Top = 195
+      Top = 387
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
       Color = clActiveCaption
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 3
+      TabOrder = 2
       object ckInativo: TCheckBox
         Left = 119
         Top = 16
@@ -2448,23 +2451,16 @@ object frmCadFuncionario: TfrmCadFuncionario
         TabOrder = 1
       end
     end
-    object Edit1: TEdit
-      Left = 29
-      Top = 272
-      Width = 273
-      Height = 21
-      TabOrder = 4
-    end
     object pnGenero: TPanel
-      Left = 29
-      Top = 339
+      Left = 30
+      Top = 307
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
       Color = clActiveCaption
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 5
+      TabOrder = 3
       object ckFeminino: TCheckBox
         Left = 119
         Top = 16
@@ -2494,23 +2490,39 @@ object frmCadFuncionario: TfrmCadFuncionario
         TabOrder = 1
       end
     end
-    object edtCPF: TMaskEdit
+    object cbEmpresa: TComboBox
       Left = 29
-      Top = 416
-      Width = 95
-      Height = 21
-      EditMask = '!000.000.000-00;1;_'
+      Top = 37
+      Width = 316
+      Height = 23
+      TabOrder = 4
+    end
+    object edtRegistroGeral: TEdit
+      Left = 30
+      Top = 194
+      Width = 148
+      Height = 23
+      TabOrder = 5
+    end
+    object edtValor: TMaskEdit
+      Left = 261
+      Top = 408
+      Width = 115
+      Height = 23
+      EditMask = 'R$ ########## ;0; '
       MaxLength = 14
       TabOrder = 6
-      Text = '   .   .   -  '
-      OnChange = edtDataNascChange
+      Text = ''
     end
-    object edtRG: TEdit
-      Left = 183
-      Top = 416
-      Width = 100
-      Height = 21
+    object edtPF: TMaskEdit
+      Left = 30
+      Top = 248
+      Width = 147
+      Height = 23
+      EditMask = '###.###.###-##;1; '
+      MaxLength = 14
       TabOrder = 7
+      Text = '   .   .   -  '
     end
   end
 end

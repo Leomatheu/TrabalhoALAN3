@@ -3,7 +3,7 @@ object frmEmpresa: TfrmEmpresa
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO EMPRESAS'
-  ClientHeight = 348
+  ClientHeight = 337
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -11,12 +11,12 @@ object frmEmpresa: TfrmEmpresa
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
+  OldCreateOrder = True
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 263
+    Top = 252
     Width = 505
     Height = 85
     Align = alBottom
@@ -984,6 +984,7 @@ object frmEmpresa: TfrmEmpresa
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 312
@@ -1005,29 +1006,17 @@ object frmEmpresa: TfrmEmpresa
     Left = 0
     Top = 0
     Width = 505
-    Height = 263
+    Height = 252
     Align = alClient
     Caption = 'pnAtributosEmpresa'
     Color = clActiveCaption
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    object Label1: TLabel
-      Left = 24
-      Top = 17
-      Width = 49
-      Height = 17
-      Caption = 'C'#243'digo '
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -12
-      Font.Name = 'Arial Black'
-      Font.Style = []
-      ParentFont = False
-    end
+    ExplicitTop = -6
     object Label2: TLabel
       Left = 24
-      Top = 65
+      Top = 24
       Width = 65
       Height = 17
       Caption = 'Descri'#231#227'o'
@@ -1039,8 +1028,8 @@ object frmEmpresa: TfrmEmpresa
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 24
-      Top = 113
+      Left = 25
+      Top = 142
       Width = 51
       Height = 17
       Caption = 'Contato'
@@ -1052,10 +1041,10 @@ object frmEmpresa: TfrmEmpresa
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 24
-      Top = 164
+      Left = 23
+      Top = 83
       Width = 66
-      Height = 19
+      Height = 17
       Caption = 'Endere'#231'o '
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -1065,9 +1054,9 @@ object frmEmpresa: TfrmEmpresa
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 24
-      Top = 218
-      Width = 61
+      Left = 25
+      Top = 201
+      Width = 65
       Height = 17
       Caption = 'Inscri'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
@@ -1079,7 +1068,7 @@ object frmEmpresa: TfrmEmpresa
     end
     object Image1: TImage
       Left = 368
-      Top = 16
+      Top = 24
       Width = 121
       Height = 122
       Picture.Data = {
@@ -1457,45 +1446,38 @@ object frmEmpresa: TfrmEmpresa
         00FF1F5C239EC14D528A4F0000000049454E44AE426082}
       Stretch = True
     end
-    object edtCodEmpresa: TEdit
+    object edtDescricao: TEdit
       Left = 25
-      Top = 32
-      Width = 121
+      Top = 42
+      Width = 234
       Height = 21
       TabOrder = 0
     end
-    object edtDescricao: TEdit
+    object edtEndereco: TEdit
       Left = 25
-      Top = 80
-      Width = 234
+      Top = 101
+      Width = 236
       Height = 21
       TabOrder = 1
     end
-    object Edit1: TEdit
-      Left = 25
-      Top = 181
-      Width = 236
-      Height = 21
-      TabOrder = 2
-    end
     object edtContato: TMaskEdit
       Left = 25
-      Top = 128
-      Width = 88
+      Top = 159
+      Width = 117
       Height = 21
-      EditMask = '!\(999\)0000-0000;1;_'
+      EditMask = '!\(999\)0000-0000;1; '
       MaxLength = 14
-      TabOrder = 3
+      TabOrder = 2
       Text = '(   )    -    '
     end
-    object MaskEdit1: TMaskEdit
+    object edtInscricao: TMaskEdit
       Left = 25
-      Top = 234
-      Width = 121
+      Top = 219
+      Width = 117
       Height = 21
-      EditMask = '!\ 00.000.000-0000/00;1;_'
+      EditMask = '!\ 00.000.000-0000/00;1; '
       MaxLength = 19
-      TabOrder = 4
+      TabOrder = 3
       Text = '   .   .   -    /  '
     end
   end

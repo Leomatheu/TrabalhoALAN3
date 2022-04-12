@@ -1,0 +1,24 @@
+unit FormRelComparativo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+
+type
+  TRelComparativo = class(TForm)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  RelComparativo: TRelComparativo;
+
+implementation
+
+{$R *.dfm}
+
+end.

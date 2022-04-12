@@ -5,40 +5,45 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, FireDAC.Phys.MySQLDef, FireDAC.Stan.Intf, FireDAC.Phys,
+  FireDAC.Phys.MySQL, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, uFuncionario, Vcl.DBCtrls;
 
 type
   TfrmCadFuncionario = class(TForm)
     pnBotoes: TPanel;
-    pnAtributosFuncionarios: TPanel;
     btnSalvar: TButton;
     Image2: TImage;
     Image3: TImage;
     btnCancelar: TButton;
-    Label1: TLabel;
-    edtCodFunc: TEdit;
+    pnAtributosFuncionarios: TPanel;
     Label2: TLabel;
-    edtNome: TEdit;
     Label3: TLabel;
-    edtDataNasc: TMaskEdit;
     Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Image1: TImage;
+    edtNome: TEdit;
+    edtDataNasc: TMaskEdit;
     pnCheckBox: TPanel;
     ckInativo: TCheckBox;
     ckAtivo: TCheckBox;
-    Label5: TLabel;
-    Edit1: TEdit;
-    Label6: TLabel;
     pnGenero: TPanel;
     ckFeminino: TCheckBox;
     ckMasculino: TCheckBox;
-    Label7: TLabel;
-    edtCPF: TMaskEdit;
-    Label8: TLabel;
-    edtRG: TEdit;
-    Image1: TImage;
+    Label9: TLabel;
+    cbEmpresa: TComboBox;
+    edtRegistroGeral: TEdit;
+    Label1: TLabel;
+    Label10: TLabel;
+    edtValor: TMaskEdit;
+    edtPF: TMaskEdit;
     procedure FormActivate(Sender: TObject);
     procedure edtDataNascChange(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure pPopulaComboBox;
   private
     { Private declarations }
   public
@@ -46,15 +51,21 @@ type
   end;
 
 var
-  frmCadFuncionario: TfrmCadFuncionario;
+   frmCadFuncionario: TfrmCadFuncionario;
 
 implementation
-
+uses
+   uControler, DAO, uEmpresa;
 {$R *.dfm}
 
 procedure TfrmCadFuncionario.btnCancelarClick(Sender: TObject);
 begin
-  close;
+  ModalResult := mrCancel;
+end;
+
+procedure TfrmCadFuncionario.btnSalvarClick(Sender: TObject);
+begin
+   ModalResult := mrOk;
 end;
 
 procedure TfrmCadFuncionario.edtDataNascChange(Sender: TObject);
@@ -70,6 +81,23 @@ procedure TfrmCadFuncionario.FormActivate(Sender: TObject);
 begin
    self.pnCheckBox.Enabled := false;
    self.pnCheckBox.Visible := false;
+   self.pPopulaComboBox;
+end;
+
+procedure TfrmCadFuncionario.pPopulaComboBox;
+var
+  i : integer;
+  lista : TList;
+begin
+   lista := DAO.DataModule1.fSelecaoEmpresa;
+   cbEmpresa.Clear;
+    for i := 0 to lista.Count -1 do
+       begin
+         cbEmpresa.AddItem(IntToStr(TEmpresa(lista[i]).getCodEmp)+'-'+TEmpresa(lista[i]).getDescEmp, lista[i]);
+       end;
+
+    FreeAndNil(lista);
+
 end;
 
 end.

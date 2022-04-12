@@ -9,10 +9,11 @@ interface
        nomeFuncionario : String;
        dataNascimento : String;
        statusFuncionario : String;
-       valorHora : String;
+       valorHora : double;
        generoFuncionario : String;
        cpfFuncionario : String;
        rgFuncionario : String;
+       codigoEmpresa : integer;
 
      public
         procedure setCodFunc(codigoFuncionario:integer);
@@ -27,8 +28,8 @@ interface
         procedure setStatusFunc(statusFuncionario:String);
         function getStatusFunc:String;
 
-        procedure setValorHora(valorHora: String);
-        function getValorHora:String;
+        procedure setValorHora(valorHora: double);
+        function getValorHora:double;
 
         procedure setGeneroFunc(generoFuncionario:String);
         function getGeneroFunc:String;
@@ -38,6 +39,9 @@ interface
 
         procedure setRG(rgFuncionario:String);
         function getRG:String;
+
+        procedure setCodigoEmpresa(codigoEmpresa:integer);
+        function getCodigoEmpresa:integer;
    end;
 
 implementation
@@ -47,6 +51,11 @@ implementation
 function TFuncionario.getCodFunc: integer;
 begin
    result := self.codigoFuncionario;
+end;
+
+function TFuncionario.getCodigoEmpresa: integer;
+begin
+   result := self.codigoEmpresa;
 end;
 
 function TFuncionario.getCPF: String;
@@ -79,7 +88,7 @@ begin
    result := self.statusFuncionario;
 end;
 
-function TFuncionario.getValorHora: String;
+function TFuncionario.getValorHora: double;
 begin
    result := self.valorHora;
 end;
@@ -89,6 +98,11 @@ begin
    self.codigoFuncionario :=  codigoFuncionario;
 end;
 
+procedure TFuncionario.setCodigoEmpresa(codigoEmpresa: integer);
+begin
+   self.codigoEmpresa := codigoEmpresa;
+end;
+
 procedure TFuncionario.setCPF(cpfFuncionario: String);
 begin
    self.cpfFuncionario :=  cpfFuncionario;
@@ -96,7 +110,7 @@ end;
 
 procedure TFuncionario.setDataNasc(dataNascimento: String);
 begin
-   self.dataNascimento =  dataNascimento;
+   self.dataNascimento :=  dataNascimento;
 end;
 
 procedure TFuncionario.setGeneroFunc(generoFuncionario: String);
@@ -119,7 +133,7 @@ begin
    self.statusFuncionario :=  statusFuncionario;
 end;
 
-procedure TFuncionario.setValorHora(valorHora: String);
+procedure TFuncionario.setValorHora(valorHora: double);
 begin
    self.valorHora :=  valorHora;
 end;
