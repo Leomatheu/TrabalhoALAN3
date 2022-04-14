@@ -1069,7 +1069,6 @@ object RelComparativo: TRelComparativo
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = -6
     object Label4: TLabel
       Left = 40
       Top = 16

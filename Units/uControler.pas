@@ -50,7 +50,7 @@ begin
 
   lucroTotalCont :=  (faturamentoReal + fatNewMaquina)- custoOpTotal - custoOpNewMaquina - custoContratando;
 
-  retorno := 'Custo da mão de obra contratando: '+ FormatFloat('R$ #,###,#0.00', custoContratando) + #13#10 +
+  retorno := #13#10 + 'Custo da mão de obra contratando: '+ FormatFloat('R$ #,###,#0.00', custoContratando) + #13#10 +
              'Lucro total contratando: '+ FormatFloat('R$ #,###,#0.00', lucroTotalCont);
 
   result := retorno;
@@ -104,7 +104,6 @@ begin
              'Faturamento máquina nova: '+ FormatFloat('R$ #,###,#0.00',  fatNewMaquina) + #13#10 +
              'Custo op. nova máquina: '+ FormatFloat('R$ #,###,#0.00', custoOpNewMaquina) + #13#10 +
              'Custo mão de obra com aumento: '+ FormatFloat('R$ #,###,#0.00', custoMaoDeObraComAumento) + #13#10 +
-             #13#10+
              'Lucro sem contratação: ' + FormatFloat('R$ #,###,#0.00', faturamento + fatNewMaquina - custoOpTotal - custoOpNewMaquina - custoMaoDeObraComAumento) + #13#10;
 
   result := retorno;

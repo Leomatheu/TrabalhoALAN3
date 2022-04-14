@@ -56,11 +56,12 @@ uses
 procedure TRelComparativo.btnCalcularClick(Sender: TObject);
 var
    controler : TControler;
+   text : String;
 begin
-  controler.Create;
+  controler := TControler.Create;
+  text := controler.fGetLucroSContratar(self.edtRef.Text) + controler.fGetLucroContratando(self.edtRef.Text);
+  self.mmResultado.Lines.Text := text;
 
-  self.mmResultado.Lines.Text := controler.fGetLucroSContratar(self.edtRef.Text);
-  self.mmResultado.Lines.Text := controler.fGetLucroContratando(self.edtRef.Text);
 
 end;
 

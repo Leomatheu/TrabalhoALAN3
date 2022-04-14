@@ -403,7 +403,7 @@ object frmMenu: TfrmMenu
       Caption = 'Cadastros'
       object Empresas1: TMenuItem
         Caption = 'Empresas'
-        ImageIndex = 2
+        ImageIndex = 3
         OnClick = Empresas1Click
       end
       object Funcionrios1: TMenuItem
@@ -417,18 +417,21 @@ object frmMenu: TfrmMenu
       Caption = 'C'#225'lculos'
       object FolhaMensal1: TMenuItem
         Caption = 'Folha Mensal'
-        ImageIndex = 1
+        ImageIndex = 2
         OnClick = FolhaMensal1Click
       end
     end
     object Consultas1: TMenuItem
       Caption = 'Consultas'
+      ImageIndex = 1
       object Lucroatual1: TMenuItem
         Caption = 'Lucro atual'
+        ImageIndex = 1
         OnClick = Lucroatual1Click
       end
       object Relatriocomparativo1: TMenuItem
         Caption = 'Relat'#243'rio comparativo'
+        ImageIndex = 1
         OnClick = Relatriocomparativo1Click
       end
     end
