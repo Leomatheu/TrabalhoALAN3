@@ -16,9 +16,11 @@ uses
        procedure pCadastroDeFuncionario;
        procedure pCadastroLancamento;
        procedure pFormLucroAtual;
+       procedure pFormRelComparativo;
        function fTiraPonto(prValor : String): String;
-       function fGetLucroReal(prReferencia : String) : String;
+       function fGetLucroAtual(prReferencia : String) : String;
        function fGetLucroSContratar(prReferencia : String) : String;
+       function fGetLucroContratando(prReferencia : String) : String;
   end;
 
 implementation
@@ -26,7 +28,36 @@ implementation
 
 { TControler }
 
-function TControler.fGetLucroReal(prReferencia: String): String;
+function TControler.fGetLucroContratando(prReferencia: String): String;
+var
+   BD : TDataModule1;
+   mediaSalarial, somaSalarial, custoContratando, faturamentoReal, custoOpTotal, custoOpNewMaquina,
+   custoOldMaquina, lucroTotalCont, fatOldMaquina, fatNewMaquina  : Double;
+   retorno : String;
+begin
+  BD :=  TDataModule1.Create(nil);
+
+  mediaSalarial := strToInt(BD.fSelecaoMediaSalarial);
+  somaSalarial := strToInt(BD.fSelecaoSomaSalario(prReferencia));
+
+  custoContratando :=  mediaSalarial +  somaSalarial;
+  faturamentoReal := strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
+  custoOpTotal :=  faturamentoReal * StrToInt(RelComparativo.edtCustoOp.Text) / 100;
+  custoOldMaquina :=  custoOpTotal / StrToFloat(RelComparativo.edtQtdMaquina.Text);
+  custoOpNewMaquina :=  custoOldMaquina - (custoOldMaquina * (strToFloat(RelComparativo.edtCustoOpNovaMaquina.Text)/ 100));
+  fatOldMaquina := faturamentoReal / strToFloat(RelComparativo.edtQtdMaquina.Text);
+  fatNewMaquina := (fatOldMaquina * (strToFloat(RelComparativo.edtFatNovaMaquina.Text) / 100)) +  fatOldMaquina;
+
+  lucroTotalCont :=  (faturamentoReal + fatNewMaquina)- custoOpTotal - custoOpNewMaquina - custoContratando;
+
+  retorno := 'Custo da mão de obra contratando: '+ FormatFloat('R$ #,###,#0.00', custoContratando) + #13#10 +
+             'Lucro total contratando: '+ FormatFloat('R$ #,###,#0.00', lucroTotalCont);
+
+  result := retorno;
+
+end;
+
+function TControler.fGetLucroAtual(prReferencia: String): String;
 var
    BD : TDataModule1;
    faturamentoReal, maoDeObraTotal, custoOp, lucroAtual : Double;
@@ -36,7 +67,7 @@ begin
   BD := TDataModule1.Create(nil);
   faturamentoReal := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
   maoDeObraTotal := StrToFloat(BD.fSelecaoSomaSalario(prReferencia));
-  custoOp := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * StrToInt(frmLucroAtual.edtCustoOp.Text) / 100;
+  custoOp := faturamentoReal * StrToInt(frmLucroAtual.edtCustoOp.Text) / 100;
   lucroAtual := faturamentoReal - maoDeObraTotal - custoOp;
 
   retorno := 'Faturamento real : ' + FormatFloat('R$ #,###,#0.00', faturamentoReal) + #13#10 +
@@ -61,11 +92,11 @@ begin
   faturamento :=  strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
   fatOldMaquina := faturamento / strToFloat(RelComparativo.edtQtdMaquina.Text);
   fatNewMaquina := (fatOldMaquina * strToFloat(RelComparativo.edtFatNovaMaquina.Text) / 100) +  fatOldMaquina;
-  custoOpTotal :=  strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * StrToInt(RelComparativo.edtCustoOp.Text) / 100;
-  custoOpNewMaquina :=  custoOldMaquina - (custoOldMaquina * strToFloat(RelComparativo.edtCustoOpNovaMaquina.Text)/ 100);
+  custoOpTotal :=  faturamento * StrToInt(RelComparativo.edtCustoOp.Text) / 100;
   custoOldMaquina :=  custoOpTotal / StrToFloat(RelComparativo.edtQtdMaquina.Text);
+  custoOpNewMaquina :=  custoOldMaquina - (custoOldMaquina * strToFloat(RelComparativo.edtCustoOpNovaMaquina.Text)/ 100);
   mediaCustoMaoDeObra :=  StrToFloat(BD.fSelecaoSomaSalario(RelComparativo.edtRef.Text)) / StrToFloat(RelComparativo.edtQtdMaquina.Text);
-  mediaCustoComAumento := mediaCustoMaoDeObra + (mediaCustoMaoDeObra * StrToFloat(RelComparativo.edtAumentoFunc.Text));
+  mediaCustoComAumento := mediaCustoMaoDeObra *  (StrToFloat(RelComparativo.edtAumentoFunc.Text)/100) + mediaCustoMaoDeObra;
   custoMaoDeObraComAumento :=  mediaCustoComAumento * StrToFloat(RelComparativo.edtQtdMaquina.Text);
 
 
@@ -74,7 +105,7 @@ begin
              'Custo op. nova máquina: '+ FormatFloat('R$ #,###,#0.00', custoOpNewMaquina) + #13#10 +
              'Custo mão de obra com aumento: '+ FormatFloat('R$ #,###,#0.00', custoMaoDeObraComAumento) + #13#10 +
              #13#10+
-             'Lucro sem contratação: ' + FormatFloat('R$ #,###,#0.00', faturamento + fatNewMaquina - custoOpNewMaquina - custoMaoDeObraComAumento);
+             'Lucro sem contratação: ' + FormatFloat('R$ #,###,#0.00', faturamento + fatNewMaquina - custoOpTotal - custoOpNewMaquina - custoMaoDeObraComAumento) + #13#10;
 
   result := retorno;
 end;
@@ -188,6 +219,13 @@ procedure TControler.pFormLucroAtual;
 begin
       frmLucroAtual := TfrmLucroAtual.Create(nil);
       frmLucroAtual.ShowModal;
+end;
+
+
+procedure TControler.pFormRelComparativo;
+begin
+   RelComparativo := TRelComparativo.Create(nil);
+   RelComparativo.ShowModal;
 end;
 
 end.

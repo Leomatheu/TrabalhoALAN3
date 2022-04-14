@@ -2,7 +2,7 @@ object RelComparativo: TRelComparativo
   Left = 0
   Top = 0
   Caption = 'Relat'#243'rio comparativo'
-  ClientHeight = 488
+  ClientHeight = 615
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -15,7 +15,7 @@ object RelComparativo: TRelComparativo
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 403
+    Top = 530
     Width = 505
     Height = 85
     Align = alBottom
@@ -24,7 +24,6 @@ object RelComparativo: TRelComparativo
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 246
     object Image2: TImage
       Left = 43
       Top = 32
@@ -1027,6 +1026,7 @@ object RelComparativo: TRelComparativo
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnCalcularClick
     end
     object btnCancelar: TButton
       Left = 230
@@ -1041,6 +1041,7 @@ object RelComparativo: TRelComparativo
       Font.Style = []
       ParentFont = False
       TabOrder = 1
+      OnClick = btnCancelarClick
     end
     object btnExport: TButton
       Left = 382
@@ -1061,7 +1062,7 @@ object RelComparativo: TRelComparativo
     Left = 0
     Top = 0
     Width = 505
-    Height = 403
+    Height = 530
     Align = alClient
     Caption = 'pnFLucroAtual'
     Color = clActiveCaption
@@ -1273,6 +1274,16 @@ object RelComparativo: TRelComparativo
       Width = 137
       Height = 21
       TabOrder = 7
+    end
+    object mmResultado: TMemo
+      Left = 8
+      Top = 400
+      Width = 489
+      Height = 124
+      Enabled = False
+      Lines.Strings = (
+        '')
+      TabOrder = 8
     end
   end
   object SaveDialog1: TSaveDialog

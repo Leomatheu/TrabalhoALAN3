@@ -15,7 +15,8 @@ uses
   DAO in '..\DAO\DAO.pas' {DataModule1: TDataModule},
   ConsultaFolhas in '..\Forms\ConsultaFolhas.pas' {Form1},
   FormLucroAtual in '..\Forms\FormLucroAtual.pas' {frmLucroAtual},
-  OKCANCL1 in 'c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS' {OKBottomDlg};
+  OKCANCL1 in 'c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS' {OKBottomDlg},
+  FormRelComparativo in '..\Forms\FormRelComparativo.pas' {RelComparativo};
 
 {$R *.res}
 
@@ -25,5 +26,6 @@ begin
   Application.CreateForm(TfrmMenu, frmMenu);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfrmLucroAtual, frmLucroAtual);
+  Application.CreateForm(TRelComparativo, RelComparativo);
   Application.Run;
 end.

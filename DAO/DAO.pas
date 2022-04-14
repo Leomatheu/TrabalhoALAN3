@@ -31,6 +31,7 @@ type
     function fSelecaoFuncionario(codigoEmpresa : integer) : Tlist;
     function fSelecaoSomaSalario(referencia : string) : String;
     function fSelecaoMediaHoras(referencia : String) : String;
+    function fSelecaoMediaSalarial : String;
 
   end;
 
@@ -156,6 +157,29 @@ begin
    except
       on e: Exception do
          ShowMessage('Falha na consulta da média de horas : '+ e.ToString);
+   end;
+end;
+
+function TDataModule1.fSelecaoMediaSalarial: String;
+var
+   query : TFDQuery;
+   retorno : String;
+begin
+   query := TFDQuery.Create(nil);
+   query.Connection := DataModule1.Conexao;
+
+   query.SQL.Add('select sum(cadfuncionario.valorHora)/(select count(cadfuncionario.codigoFuncionario)from cadfuncionario)'+'*(select sum(lancamentosmensais.horaTrabalhada)/(select count(cadfuncionario.codigoFuncionario)from cadfuncionario) from lancamentosmensais)from cadfuncionario;');
+
+   try
+     query.Open;
+     query.First;
+     retorno := query.Fields[0].AsString;
+     result := retorno;
+
+   except
+     on e: Exception do
+       ShowMessage('Falha na consulta da média salarial' + e.ToString);
+
    end;
 end;
 

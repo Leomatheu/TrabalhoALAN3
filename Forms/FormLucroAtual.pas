@@ -54,8 +54,7 @@ var
    controler : TControler;
 begin
    controler := TControler.create;
-   //self.mmResultado.Lines.Add(controler.fGetLucroReal(self.edtRef));
-   self.mmResultado.Text := controler.fGetLucroReal(self.edtRef.Text);
+   self.mmResultado.Text := controler.fGetLucroAtual(self.edtRef.Text);
 end;
 
 procedure TfrmLucroAtual.btnCancelarClick(Sender: TObject);

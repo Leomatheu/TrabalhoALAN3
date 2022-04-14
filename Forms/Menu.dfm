@@ -427,6 +427,10 @@ object frmMenu: TfrmMenu
         Caption = 'Lucro atual'
         OnClick = Lucroatual1Click
       end
+      object Relatriocomparativo1: TMenuItem
+        Caption = 'Relat'#243'rio comparativo'
+        OnClick = Relatriocomparativo1Click
+      end
     end
     object Sair1: TMenuItem
       Caption = 'Sair'

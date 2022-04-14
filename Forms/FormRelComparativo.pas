@@ -35,6 +35,9 @@ type
     edtCustoOpNovaMaquina: TEdit;
     Label8: TLabel;
     edtAumentoFunc: TEdit;
+    mmResultado: TMemo;
+    procedure btnCalcularClick(Sender: TObject);
+    procedure btnCancelarClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -45,7 +48,25 @@ var
   RelComparativo: TRelComparativo;
 
 implementation
+uses
+   uControler;
 
 {$R *.dfm}
+
+procedure TRelComparativo.btnCalcularClick(Sender: TObject);
+var
+   controler : TControler;
+begin
+  controler.Create;
+
+  self.mmResultado.Lines.Text := controler.fGetLucroSContratar(self.edtRef.Text);
+  self.mmResultado.Lines.Text := controler.fGetLucroContratando(self.edtRef.Text);
+
+end;
+
+procedure TRelComparativo.btnCancelarClick(Sender: TObject);
+begin
+   self.Close;
+end;
 
 end.
