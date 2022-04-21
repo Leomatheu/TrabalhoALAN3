@@ -14,37 +14,37 @@ object DataModule1: TDataModule1
     Connected = True
     LoginPrompt = False
     Transaction = transacoes
-    Left = 32
-    Top = 48
+    Left = 24
+    Top = 16
   end
   object transacoes: TFDTransaction
     Connection = Conexao
-    Left = 96
-    Top = 48
+    Left = 80
+    Top = 16
   end
   object query: TFDQuery
     Connection = Conexao
     Transaction = transacoes
-    Left = 168
-    Top = 56
+    Left = 128
+    Top = 16
   end
   object Driver: TFDPhysMySQLDriverLink
     VendorLib = 
       'C:\Users\progvisual33\Documents\Pessoal\Exerc'#237'cios Aula\PZIMexer' +
       'cicio\DELPHI\TrabalhoAlan\Projeto\Win32\Debug\libmysql.dll'
-    Left = 32
-    Top = 112
+    Left = 176
+    Top = 16
   end
   object DataSet: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 176
-    Top = 128
+    Left = 88
+    Top = 72
   end
   object listaImagem: TImageList
     Width = 32
-    Left = 104
-    Top = 120
+    Left = 24
+    Top = 72
     Bitmap = {
       494C010104000800040020001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000800000002000000001002000000000000040

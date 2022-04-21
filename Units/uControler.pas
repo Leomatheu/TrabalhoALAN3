@@ -7,7 +7,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.Imaging.jpeg,
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual, FormRelComparativo;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual, FormRelComparativo, FormFiltroGrafico;
 
   Type TControler = class
 
@@ -17,6 +17,7 @@ uses
        procedure pCadastroLancamento;
        procedure pFormLucroAtual;
        procedure pFormRelComparativo;
+       procedure pFormFiltrosGrafico;
        function fTiraPonto(prValor : String): String;
        function fGetLucroAtual(prReferencia : String) : String;
        function fGetLucroSContratar(prReferencia : String) : String;
@@ -214,10 +215,16 @@ begin
 end;
 
 
+procedure TControler.pFormFiltrosGrafico;
+begin
+   frmFiltoGrafico := TfrmFiltoGrafico.Create(nil);
+   frmFiltoGrafico.ShowModal;
+end;
+
 procedure TControler.pFormLucroAtual;
 begin
-      frmLucroAtual := TfrmLucroAtual.Create(nil);
-      frmLucroAtual.ShowModal;
+   frmLucroAtual := TfrmLucroAtual.Create(nil);
+   frmLucroAtual.ShowModal;
 end;
 
 

@@ -26,7 +26,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 463
     object Image2: TImage
       Left = 83
       Top = 14
@@ -999,7 +998,6 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Height = -11
       Font.Name = 'Arial Black'
       Font.Style = []
-      Images = DataModule1.listaImagens
       ParentFont = False
       TabOrder = 1
       OnClick = btnCancelarClick
@@ -1023,8 +1021,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentFont = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = -6
-    ExplicitHeight = 561
     object Label2: TLabel
       Left = 31
       Top = 73

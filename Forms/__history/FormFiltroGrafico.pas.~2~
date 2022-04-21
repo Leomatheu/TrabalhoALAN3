@@ -1,0 +1,34 @@
+unit FormFiltroGrafico;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls;
+
+type
+  TForm3 = class(TForm)
+    pnAtributosEmpresa: TPanel;
+    Label2: TLabel;
+    Image1: TImage;
+    edtDescricao: TEdit;
+    pnBotoes: TPanel;
+    Image2: TImage;
+    Image3: TImage;
+    btnSalvar: TButton;
+    btnCancelar: TButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.dfm}
+
+end.

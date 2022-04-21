@@ -434,6 +434,11 @@ object frmMenu: TfrmMenu
         ImageIndex = 1
         OnClick = Relatriocomparativo1Click
       end
+      object Grficopagamentos1: TMenuItem
+        Caption = 'Gr'#225'fico pagamentos'
+        ImageIndex = 1
+        OnClick = Grficopagamentos1Click
+      end
     end
     object Sair1: TMenuItem
       Caption = 'Sair'

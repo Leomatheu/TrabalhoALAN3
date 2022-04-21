@@ -72,7 +72,7 @@ procedure TfrmLucroAtual.FormActivate(Sender: TObject);
 begin
    self.edtCustoOp.Text := '';
    self.edtRef.Text := '';
-   self.edtFat.Text := '';
+   self.edtFat.Clear;
 
    self.edtRef.SetFocus;
 end;

@@ -13,8 +13,8 @@
     <Transaction>2022/03/17 18:39:43.000.695,C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.pas=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Forms\LancamentosMensais.pas</Transaction>
     <Transaction>2022/03/17 18:39:43.000.695,C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.dfm=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Forms\LancamentosMensais.dfm</Transaction>
     <Transaction>2022/03/17 19:43:16.000.851,=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.pas</Transaction>
-    <Transaction>2022/03/17 19:43:41.000.294,C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.dfm=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Forms\LancamentoMensal.dfm</Transaction>
     <Transaction>2022/03/17 19:43:41.000.294,C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.pas=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Forms\LancamentoMensal.pas</Transaction>
+    <Transaction>2022/03/17 19:43:41.000.294,C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.dfm=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Forms\LancamentoMensal.dfm</Transaction>
     <Transaction>2022/03/17 19:49:03.000.336,=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.pas</Transaction>
     <Transaction>2022/03/17 19:49:22.000.814,C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.pas=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Units\uLancamentosMensais.pas</Transaction>
     <Transaction>2022/03/17 21:25:25.000.365,=C:\Users\leonardo.roa\Documents\ProjetoAlan\TrabalhoALAN3\Projeto\Unit1.pas</Transaction>
@@ -35,12 +35,19 @@
     <Transaction>2022/04/06 18:51:43.000.914,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit1.pas=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\ConsultaFolhas.pas</Transaction>
     <Transaction>2022/04/06 18:51:43.000.914,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit1.dfm=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\ConsultaFolhas.dfm</Transaction>
     <Transaction>2022/04/07 18:49:34.000.946,=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.pas</Transaction>
-    <Transaction>2022/04/07 18:52:03.000.604,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.dfm=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormLucroAtual.dfm</Transaction>
     <Transaction>2022/04/07 18:52:03.000.604,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.pas=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormLucroAtual.pas</Transaction>
+    <Transaction>2022/04/07 18:52:03.000.604,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.dfm=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormLucroAtual.dfm</Transaction>
     <Transaction>2022/04/08 21:50:22.000.271,=c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS</Transaction>
     <Transaction>2022/04/08 21:50:22.000.640,=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\OKCNHLP1.pas</Transaction>
     <Transaction>2022/04/10 16:30:33.000.314,=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.pas</Transaction>
     <Transaction>2022/04/10 16:30:51.000.581,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.dfm=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormRelComparativo.dfm</Transaction>
     <Transaction>2022/04/10 16:30:51.000.581,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.pas=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormRelComparativo.pas</Transaction>
+    <Transaction>2022/04/21 12:18:08.659,=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.pas</Transaction>
+    <Transaction>2022/04/21 12:48:17.651,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormGrafico.pas=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.pas</Transaction>
+    <Transaction>2022/04/21 12:48:17.651,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormGrafico.dfm=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit2.dfm</Transaction>
+    <Transaction>2022/04/21 12:48:39.901,=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit1.pas</Transaction>
+    <Transaction>2022/04/21 12:49:36.974,=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit3.pas</Transaction>
+    <Transaction>2022/04/21 12:49:53.141,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormFiltroGrafico.pas=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit3.pas</Transaction>
+    <Transaction>2022/04/21 12:49:53.141,C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Forms\FormFiltroGrafico.dfm=C:\Users\progvisual33\Documents\Pessoal\Exercícios Aula\PZIMexercicio\DELPHI\TrabalhoAlan\Projeto\Unit3.dfm</Transaction>
   </Transactions>
 </BorlandProject>
