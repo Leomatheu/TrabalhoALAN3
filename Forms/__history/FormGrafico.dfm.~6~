@@ -1,0 +1,68 @@
+object FormApresentacaoGrafico: TFormApresentacaoGrafico
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Gr'#225'fico pagamentos mensais por funcion'#225'rio'
+  ClientHeight = 493
+  ClientWidth = 657
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnBotoes: TPanel
+    Left = 0
+    Top = 384
+    Width = 657
+    Height = 109
+    Align = alBottom
+    Caption = 'pnBotoes'
+    Color = clActiveCaption
+    ParentBackground = False
+    ShowCaption = False
+    TabOrder = 0
+  end
+  object pnGrafico: TPanel
+    Left = 0
+    Top = 0
+    Width = 657
+    Height = 384
+    Align = alClient
+    Caption = 'pnGrafico'
+    ShowCaption = False
+    TabOrder = 1
+    ExplicitWidth = 505
+    ExplicitHeight = 296
+    object Grafico: TChart
+      Left = 1
+      Top = 1
+      Width = 655
+      Height = 382
+      Title.Font.Color = clRed
+      Title.Font.Height = -12
+      Title.Font.Style = [fsBold]
+      Title.Text.Strings = (
+        'Gr'#225'fico pagamentos mensais')
+      Align = alClient
+      Color = clActiveCaption
+      TabOrder = 0
+      ExplicitLeft = 16
+      ExplicitTop = 8
+      ExplicitWidth = 593
+      ExplicitHeight = 305
+      DefaultCanvas = 'TGDIPlusCanvas'
+      ColorPaletteIndex = 13
+      object Series1: TBarSeries
+        XValues.Name = 'X'
+        XValues.Order = loAscending
+        YValues.Name = 'Bar'
+        YValues.Order = loNone
+      end
+    end
+  end
+end

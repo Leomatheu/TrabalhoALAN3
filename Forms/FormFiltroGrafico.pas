@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls;
+  Vcl.ExtCtrls, Vcl.Mask;
 
 type
   TfrmFiltoGrafico = class(TForm)
@@ -20,10 +20,17 @@ type
     cbFuncionario: TComboBox;
     Label1: TLabel;
     cbEmpresa: TComboBox;
+    Label3: TLabel;
+    Label4: TLabel;
+    edtData01: TMaskEdit;
+    edtData02: TMaskEdit;
+    ckTodosFuncs: TCheckBox;
     procedure btnCancelarClick(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure cbEmpresaChange(Sender: TObject);
     procedure pPopulaComBoxFuncionario(prEmpresa : integer);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure ckTodosFuncsClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,7 +42,7 @@ var
 
 implementation
 uses
-   DAO, uEmpresa, uFuncionario;
+   DAO, uEmpresa, uFuncionario, uControler;
 
 {$R *.dfm}
 
@@ -44,9 +51,26 @@ begin
   self.Close;
 end;
 
+procedure TfrmFiltoGrafico.btnSalvarClick(Sender: TObject);
+var
+   controler : TControler;
+begin
+  controler := TControler.Create;
+  controler.pCriaGrafico;
+end;
+
 procedure TfrmFiltoGrafico.cbEmpresaChange(Sender: TObject);
 begin
    pPopulaComBoxFuncionario(TEmpresa(self.cbEmpresa.Items.Objects[cbEmpresa.ItemIndex]).getCodEmp);
+end;
+
+procedure TfrmFiltoGrafico.ckTodosFuncsClick(Sender: TObject);
+begin
+   if(self.ckTodosFuncs.Checked)then
+     begin
+       self.cbFuncionario.Enabled := false;
+       self.edtData02.Enabled := false;
+     end;
 end;
 
 procedure TfrmFiltoGrafico.FormActivate(Sender: TObject);
@@ -62,7 +86,7 @@ begin
         self.cbEmpresa.AddItem(IntToStr(TEmpresa(listaEmpresa[i]).getCodEmp)+'-'+TEmpresa(listaEmpresa[i]).getDescEmp, listaEmpresa[i]);
      end;
 
-  FreeAndNil(listaEmpresa);
+  listaEmpresa.Clear;
 end;
 
 procedure TfrmFiltoGrafico.pPopulaComBoxFuncionario(prEmpresa : integer);
@@ -78,7 +102,7 @@ begin
        self.cbFuncionario.AddItem(intToStr(TFuncionario(listaFuncionario[i]).getCodFunc)+' - '+TFuncionario(listaFuncionario[i]).getNomeFunc, listaFuncionario[i]);
      end;
 
-     FreeAndNil(listaFuncionario);
+  listaFuncionario.Clear;
 end;
 
 end.

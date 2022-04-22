@@ -8,11 +8,12 @@ uses
   VCLTee.Series, VCLTee.TeeProcs, VCLTee.Chart, Vcl.ExtCtrls;
 
 type
-  TForm2 = class(TForm)
-    pnBotoes: TPanel;
+  TFormApresentacaoGrafico = class(TForm)
     pnGrafico: TPanel;
-    Chart1: TChart;
+    Grafico: TChart;
     Series1: TBarSeries;
+    Series2: THorizBarSeries;
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -20,10 +21,24 @@ type
   end;
 
 var
-  Form2: TForm2;
+  FormApresentacaoGrafico: TFormApresentacaoGrafico;
 
 implementation
+uses
+  FormFiltroGrafico;
 
 {$R *.dfm}
+
+procedure TFormApresentacaoGrafico.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  frmFiltoGrafico.edtData01.Clear;
+  frmFiltoGrafico.edtData02.Clear;
+  frmFiltoGrafico.cbFuncionario.Clear;
+  frmFiltoGrafico.cbEmpresa.Clear;
+  frmFiltoGrafico.ckTodosFuncs.Checked := false;
+
+  //frmFiltoGrafico.FormActivate;
+end;
 
 end.

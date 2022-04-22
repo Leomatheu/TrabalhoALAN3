@@ -1,5 +1,6 @@
 unit uControler;
 
+
 interface
 
 uses
@@ -7,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
   Vcl.Imaging.jpeg,
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual, FormRelComparativo, FormFiltroGrafico;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual, FormRelComparativo, FormFiltroGrafico, FormGrafico;
 
   Type TControler = class
 
@@ -18,10 +19,13 @@ uses
        procedure pFormLucroAtual;
        procedure pFormRelComparativo;
        procedure pFormFiltrosGrafico;
+       procedure pFormLancamentosMensais;
+       procedure pCriaGrafico;
        function fTiraPonto(prValor : String): String;
        function fGetLucroAtual(prReferencia : String) : String;
        function fGetLucroSContratar(prReferencia : String) : String;
        function fGetLucroContratando(prReferencia : String) : String;
+       function fValidaCampos(Key : char; Text : String; Tag : Integer) : Boolean;
   end;
 
 implementation
@@ -124,6 +128,25 @@ begin
        Result := prValor;
 end;
 
+function TControler.fValidaCampos(Key: char; Text: String;
+  Tag: Integer): Boolean;
+begin
+   If (key = #13) or (key = #9) then
+   Begin
+      Key:= #0;
+      if not(Text = '') or (Tag = 1) then
+         begin
+           //Perform(Wm_NextDlgCtl,0,0);
+           result := true;
+         end
+      else
+         begin
+           ShowMessage('Campo obrigatório não pode ser vazio !!');
+           result := false;
+         end;
+   end;
+end;
+
 procedure TControler.pCadastroDeEmpresa;
 var
    objEmpresa : TEmpresa;
@@ -143,9 +166,6 @@ begin
        BD := TDataModule1.Create(nil);
        BD.pInsertEmpresa(objEmpresa);
      end;
-
-
-
    FreeAndNil(frmEmpresa);
 end;
 
@@ -196,29 +216,73 @@ var
    i : integer;
    liquido : String;
 begin
-   if(frmLancamentosMensais = nil)then
-     frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
+   objLancamento := TLancamento.Create;
 
-   if(frmLancamentosMensais.ShowModal = mrOk)then
-     begin
-       objLancamento := TLancamento.Create;
-
-       objLancamento.setEmpresa(TEmpresa(frmLancamentosMensais.cbEmpresa.Items.Objects[frmLancamentosMensais.cbEmpresa.ItemIndex]).getCodEmp);
-       objLancamento.setFuncionario(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getCodFunc);
-       objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
-       objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
-       liquido := fTiraPonto(Copy(frmLancamentosMensais.edtLiquido.Text, 3, 11));
-       objLancamento.setLiquido(StrToFloat(Copy(liquido, 1, 5)));
-       BD := TDataModule1.Create(nil);
-       BD.pInsereLancamento(objLancamento);
-     end;
+   objLancamento.setEmpresa(TEmpresa(frmLancamentosMensais.cbEmpresa.Items.Objects[frmLancamentosMensais.cbEmpresa.ItemIndex]).getCodEmp);
+   objLancamento.setFuncionario(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getCodFunc);
+   objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
+   objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
+   liquido := fTiraPonto(Copy(frmLancamentosMensais.edtLiquido.Text, 3, 11));
+   objLancamento.setLiquido(StrToFloat(Copy(liquido, 1, 5)));
+   BD := TDataModule1.Create(nil);
+   BD.pInsereLancamento(objLancamento);
 end;
 
+
+procedure TControler.pCriaGrafico;
+var
+  BD : TDataModule1;
+  lista : Tlist;
+  i, funcionario : integer;
+
+begin
+  BD := TDataModule1.Create(nil);
+  FormApresentacaoGrafico.Series2.Clear;
+  FormApresentacaoGrafico.Series1.Clear;
+  if not(frmFiltoGrafico.ckTodosFuncs.Checked)then
+     begin
+        funcionario := TFuncionario(frmFiltoGrafico.cbFuncionario.Items.Objects[frmFiltoGrafico.cbFuncionario.ItemIndex]).getCodFunc;
+        lista := BD.fSelecaoLancamentosMensais(frmFiltoGrafico.edtData01.Text, frmFiltoGrafico.edtData02.Text, funcionario);
+
+        for i := 0 to lista.Count -1 do
+          begin
+            FormApresentacaoGrafico.Caption := 'GRÁFICO PAGAMENTOS MENSAIS FUNC. '+ BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario);
+            FormApresentacaoGrafico.Grafico.Title.Caption := 'Pagamentos mensais funcionário ' + BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario);
+            FormApresentacaoGrafico.Series1.Marks.Visible := false;
+            FormApresentacaoGrafico.Grafico.Title.Font.Color := clBlack;
+            FormApresentacaoGrafico.Grafico.Title.Font.Size := 10;
+            FormApresentacaoGrafico.Series1.AddBar(TLancamento(lista[i]).getLiquido, TLancamento(lista[i]).getComp, clYellow);
+          end;
+     end
+  else
+     begin
+       lista := BD.fSelecaoLancamentosMensaisRef(frmFiltoGrafico.edtData01.text);
+
+       for i := 0 to lista.Count -1 do
+         begin
+           FormApresentacaoGrafico.Caption := 'GRÁFICO PAGAMENTOS MENSAIS POR REFERÊNCIA';
+           FormApresentacaoGrafico.Grafico.Title.Caption := 'Pagamentos realizados em ' + TLancamento(lista[i]).getComp;
+           FormApresentacaoGrafico.Grafico.Title.Font.Color := clBlack;
+           FormApresentacaoGrafico.Grafico.Title.Font.Size := 10;
+           FormApresentacaoGrafico.Series2.Marks.Text := BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario);
+           FormApresentacaoGrafico.Series2.AddBar(TLancamento(lista[i]).getLiquido, BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario), clYellow);
+         end;
+     end;
+
+
+  FormApresentacaoGrafico.ShowModal;
+end;
 
 procedure TControler.pFormFiltrosGrafico;
 begin
    frmFiltoGrafico := TfrmFiltoGrafico.Create(nil);
    frmFiltoGrafico.ShowModal;
+end;
+
+procedure TControler.pFormLancamentosMensais;
+begin
+  frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
+  frmLancamentosMensais.ShowModal;
 end;
 
 procedure TControler.pFormLucroAtual;

@@ -15,7 +15,7 @@ uses
   FormLucroAtual in '..\Forms\FormLucroAtual.pas' {frmLucroAtual},
   OKCANCL1 in 'c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS' {OKBottomDlg},
   FormRelComparativo in '..\Forms\FormRelComparativo.pas' {RelComparativo},
-  FormGrafico in '..\Forms\FormGrafico.pas' {Form2},
+  FormGrafico in '..\Forms\FormGrafico.pas' {FormApresentacaoGrafico},
   FormFiltroGrafico in '..\Forms\FormFiltroGrafico.pas' {frmFiltoGrafico};
 
 {$R *.res}
@@ -27,7 +27,7 @@ begin
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfrmLucroAtual, frmLucroAtual);
   Application.CreateForm(TRelComparativo, RelComparativo);
-  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TFormApresentacaoGrafico, FormApresentacaoGrafico);
   Application.CreateForm(TfrmFiltoGrafico, frmFiltoGrafico);
   Application.Run;
 end.

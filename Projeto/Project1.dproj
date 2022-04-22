@@ -147,7 +147,7 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Forms\FormGrafico.pas">
-            <Form>Form2</Form>
+            <Form>FormApresentacaoGrafico</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="..\Forms\FormFiltroGrafico.pas">

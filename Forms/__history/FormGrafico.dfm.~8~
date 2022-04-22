@@ -1,0 +1,78 @@
+object FormApresentacaoGrafico: TFormApresentacaoGrafico
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Gr'#225'fico pagamentos mensais por funcion'#225'rio'
+  ClientHeight = 493
+  ClientWidth = 870
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  PixelsPerInch = 96
+  TextHeight = 13
+  object pnGrafico: TPanel
+    Left = 0
+    Top = 0
+    Width = 870
+    Height = 493
+    Align = alClient
+    Caption = 'pnGrafico'
+    ShowCaption = False
+    TabOrder = 0
+    ExplicitWidth = 505
+    ExplicitHeight = 296
+    object Grafico: TChart
+      Left = 1
+      Top = 1
+      Width = 868
+      Height = 491
+      Title.Font.Color = clRed
+      Title.Font.Height = -12
+      Title.Font.Style = [fsBold]
+      View3DOptions.OrthoAngle = 135
+      View3DOptions.Zoom = 102
+      Align = alClient
+      Color = 16759991
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = -4
+      ExplicitWidth = 655
+      ExplicitHeight = 422
+      DefaultCanvas = 'TGDIPlusCanvas'
+      PrintMargins = (
+        15
+        18
+        15
+        18)
+      ColorPaletteIndex = 13
+      object Series1: TBarSeries
+        BarBrush.BackColor = clWhite
+        BarBrush.Gradient.EndColor = 10708548
+        BarBrush.Gradient.StartColor = 10708548
+        BarBrush.Gradient.Visible = True
+        BarPen.Color = clDefault
+        ColorEachPoint = True
+        HorizAxis = aTopAxis
+        Marks.ChildLayout = slLeftRight
+        Marks.TextAlign = taLeftJustify
+        BarWidthPercent = 50
+        Gradient.EndColor = 10708548
+        Gradient.StartColor = 10708548
+        Gradient.Visible = True
+        MultiBar = mbSideAll
+        Sides = 33
+        TickLines.Color = clDefault
+        XValues.DateTime = True
+        XValues.Name = 'X'
+        XValues.Order = loNone
+        YValues.Name = 'Bar'
+        YValues.Order = loNone
+      end
+    end
+  end
+end

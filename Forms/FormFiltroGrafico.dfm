@@ -2,9 +2,9 @@ object frmFiltoGrafico: TfrmFiltoGrafico
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu]
-  Caption = 'Gr'#225'fico pagamento mensal'
-  ClientHeight = 244
-  ClientWidth = 505
+  Caption = 'Gr'#225'fico pagamentos'
+  ClientHeight = 355
+  ClientWidth = 514
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,20 +18,20 @@ object frmFiltoGrafico: TfrmFiltoGrafico
   object pnAtributosEmpresa: TPanel
     Left = 0
     Top = 0
-    Width = 505
-    Height = 159
+    Width = 514
+    Height = 270
     Align = alClient
     Caption = 'pnAtributosEmpresa'
     Color = clActiveCaption
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = -21
-    ExplicitHeight = 252
+    ExplicitWidth = 505
+    ExplicitHeight = 159
     object Label2: TLabel
       Left = 25
-      Top = 101
-      Width = 95
+      Top = 141
+      Width = 77
       Height = 17
       Caption = 'Funcion'#225'rio'
       Font.Charset = DEFAULT_CHARSET
@@ -93,9 +93,35 @@ object frmFiltoGrafico: TfrmFiltoGrafico
       Font.Style = []
       ParentFont = False
     end
+    object Label3: TLabel
+      Left = 25
+      Top = 221
+      Width = 17
+      Height = 17
+      Caption = 'De'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label4: TLabel
+      Left = 177
+      Top = 221
+      Width = 22
+      Height = 17
+      Caption = 'At'#233
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
     object cbFuncionario: TComboBox
       Left = 25
-      Top = 118
+      Top = 158
       Width = 320
       Height = 21
       TabOrder = 0
@@ -108,11 +134,46 @@ object frmFiltoGrafico: TfrmFiltoGrafico
       TabOrder = 1
       OnChange = cbEmpresaChange
     end
+    object edtData01: TMaskEdit
+      Left = 48
+      Top = 220
+      Width = 80
+      Height = 21
+      EditMask = '!99/0000;1; '
+      MaxLength = 7
+      TabOrder = 2
+      Text = '  /    '
+    end
+    object edtData02: TMaskEdit
+      Left = 205
+      Top = 220
+      Width = 80
+      Height = 21
+      EditMask = '!99/0000;1; '
+      MaxLength = 7
+      TabOrder = 3
+      Text = '  /    '
+    end
+    object ckTodosFuncs: TCheckBox
+      Left = 25
+      Top = 96
+      Width = 174
+      Height = 17
+      Caption = 'Todos os funcion'#225'rios'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 4
+      OnClick = ckTodosFuncsClick
+    end
   end
   object pnBotoes: TPanel
     Left = 0
-    Top = 159
-    Width = 505
+    Top = 270
+    Width = 514
     Height = 85
     Align = alBottom
     Caption = 'pnBotoes'
@@ -120,7 +181,8 @@ object frmFiltoGrafico: TfrmFiltoGrafico
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = 146
+    ExplicitTop = 159
+    ExplicitWidth = 505
     object Image2: TImage
       Left = 75
       Top = 32
@@ -1080,6 +1142,7 @@ object frmFiltoGrafico: TfrmFiltoGrafico
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 320

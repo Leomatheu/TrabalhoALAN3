@@ -56,7 +56,7 @@ var
    controler : TControler;
 begin
     controler := TControler.Create;
-    controler.pCadastroLancamento;
+    controler.pFormLancamentosMensais;
 end;
 
 procedure TfrmMenu.Funcionrios1Click(Sender: TObject);
