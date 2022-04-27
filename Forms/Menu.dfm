@@ -389,10 +389,8 @@ object frmMenu: TfrmMenu
         0000000000000000000000000000000000000000000000000000000000000000
         000000000001FFD9}
       Stretch = True
-      ExplicitLeft = 16
-      ExplicitTop = 24
-      ExplicitWidth = 457
-      ExplicitHeight = 361
+      ExplicitLeft = 0
+      ExplicitTop = 8
     end
   end
   object MainMenu1: TMainMenu
