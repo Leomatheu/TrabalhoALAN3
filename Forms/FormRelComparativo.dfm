@@ -1288,7 +1288,7 @@ object RelComparativo: TRelComparativo
   object SaveDialog1: TSaveDialog
     DefaultExt = 'txt'
     Filter = 'Arquivo de texto|*.txt'
-    Left = 472
-    Top = 280
+    Left = 448
+    Top = 328
   end
 end
