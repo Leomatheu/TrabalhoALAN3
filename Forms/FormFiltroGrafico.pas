@@ -31,6 +31,7 @@ type
     procedure pPopulaComBoxFuncionario(prEmpresa : integer);
     procedure btnSalvarClick(Sender: TObject);
     procedure ckTodosFuncsClick(Sender: TObject);
+    procedure pPopulaComboxEmpresa;
   private
     { Private declarations }
   public
@@ -74,9 +75,14 @@ begin
 end;
 
 procedure TfrmFiltoGrafico.FormActivate(Sender: TObject);
+begin
+  self.pPopulaComboxEmpresa;
+end;
+
+procedure TfrmFiltoGrafico.pPopulaComboxEmpresa;
 var
-   i : integer;
-   listaEmpresa : Tlist;
+   listaEmpresa : TList;
+   i: integer;
 begin
   listaEmpresa := DAO.DataModule1.fSelecaoEmpresa;
   self.cbEmpresa.Clear;

@@ -37,6 +37,7 @@ begin
   frmFiltoGrafico.cbFuncionario.Clear;
   frmFiltoGrafico.cbEmpresa.Clear;
   frmFiltoGrafico.ckTodosFuncs.Checked := false;
+  frmFiltoGrafico.pPopulaComboxEmpresa;
 
   //frmFiltoGrafico.FormActivate;
 end;

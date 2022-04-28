@@ -7,10 +7,8 @@ uses
   uEmpresa in '..\Units\uEmpresa.pas',
   uFuncionario in '..\Units\uFuncionario.pas',
   LancamentosMensais in '..\Forms\LancamentosMensais.pas' {frmLancamentosMensais},
-  {$R}
   uLancamentosMensais in '..\Units\uLancamentosMensais.pas' {$R *.res},
   CadEmpresa in '..\Forms\CadEmpresa.pas' {frmEmpresa},
-  {$R}
   uControler in '..\Units\uControler.pas' {$R *.res},
   DAO in '..\DAO\DAO.pas' {DataModule1: TDataModule},
   ConsultaFolhas in '..\Forms\ConsultaFolhas.pas' {Form1},

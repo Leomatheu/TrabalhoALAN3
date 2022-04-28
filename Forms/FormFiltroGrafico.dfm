@@ -26,8 +26,6 @@ object frmFiltoGrafico: TfrmFiltoGrafico
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitWidth = 505
-    ExplicitHeight = 159
     object Label2: TLabel
       Left = 25
       Top = 141
@@ -181,8 +179,6 @@ object frmFiltoGrafico: TfrmFiltoGrafico
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = 159
-    ExplicitWidth = 505
     object Image2: TImage
       Left = 75
       Top = 32

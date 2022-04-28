@@ -46,7 +46,6 @@ object FormApresentacaoGrafico: TFormApresentacaoGrafico
       Align = alClient
       Color = clActiveCaption
       TabOrder = 0
-      ExplicitLeft = 2
       DefaultCanvas = 'TTeeCanvas3D'
       PrintMargins = (
         15

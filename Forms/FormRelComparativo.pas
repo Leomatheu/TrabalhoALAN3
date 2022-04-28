@@ -61,8 +61,6 @@ begin
   controler := TControler.Create;
   text := controler.fGetLucroSContratar(self.edtRef.Text) + controler.fGetLucroContratando(self.edtRef.Text);
   self.mmResultado.Lines.Text := text;
-
-
 end;
 
 procedure TRelComparativo.btnCancelarClick(Sender: TObject);
