@@ -81,6 +81,10 @@ end;
 procedure TfrmCadFuncionario.cbEmpresaChange(Sender: TObject);
 begin
   self.edtNome.SetFocus;
+  self.pnCheckBox.Visible := true;
+  self.pnCheckBox.Enabled := true;
+  self.ckInativo.Enabled := true;
+  self.ckAtivo.Enabled := true;
 end;
 
 procedure TfrmCadFuncionario.edtDataNascChange(Sender: TObject);
@@ -109,12 +113,7 @@ end;
 procedure TfrmCadFuncionario.edtPFKeyPress(Sender: TObject; var Key: Char);
 begin
    if not(self.fValidaCampo(Key, self.edtPF.Text, self.edtPF.Tag))then
-     self.edtPF.SetFocus
-   else
-     begin
-       self.pnCheckBox.Visible := true;
-       self.pnCheckBox.Enabled := true;
-     end;
+     self.edtPF.SetFocus;
 end;
 
 procedure TfrmCadFuncionario.edtRegistroGeralKeyPress(Sender: TObject; var Key: Char);

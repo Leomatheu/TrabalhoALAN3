@@ -12,7 +12,6 @@ object frmCadFuncionario: TfrmCadFuncionario
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = True
-  ShowHint = False
   OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
@@ -975,7 +974,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object btnSalvar: TButton
       Left = 118
-      Top = 14
+      Top = 6
       Width = 75
       Height = 25
       Caption = 'Salvar'
@@ -1022,7 +1021,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentFont = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = 8
     object Label2: TLabel
       Left = 31
       Top = 73
@@ -2413,8 +2411,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       OnKeyPress = edtDataNascKeyPress
     end
     object pnCheckBox: TPanel
-      Left = 30
-      Top = 385
+      Left = 31
+      Top = 386
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
