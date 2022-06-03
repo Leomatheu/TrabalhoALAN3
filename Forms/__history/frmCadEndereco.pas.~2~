@@ -1,0 +1,41 @@
+unit frmCadEndereco;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.Mask;
+
+type
+  TformCadEndereco = class(TForm)
+    pnBotoes: TPanel;
+    Image2: TImage;
+    Image3: TImage;
+    Image5: TImage;
+    btnCalcular: TButton;
+    btnCancelar: TButton;
+    btnExport: TButton;
+    pnFLucroAtual: TPanel;
+    Image1: TImage;
+    edtCEP: TLabeledEdit;
+    edtLogradouro: TLabeledEdit;
+    edtComplemento: TLabeledEdit;
+    edtBairro: TLabeledEdit;
+    edtCidade: TLabeledEdit;
+    edtEstado: TLabeledEdit;
+    edtNumero: TLabeledEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formCadEndereco: TformCadEndereco;
+
+implementation
+
+{$R *.dfm}
+
+end.

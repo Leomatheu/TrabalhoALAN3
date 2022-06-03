@@ -5,10 +5,11 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
-  Vcl.Imaging.jpeg,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Imaging.jpeg,
+
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual, FormRelComparativo, FormFiltroGrafico, FormGrafico;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual,
+  FormRelComparativo, FormFiltroGrafico, FormGrafico, frmCadEndereco, uEndereco;
 
   Type TControler = class
 
@@ -21,11 +22,14 @@ uses
        procedure pFormFiltrosGrafico;
        procedure pFormLancamentosMensais;
        procedure pCriaGrafico;
+       procedure pCadastroDeEndereco;
+       procedure pCadEndereco;
        function fTiraPonto(prValor : String): String;
        function fGetLucroAtual(prReferencia : String) : String;
        function fGetLucroSContratar(prReferencia : String) : String;
        function fGetLucroContratando(prReferencia : String) : String;
        function fValidaCampos(Key : char; Text : String; Tag : Integer) : Boolean;
+
   end;
 
 implementation
@@ -170,6 +174,15 @@ begin
 end;
 
 
+procedure TControler.pCadastroDeEndereco;
+var
+    frmCadEndereco : TFormCadEndereco;
+begin
+    frmCadEndereco := TFormCadEndereco.Create(nil);
+    frmCadEndereco.ShowModal;
+
+end;
+
 procedure TControler.pCadastroDeFuncionario;
 var
    objFuncionario : TFuncionario;
@@ -228,6 +241,14 @@ begin
    BD.pInsereLancamento(objLancamento);
 end;
 
+
+procedure TControler.pCadEndereco;
+var
+   objEndereco : TEndereco;
+   BD : TDataModule1;
+begin
+
+end;
 
 procedure TControler.pCriaGrafico;
 var

@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
-  Vcl.Imaging.jpeg, uControler, DAO;
+  Vcl.Imaging.jpeg, uControler, DAO, frmCadEndereco;
   //Vcl.Imaging.jpeg;
 
 type
@@ -23,6 +23,7 @@ type
     Lucroatual1: TMenuItem;
     Relatriocomparativo1: TMenuItem;
     Grficopagamentos1: TMenuItem;
+    Endereo1: TMenuItem;
     procedure Sair1Click(Sender: TObject);
     procedure Empresas1Click(Sender: TObject);
     procedure Funcionrios1Click(Sender: TObject);
@@ -30,6 +31,7 @@ type
     procedure Lucroatual1Click(Sender: TObject);
     procedure Relatriocomparativo1Click(Sender: TObject);
     procedure Grficopagamentos1Click(Sender: TObject);
+    procedure Endereo1Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -49,6 +51,15 @@ var
 begin
    controler := TControler.Create;
    controler.pCadastroDeEmpresa;
+end;
+
+procedure TfrmMenu.Endereo1Click(Sender: TObject);
+var
+  controler : TControler;
+begin
+  controler := TControler.Create;
+  controler.pCadastroDeEndereco;
+
 end;
 
 procedure TfrmMenu.FolhaMensal1Click(Sender: TObject);
