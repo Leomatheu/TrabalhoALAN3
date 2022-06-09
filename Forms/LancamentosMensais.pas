@@ -36,6 +36,13 @@ type
     procedure cbEmpresaChange(Sender: TObject);
     procedure cbFuncionarioChange(Sender: TObject);
     procedure edtHoraChange(Sender: TObject);
+    procedure cbEmpresaKeyPress(Sender: TObject; var Key: Char);
+    procedure pLimpaCampos;
+    function fValidaCampos(key : Char; text : String; Tag : integer): boolean;
+    procedure cbFuncionarioKeyPress(Sender: TObject; var Key: Char);
+    procedure edtCompetenciaChange(Sender: TObject);
+    procedure edtCompetenciaKeyPress(Sender: TObject; var Key: Char);
+    procedure edtHoraKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -53,19 +60,30 @@ uses
 
 procedure TfrmLancamentosMensais.btnCancelarClick(Sender: TObject);
 begin
-  ModalResult := mrCancel;
+  self.Close;
 end;
 
 procedure TfrmLancamentosMensais.btnSalvarClick(Sender: TObject);
+var
+   controler : TControler;
 begin
-   ModalResult := mrOk;
+   controler := TControler.Create;
+   controler.pCadastroLancamento;
+   self.pLimpaCampos;
+   pPopulaComboBoxEmpresa;
 end;
 
 procedure TfrmLancamentosMensais.cbEmpresaChange(Sender: TObject);
 begin
-   pPopulaComboBoxFuncionario(frmLancamentosMensais.cbEmpresa.ItemIndex +1);
+   pPopulaComboBoxFuncionario(TEmpresa(self.cbEmpresa.Items.Objects[self.cbEmpresa.ItemIndex]).getCodEmp);
 end;
 
+procedure TfrmLancamentosMensais.cbEmpresaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+   if not(self.fValidaCampos(key, self.cbEmpresa.Text, self.cbEmpresa.Tag))then
+     self.cbEmpresa.SetFocus;
+end;
 
 procedure TfrmLancamentosMensais.cbFuncionarioChange(Sender: TObject);
 begin
@@ -73,21 +91,73 @@ begin
    FormatFloat('R$ #,###,#00.00' , TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getValorHora);
 end;
 
+procedure TfrmLancamentosMensais.cbFuncionarioKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+   if not(self.fValidaCampos(key, self.cbFuncionario.Text, self.cbFuncionario.Tag)) then
+     self.cbFuncionario.SetFocus;
+end;
+
+procedure TfrmLancamentosMensais.edtCompetenciaChange(Sender: TObject);
+begin
+   self.edtCompetencia.Tag := 1;
+end;
+
+procedure TfrmLancamentosMensais.edtCompetenciaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+   if not(self.fValidaCampos(key, self.edtCompetencia.Text, self.edtCompetencia.Tag)) then
+     self.edtCompetencia.SetFocus;
+end;
+
 procedure TfrmLancamentosMensais.edtHoraChange(Sender: TObject);
 begin
-  frmLancamentosMensais.edtLiquido.Text := FormatFloat('R$ #,###,#00.00', StrToFloat(frmLancamentosMensais.edtHora.Text) * StrToFloat(Copy(frmLancamentosMensais.edtValorHora.Text, 3, 5)));
+  if not(self.edtHora.Text = '')then
+     frmLancamentosMensais.edtLiquido.Text := FormatFloat('R$ #,###,#00.00', StrToFloat(frmLancamentosMensais.edtHora.Text) * StrToFloat(Copy(frmLancamentosMensais.edtValorHora.Text, 3, 5)));
+end;
+
+procedure TfrmLancamentosMensais.edtHoraKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+   if not(self.fValidaCampos(key, self.edtHora.Text, self.edtHora.Tag))then
+     self.edtHora.SetFocus;
 end;
 
 procedure TfrmLancamentosMensais.FormActivate(Sender: TObject);
 begin
-   frmLancamentosMensais.cbEmpresa.Text := 'Selecione';
-   frmLancamentosMensais.cbFuncionario.Text := 'Selecione';
-   frmLancamentosMensais.edtValorHora.Text := '';
-   frmLancamentosMensais.edtCompetencia.Text := '';
-   frmLancamentosMensais.edtHora.Text := '';
-   frmLancamentosMensais.edtLiquido.Text := '';
-
+   self.pLimpaCampos;
    pPopulaComboBoxEmpresa;
+   self.cbEmpresa.SetFocus;
+end;
+
+function TfrmLancamentosMensais.fValidaCampos(key: Char; text: String;
+  Tag: integer): boolean;
+begin
+      If (key = #13) or (key = #9) then
+   Begin
+      Key:= #0;
+      if not(Text = '') or (Tag = 1) then
+         begin
+           Perform(Wm_NextDlgCtl,0,0);
+           result := true;
+         end
+      else
+         begin
+           ShowMessage('Campo obrigatório não pode ser vazio !!');
+           result := false;
+         end;
+   end;
+end;
+
+procedure TfrmLancamentosMensais.pLimpaCampos;
+begin
+   frmLancamentosMensais.cbEmpresa.Clear;
+   frmLancamentosMensais.cbFuncionario.Clear;
+   frmLancamentosMensais.edtCompetencia.Clear;
+   frmLancamentosMensais.edtValorHora.Clear;
+   frmLancamentosMensais.edtCompetencia.Clear;
+   frmLancamentosMensais.edtHora.Clear;
+   frmLancamentosMensais.edtLiquido.Clear;
 end;
 
 procedure TfrmLancamentosMensais.pPopulaComboBoxEmpresa;

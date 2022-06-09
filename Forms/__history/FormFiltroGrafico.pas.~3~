@@ -1,0 +1,42 @@
+unit FormFiltroGrafico;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls;
+
+type
+  TfrmFiltoGrafico = class(TForm)
+    pnAtributosEmpresa: TPanel;
+    Label2: TLabel;
+    Image1: TImage;
+    pnBotoes: TPanel;
+    Image2: TImage;
+    Image3: TImage;
+    btnSalvar: TButton;
+    btnCancelar: TButton;
+    cbFuncionario: TComboBox;
+    Label1: TLabel;
+    cbEmpresa: TComboBox;
+    procedure btnCancelarClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  frmFiltoGrafico: TfrmFiltoGrafico;
+
+implementation
+
+{$R *.dfm}
+
+procedure TfrmFiltoGrafico.btnCancelarClick(Sender: TObject);
+begin
+  self.Close;
+end;
+
+end.

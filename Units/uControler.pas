@@ -1,13 +1,15 @@
 unit uControler;
 
+
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls,
-  Vcl.Imaging.jpeg,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus, Vcl.ExtCtrls, Vcl.Imaging.jpeg,
+
   uLancamentosMensais, uFuncionario, uEmpresa,
-  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual, FormRelComparativo;
+  LancamentosMensais, CadFuncionarios, CadEmpresa, DAO, FormLucroAtual,
+  FormRelComparativo, FormFiltroGrafico, FormGrafico, frmCadEndereco, uEndereco;
 
   Type TControler = class
 
@@ -16,9 +18,18 @@ uses
        procedure pCadastroDeFuncionario;
        procedure pCadastroLancamento;
        procedure pFormLucroAtual;
+       procedure pFormRelComparativo;
+       procedure pFormFiltrosGrafico;
+       procedure pFormLancamentosMensais;
+       procedure pCriaGrafico;
+       procedure pCadastroDeEndereco;
+       procedure pCadEndereco;
        function fTiraPonto(prValor : String): String;
-       function fGetLucroReal(prReferencia : String) : String;
+       function fGetLucroAtual(prReferencia : String) : String;
        function fGetLucroSContratar(prReferencia : String) : String;
+       function fGetLucroContratando(prReferencia : String) : String;
+       function fValidaCampos(Key : char; Text : String; Tag : Integer) : Boolean;
+
   end;
 
 implementation
@@ -26,7 +37,36 @@ implementation
 
 { TControler }
 
-function TControler.fGetLucroReal(prReferencia: String): String;
+function TControler.fGetLucroContratando(prReferencia: String): String;
+var
+   BD : TDataModule1;
+   mediaSalarial, somaSalarial, custoContratando, faturamentoReal, custoOpTotal, custoOpNewMaquina,
+   custoOldMaquina, lucroTotalCont, fatOldMaquina, fatNewMaquina  : Double;
+   retorno : String;
+begin
+  BD :=  TDataModule1.Create(nil);
+
+  mediaSalarial := strToInt(BD.fSelecaoMediaSalarial);
+  somaSalarial := strToInt(BD.fSelecaoSomaSalario(prReferencia));
+
+  custoContratando :=  mediaSalarial +  somaSalarial;
+  faturamentoReal := strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
+  custoOpTotal :=  faturamentoReal * StrToInt(RelComparativo.edtCustoOp.Text) / 100;
+  custoOldMaquina :=  custoOpTotal / StrToFloat(RelComparativo.edtQtdMaquina.Text);
+  custoOpNewMaquina :=  custoOldMaquina - (custoOldMaquina * (strToFloat(RelComparativo.edtCustoOpNovaMaquina.Text)/ 100));
+  fatOldMaquina := faturamentoReal / strToFloat(RelComparativo.edtQtdMaquina.Text);
+  fatNewMaquina := (fatOldMaquina * (strToFloat(RelComparativo.edtFatNovaMaquina.Text) / 100)) +  fatOldMaquina;
+
+  lucroTotalCont :=  (faturamentoReal + fatNewMaquina)- custoOpTotal - custoOpNewMaquina - custoContratando;
+
+  retorno := #13#10 + 'Custo da mão de obra contratando: '+ FormatFloat('R$ #,###,#0.00', custoContratando) + #13#10 +
+             'Lucro total contratando: '+ FormatFloat('R$ #,###,#0.00', lucroTotalCont);
+
+  result := retorno;
+
+end;
+
+function TControler.fGetLucroAtual(prReferencia: String): String;
 var
    BD : TDataModule1;
    faturamentoReal, maoDeObraTotal, custoOp, lucroAtual : Double;
@@ -36,7 +76,7 @@ begin
   BD := TDataModule1.Create(nil);
   faturamentoReal := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
   maoDeObraTotal := StrToFloat(BD.fSelecaoSomaSalario(prReferencia));
-  custoOp := strToFloat(Copy(frmLucroAtual.edtFat.Text, 3, Length(frmLucroAtual.edtFat.Text))) * StrToInt(frmLucroAtual.edtCustoOp.Text) / 100;
+  custoOp := faturamentoReal * StrToInt(frmLucroAtual.edtCustoOp.Text) / 100;
   lucroAtual := faturamentoReal - maoDeObraTotal - custoOp;
 
   retorno := 'Faturamento real : ' + FormatFloat('R$ #,###,#0.00', faturamentoReal) + #13#10 +
@@ -61,11 +101,11 @@ begin
   faturamento :=  strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * strToFloat(BD.fSelecaoMediaHoras(prReferencia)) / 200;
   fatOldMaquina := faturamento / strToFloat(RelComparativo.edtQtdMaquina.Text);
   fatNewMaquina := (fatOldMaquina * strToFloat(RelComparativo.edtFatNovaMaquina.Text) / 100) +  fatOldMaquina;
-  custoOpTotal :=  strToFloat(Copy(RelComparativo.edtFat.Text, 3, Length(RelComparativo.edtFat.Text))) * StrToInt(RelComparativo.edtCustoOp.Text) / 100;
-  custoOpNewMaquina :=  custoOldMaquina - (custoOldMaquina * strToFloat(RelComparativo.edtCustoOpNovaMaquina.Text)/ 100);
+  custoOpTotal :=  faturamento * StrToInt(RelComparativo.edtCustoOp.Text) / 100;
   custoOldMaquina :=  custoOpTotal / StrToFloat(RelComparativo.edtQtdMaquina.Text);
+  custoOpNewMaquina :=  custoOldMaquina - (custoOldMaquina * strToFloat(RelComparativo.edtCustoOpNovaMaquina.Text)/ 100);
   mediaCustoMaoDeObra :=  StrToFloat(BD.fSelecaoSomaSalario(RelComparativo.edtRef.Text)) / StrToFloat(RelComparativo.edtQtdMaquina.Text);
-  mediaCustoComAumento := mediaCustoMaoDeObra + (mediaCustoMaoDeObra * StrToFloat(RelComparativo.edtAumentoFunc.Text));
+  mediaCustoComAumento := mediaCustoMaoDeObra *  (StrToFloat(RelComparativo.edtAumentoFunc.Text)/100) + mediaCustoMaoDeObra;
   custoMaoDeObraComAumento :=  mediaCustoComAumento * StrToFloat(RelComparativo.edtQtdMaquina.Text);
 
 
@@ -73,8 +113,7 @@ begin
              'Faturamento máquina nova: '+ FormatFloat('R$ #,###,#0.00',  fatNewMaquina) + #13#10 +
              'Custo op. nova máquina: '+ FormatFloat('R$ #,###,#0.00', custoOpNewMaquina) + #13#10 +
              'Custo mão de obra com aumento: '+ FormatFloat('R$ #,###,#0.00', custoMaoDeObraComAumento) + #13#10 +
-             #13#10+
-             'Lucro sem contratação: ' + FormatFloat('R$ #,###,#0.00', faturamento + fatNewMaquina - custoOpNewMaquina - custoMaoDeObraComAumento);
+             'Lucro sem contratação: ' + FormatFloat('R$ #,###,#0.00', faturamento + fatNewMaquina - custoOpTotal - custoOpNewMaquina - custoMaoDeObraComAumento) + #13#10;
 
   result := retorno;
 end;
@@ -91,6 +130,25 @@ begin
           end
        end;
        Result := prValor;
+end;
+
+function TControler.fValidaCampos(Key: char; Text: String;
+  Tag: Integer): Boolean;
+begin
+   If (key = #13) or (key = #9) then
+   Begin
+      Key:= #0;
+      if not(Text = '') or (Tag = 1) then
+         begin
+           //Perform(Wm_NextDlgCtl,0,0);
+           result := true;
+         end
+      else
+         begin
+           ShowMessage('Campo obrigatório não pode ser vazio !!');
+           result := false;
+         end;
+   end;
 end;
 
 procedure TControler.pCadastroDeEmpresa;
@@ -112,12 +170,18 @@ begin
        BD := TDataModule1.Create(nil);
        BD.pInsertEmpresa(objEmpresa);
      end;
-
-
-
    FreeAndNil(frmEmpresa);
 end;
 
+
+procedure TControler.pCadastroDeEndereco;
+var
+    frmCadEndereco : TFormCadEndereco;
+begin
+    frmCadEndereco := TFormCadEndereco.Create(nil);
+    frmCadEndereco.ShowModal;
+
+end;
 
 procedure TControler.pCadastroDeFuncionario;
 var
@@ -165,29 +229,94 @@ var
    i : integer;
    liquido : String;
 begin
-   if(frmLancamentosMensais = nil)then
-     frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
+   objLancamento := TLancamento.Create;
 
-   if(frmLancamentosMensais.ShowModal = mrOk)then
-     begin
-       objLancamento := TLancamento.Create;
-
-       objLancamento.setEmpresa(TEmpresa(frmLancamentosMensais.cbEmpresa.Items.Objects[frmLancamentosMensais.cbEmpresa.ItemIndex]).getCodEmp);
-       objLancamento.setFuncionario(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getCodFunc);
-       objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
-       objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
-       liquido := fTiraPonto(Copy(frmLancamentosMensais.edtLiquido.Text, 3, 11));
-       objLancamento.setLiquido(StrToFloat(Copy(liquido, 1, 5)));
-       BD := TDataModule1.Create(nil);
-       BD.pInsereLancamento(objLancamento);
-     end;
+   objLancamento.setEmpresa(TEmpresa(frmLancamentosMensais.cbEmpresa.Items.Objects[frmLancamentosMensais.cbEmpresa.ItemIndex]).getCodEmp);
+   objLancamento.setFuncionario(TFuncionario(frmLancamentosMensais.cbFuncionario.Items.Objects[frmLancamentosMensais.cbFuncionario.ItemIndex]).getCodFunc);
+   objLancamento.setHorasTrab(StrToFloat(frmLancamentosMensais.edtHora.Text));
+   objLancamento.setComp(frmLancamentosMensais.edtCompetencia.Text);
+   liquido := fTiraPonto(Copy(frmLancamentosMensais.edtLiquido.Text, 3, 11));
+   objLancamento.setLiquido(StrToFloat(Copy(liquido, 1, 5)));
+   BD := TDataModule1.Create(nil);
+   BD.pInsereLancamento(objLancamento);
 end;
 
 
+procedure TControler.pCadEndereco;
+var
+   objEndereco : TEndereco;
+   BD : TDataModule1;
+begin
+
+end;
+
+procedure TControler.pCriaGrafico;
+var
+  BD : TDataModule1;
+  lista : Tlist;
+  i, funcionario : integer;
+
+begin
+  BD := TDataModule1.Create(nil);
+  FormApresentacaoGrafico.Series2.Clear;
+  FormApresentacaoGrafico.Series1.Clear;
+  if not(frmFiltoGrafico.ckTodosFuncs.Checked)then
+     begin
+        funcionario := TFuncionario(frmFiltoGrafico.cbFuncionario.Items.Objects[frmFiltoGrafico.cbFuncionario.ItemIndex]).getCodFunc;
+        lista := BD.fSelecaoLancamentosMensais(frmFiltoGrafico.edtData01.Text, frmFiltoGrafico.edtData02.Text, funcionario);
+
+        for i := 0 to lista.Count -1 do
+          begin
+            FormApresentacaoGrafico.Caption := 'GRÁFICO PAGAMENTOS MENSAIS FUNC. '+ BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario);
+            FormApresentacaoGrafico.Grafico.Title.Caption := 'Pagamentos mensais funcionário ' + BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario);
+            FormApresentacaoGrafico.Series1.Marks.Visible := false;
+            FormApresentacaoGrafico.Grafico.Title.Font.Color := clBlack;
+            FormApresentacaoGrafico.Grafico.Title.Font.Size := 10;
+            FormApresentacaoGrafico.Series1.AddBar(TLancamento(lista[i]).getLiquido, TLancamento(lista[i]).getComp, clYellow);
+          end;
+     end
+  else
+     begin
+       lista := BD.fSelecaoLancamentosMensaisRef(frmFiltoGrafico.edtData01.text);
+
+       for i := 0 to lista.Count -1 do
+         begin
+           FormApresentacaoGrafico.Caption := 'GRÁFICO PAGAMENTOS MENSAIS POR REFERÊNCIA';
+           FormApresentacaoGrafico.Grafico.Title.Caption := 'Pagamentos realizados em ' + TLancamento(lista[i]).getComp;
+           FormApresentacaoGrafico.Grafico.Title.Font.Color := clBlack;
+           FormApresentacaoGrafico.Grafico.Title.Font.Size := 10;
+           FormApresentacaoGrafico.Series2.Marks.Text := BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario);
+           FormApresentacaoGrafico.Series2.AddBar(TLancamento(lista[i]).getLiquido, BD.fSelecaoNomeFuncionario(TLancamento(lista[i]).getFuncionario), clYellow);
+         end;
+     end;
+
+
+  FormApresentacaoGrafico.ShowModal;
+end;
+
+procedure TControler.pFormFiltrosGrafico;
+begin
+   frmFiltoGrafico := TfrmFiltoGrafico.Create(nil);
+   frmFiltoGrafico.ShowModal;
+end;
+
+procedure TControler.pFormLancamentosMensais;
+begin
+  frmLancamentosMensais := TfrmLancamentosMensais.Create(nil);
+  frmLancamentosMensais.ShowModal;
+end;
+
 procedure TControler.pFormLucroAtual;
 begin
-      frmLucroAtual := TfrmLucroAtual.Create(nil);
-      frmLucroAtual.ShowModal;
+   frmLucroAtual := TfrmLucroAtual.Create(nil);
+   frmLucroAtual.ShowModal;
+end;
+
+
+procedure TControler.pFormRelComparativo;
+begin
+   RelComparativo := TRelComparativo.Create(nil);
+   RelComparativo.ShowModal;
 end;
 
 end.

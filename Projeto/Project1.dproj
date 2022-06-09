@@ -138,10 +138,23 @@
             <Form>frmLucroAtual</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS">
-            <Form>OKBottomDlg</Form>
+        <DCCReference Include="..\Forms\FormRelComparativo.pas">
+            <Form>RelComparativo</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="..\Forms\FormGrafico.pas">
+            <Form>FormApresentacaoGrafico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Forms\FormFiltroGrafico.pas">
+            <Form>frmFiltoGrafico</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Forms\frmCadEndereco.pas">
+            <Form>formCadEndereco</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="..\Units\uEndereco.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

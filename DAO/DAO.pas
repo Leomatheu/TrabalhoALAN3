@@ -29,8 +29,12 @@ type
     procedure pInsereLancamento(objLancamento : TLancamento);
     function fSelecaoEmpresa: TList;
     function fSelecaoFuncionario(codigoEmpresa : integer) : Tlist;
+    function fSelecaoLancamentosMensais(refIni : String; refFim : String; idFunc : integer) : Tlist;
+    function fSelecaoLancamentosMensaisRef(referencia : String) : Tlist;
     function fSelecaoSomaSalario(referencia : string) : String;
     function fSelecaoMediaHoras(referencia : String) : String;
+    function fSelecaoMediaSalarial : String;
+    function fSelecaoNomeFuncionario(codigoFuncionario : integer) : String;
 
   end;
 
@@ -137,6 +141,85 @@ begin
 
 end;
 
+function TDataModule1.fSelecaoLancamentosMensais(refIni : String; refFim : String; idFunc : integer): Tlist;
+var
+   query : TFDQuery;
+   lista : Tlist;
+   objLancamento : TLancamento;
+begin
+  query := TFDQuery.Create(nil);
+  query.Connection := DataModule1.Conexao;
+
+  query.SQL.Add('select * from lancamentosmensais where lancamentosmensais.competecia between :refIni and :refFim and lancamentosmensais.codigoFuncionario = :idFunc; ');
+  query.Params[0].AsString := refIni;
+  query.Params[1].AsString := refFim;
+  query.Params[2].AsInteger :=  idFunc;
+
+  try
+    query.Open;
+    query.First;
+    lista := Tlist.Create;
+
+    while not (query.Eof) do
+      begin
+        objLancamento := TLancamento.Create;
+        objLancamento.setIdLancamento(query.Fields[0].AsInteger);
+        objLancamento.setFuncionario(query.Fields[1].AsInteger);
+        objLancamento.setEmpresa(query.Fields[2].asInteger);
+        objLancamento.setHorasTrab(query.Fields[3].AsFloat);
+        objLancamento.setComp(query.Fields[4].AsString);
+        objLancamento.setLiquido(query.Fields[5].AsFloat);
+
+        lista.Add(objLancamento);
+        query.Next;
+      end;
+
+      result := lista;
+  except
+    on e: Exception do
+           ShowMessage('Falha na consulta dos lançamentos no banco : ' + e.ToString);
+
+  end;
+end;
+
+function TDataModule1.fSelecaoLancamentosMensaisRef(referencia: String): Tlist;
+var
+   query : TFDQuery;
+   lista : Tlist;
+   objLancamento : TLancamento;
+begin
+  query := TFDQuery.Create(nil);
+  query.Connection := DataModule1.Conexao;
+
+  query.SQL.Add('select * from lancamentosmensais where lancamentosmensais.competecia = :referencia;');
+  query.Params[0].AsString := referencia;
+
+  try
+    query.Open;
+    query.First;
+    lista := Tlist.Create;
+
+    while not (query.Eof) do
+       begin
+         objLancamento := TLancamento.Create;
+        objLancamento.setIdLancamento(query.Fields[0].AsInteger);
+        objLancamento.setFuncionario(query.Fields[1].AsInteger);
+        objLancamento.setEmpresa(query.Fields[2].asInteger);
+        objLancamento.setHorasTrab(query.Fields[3].AsFloat);
+        objLancamento.setComp(query.Fields[4].AsString);
+        objLancamento.setLiquido(query.Fields[5].AsFloat);
+
+        lista.Add(objLancamento);
+        query.Next;
+       end;
+
+    result := lista;
+  except
+     on e: Exception do
+           ShowMessage('Falha na consulta dos lançamentos no banco : ' + e.ToString);
+  end;
+end;
+
 function TDataModule1.fSelecaoMediaHoras(referencia: String): String;
 var
    query : TFDQuery;
@@ -157,6 +240,52 @@ begin
       on e: Exception do
          ShowMessage('Falha na consulta da média de horas : '+ e.ToString);
    end;
+end;
+
+function TDataModule1.fSelecaoMediaSalarial: String;
+var
+   query : TFDQuery;
+   retorno : String;
+begin
+   query := TFDQuery.Create(nil);
+   query.Connection := DataModule1.Conexao;
+
+   query.SQL.Add('select sum(cadfuncionario.valorHora)/(select count(cadfuncionario.codigoFuncionario)from cadfuncionario)'+'*(select sum(lancamentosmensais.horaTrabalhada)/(select count(cadfuncionario.codigoFuncionario)from cadfuncionario) from lancamentosmensais)from cadfuncionario;');
+
+   try
+     query.Open;
+     query.First;
+     retorno := query.Fields[0].AsString;
+     result := retorno;
+
+   except
+     on e: Exception do
+       ShowMessage('Falha na consulta da média salarial ' + e.ToString);
+
+   end;
+end;
+
+function TDataModule1.fSelecaoNomeFuncionario(codigoFuncionario: integer): String;
+var
+   query : TFDQuery;
+begin
+  query := TFDQuery.Create(nil);
+  query.Connection := DataModule1.Conexao;
+
+  query.SQL.Add('select cadfuncionario.nomeFuncionario from cadfuncionario where cadfuncionario.codigoFuncionario = :codigoFuncionario;');
+  query.Params[0].AsInteger := codigoFuncionario;
+
+  try
+    query.Open;
+    query.First;
+    result := query.Fields[0].AsString;
+
+  except
+     on e: Exception do
+       ShowMessage('Falha na consulta do nome do funcionário ' + e.ToString);
+
+  end;
+
 end;
 
 function TDataModule1.fSelecaoSomaSalario(referencia: string): String;

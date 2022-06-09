@@ -7,15 +7,19 @@ uses
   uEmpresa in '..\Units\uEmpresa.pas',
   uFuncionario in '..\Units\uFuncionario.pas',
   LancamentosMensais in '..\Forms\LancamentosMensais.pas' {frmLancamentosMensais},
-
+  {$R}
   uLancamentosMensais in '..\Units\uLancamentosMensais.pas' {$R *.res},
   CadEmpresa in '..\Forms\CadEmpresa.pas' {frmEmpresa},
-
+  {$R}
   uControler in '..\Units\uControler.pas' {$R *.res},
   DAO in '..\DAO\DAO.pas' {DataModule1: TDataModule},
   ConsultaFolhas in '..\Forms\ConsultaFolhas.pas' {Form1},
   FormLucroAtual in '..\Forms\FormLucroAtual.pas' {frmLucroAtual},
-  OKCANCL1 in 'c:\program files (x86)\embarcadero\studio\20.0\ObjRepos\EN\DelphiWin32\OKCANCL1.PAS' {OKBottomDlg};
+  FormRelComparativo in '..\Forms\FormRelComparativo.pas' {RelComparativo},
+  FormGrafico in '..\Forms\FormGrafico.pas' {FormApresentacaoGrafico},
+  FormFiltroGrafico in '..\Forms\FormFiltroGrafico.pas' {frmFiltoGrafico},
+  frmCadEndereco in '..\Forms\frmCadEndereco.pas' {formCadEndereco},
+  uEndereco in '..\Units\uEndereco.pas';
 
 {$R *.res}
 
@@ -25,5 +29,9 @@ begin
   Application.CreateForm(TfrmMenu, frmMenu);
   Application.CreateForm(TDataModule1, DataModule1);
   Application.CreateForm(TfrmLucroAtual, frmLucroAtual);
+  Application.CreateForm(TRelComparativo, RelComparativo);
+  Application.CreateForm(TFormApresentacaoGrafico, FormApresentacaoGrafico);
+  Application.CreateForm(TfrmFiltoGrafico, frmFiltoGrafico);
+  Application.CreateForm(TformCadEndereco, formCadEndereco);
   Application.Run;
 end.

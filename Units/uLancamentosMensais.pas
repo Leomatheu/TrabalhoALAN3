@@ -4,6 +4,7 @@ interface
   type TLancamento = class
 
     private
+      idLancamento : integer;
       codigoFunc:Integer;
       codigoEmpresa:Integer;
       competencia:String;
@@ -12,6 +13,8 @@ interface
 
 
     public
+       procedure setIdLancamento(idLancamento : integer);
+       function getIdLancamento : integer;
        procedure setFuncionario(codigoFunc:integer);
        function getFuncionario:integer;
        procedure setEmpresa(codigoEmpresa:integer);
@@ -49,6 +52,11 @@ begin
     result := self.hora;
 end;
 
+function TLancamento.getIdLancamento: integer;
+begin
+   result := self.idLancamento;
+end;
+
 function TLancamento.getLiquido: double;
 begin
     result := self.liquido;
@@ -77,6 +85,11 @@ end;
 procedure TLancamento.setHorasTrab(hora: double);
 begin
     self.hora := hora;
+end;
+
+procedure TLancamento.setIdLancamento(idLancamento: integer);
+begin
+   self.idLancamento := idLancamento;
 end;
 
 end.

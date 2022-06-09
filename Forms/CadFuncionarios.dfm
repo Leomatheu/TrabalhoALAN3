@@ -26,7 +26,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 463
     object Image2: TImage
       Left = 83
       Top = 14
@@ -975,7 +974,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object btnSalvar: TButton
       Left = 118
-      Top = 14
+      Top = 6
       Width = 75
       Height = 25
       Caption = 'Salvar'
@@ -999,7 +998,6 @@ object frmCadFuncionario: TfrmCadFuncionario
       Font.Height = -11
       Font.Name = 'Arial Black'
       Font.Style = []
-      Images = DataModule1.listaImagens
       ParentFont = False
       TabOrder = 1
       OnClick = btnCancelarClick
@@ -1023,8 +1021,6 @@ object frmCadFuncionario: TfrmCadFuncionario
     ParentFont = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = -6
-    ExplicitHeight = 561
     object Label2: TLabel
       Left = 31
       Top = 73
@@ -2395,33 +2391,35 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object edtNome: TEdit
-      Left = 30
+      Left = 29
       Top = 88
       Width = 315
       Height = 23
       TabOrder = 0
+      OnKeyPress = edtNomeKeyPress
     end
     object edtDataNasc: TMaskEdit
-      Left = 30
-      Top = 144
-      Width = 95
+      Left = 29
+      Top = 142
+      Width = 89
       Height = 23
-      EditMask = '!99/99/0000;1; '
+      EditMask = '!99/99/0000;0; '
       MaxLength = 10
       TabOrder = 1
-      Text = '  /  /    '
+      Text = ''
       OnChange = edtDataNascChange
+      OnKeyPress = edtDataNascKeyPress
     end
     object pnCheckBox: TPanel
-      Left = 29
-      Top = 387
+      Left = 31
+      Top = 386
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
       Color = clActiveCaption
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 2
+      TabOrder = 4
       object ckInativo: TCheckBox
         Left = 119
         Top = 16
@@ -2453,14 +2451,14 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object pnGenero: TPanel
       Left = 30
-      Top = 307
+      Top = 306
       Width = 204
       Height = 46
       Caption = 'pnCheckBox'
       Color = clActiveCaption
       ParentBackground = False
       ShowCaption = False
-      TabOrder = 3
+      TabOrder = 5
       object ckFeminino: TCheckBox
         Left = 119
         Top = 16
@@ -2476,7 +2474,7 @@ object frmCadFuncionario: TfrmCadFuncionario
         TabOrder = 0
       end
       object ckMasculino: TCheckBox
-        Left = 8
+        Left = 14
         Top = 16
         Width = 97
         Height = 17
@@ -2492,17 +2490,19 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object cbEmpresa: TComboBox
       Left = 29
-      Top = 37
+      Top = 38
       Width = 316
       Height = 23
-      TabOrder = 4
+      TabOrder = 6
+      OnChange = cbEmpresaChange
     end
     object edtRegistroGeral: TEdit
-      Left = 30
+      Left = 29
       Top = 194
       Width = 148
       Height = 23
-      TabOrder = 5
+      TabOrder = 2
+      OnKeyPress = edtRegistroGeralKeyPress
     end
     object edtValor: TMaskEdit
       Left = 261
@@ -2511,18 +2511,22 @@ object frmCadFuncionario: TfrmCadFuncionario
       Height = 23
       EditMask = 'R$ ########## ;0; '
       MaxLength = 14
-      TabOrder = 6
+      TabOrder = 7
       Text = ''
+      OnChange = edtValorChange
+      OnKeyPress = edtValorKeyPress
     end
     object edtPF: TMaskEdit
-      Left = 30
-      Top = 248
-      Width = 147
+      Left = 32
+      Top = 247
+      Width = 145
       Height = 23
-      EditMask = '###.###.###-##;1; '
+      EditMask = '###.###.###-##;0; '
       MaxLength = 14
-      TabOrder = 7
-      Text = '   .   .   -  '
+      TabOrder = 3
+      Text = ''
+      OnChange = edtPFChange
+      OnKeyPress = edtPFKeyPress
     end
   end
 end
