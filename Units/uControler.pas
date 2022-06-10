@@ -17,6 +17,7 @@ uses
        procedure pCadastroDeEmpresa;
        procedure pCadastroDeFuncionario;
        procedure pCadastroLancamento;
+       procedure pCadastroEndereco;
        procedure pFormLucroAtual;
        procedure pFormRelComparativo;
        procedure pFormFiltrosGrafico;
@@ -178,9 +179,10 @@ procedure TControler.pCadastroDeEndereco;
 var
     frmCadEndereco : TFormCadEndereco;
 begin
-    frmCadEndereco := TFormCadEndereco.Create(nil);
-    frmCadEndereco.ShowModal;
+    if(formCadEndereco = nil)then
+     formCadEndereco := TformCadEndereco.Create(nil);
 
+    formCadEndereco.ShowModal;
 end;
 
 procedure TControler.pCadastroDeFuncionario;
@@ -194,7 +196,7 @@ begin
    if(frmCadFuncionario.ShowModal = mrOK)then
      begin
         objFuncionario := TFuncionario.Create;
-        objFuncionario.setCodigoEmpresa(frmCadFuncionario.cbEmpresa.ItemIndex + 1);
+        objFuncionario.setCodigoEmpresa(TEmpresa(frmCadFuncionario.cbEmpresa.Items.Objects[frmCadFuncionario.cbEmpresa.ItemIndex]).getCodEmp);
         objFuncionario.setNomeFunc(frmCadFuncionario.edtNome.Text);
         objFuncionario.setDataNasc(frmCadFuncionario.edtDataNasc.Text);
 
@@ -212,6 +214,7 @@ begin
 
         objFuncionario.setCPF(frmCadFuncionario.edtPF.Text);
         objFuncionario.setRG(frmCadFuncionario.edtRegistroGeral.Text);
+        objFuncionario.setCodigoEndereco(TEndereco(frmCadFuncionario.cbEndereco.Items.Objects[frmCadFuncionario.cbEndereco.ItemIndex]).getIdEndereco);
 
         BD := TDataModule1.Create(nil);
         BD.pInsereFuncionario(objFuncionario);
@@ -219,6 +222,25 @@ begin
 
 
      FreeAndNil(frmCadFuncionario);
+end;
+
+procedure TControler.pCadastroEndereco;
+var
+  objEndereco : TEndereco;
+  data : TDataModule1;
+begin
+  objEndereco := TEndereco.Create;
+
+  objEndereco.setCep(formCadEndereco.edtCEP.text);
+  objEndereco.setRua(formCadEndereco.edtLogradouro.Text);
+  objEndereco.setComplemento(formCadEndereco.edtComplemento.Text);
+  objEndereco.setNumero(formCadEndereco.edtNumero.Text);
+  objEndereco.setBairro(formCadEndereco.edtBairro.Text);
+  objEndereco.setCidade(formCadEndereco.edtCidade.Text);
+  objEndereco.setEstado(formCadEndereco.edtEstado.Text);
+
+  data := TDataModule1.Create(nil);
+  data.pInsertEndereco(objEndereco);
 end;
 
 procedure TControler.pCadastroLancamento;

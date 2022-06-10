@@ -7,10 +7,8 @@ uses
   uEmpresa in '..\Units\uEmpresa.pas',
   uFuncionario in '..\Units\uFuncionario.pas',
   LancamentosMensais in '..\Forms\LancamentosMensais.pas' {frmLancamentosMensais},
-  {$R}
   uLancamentosMensais in '..\Units\uLancamentosMensais.pas' {$R *.res},
   CadEmpresa in '..\Forms\CadEmpresa.pas' {frmEmpresa},
-  {$R}
   uControler in '..\Units\uControler.pas' {$R *.res},
   DAO in '..\DAO\DAO.pas' {DataModule1: TDataModule},
   ConsultaFolhas in '..\Forms\ConsultaFolhas.pas' {Form1},
@@ -28,10 +26,5 @@ begin
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TfrmMenu, frmMenu);
   Application.CreateForm(TDataModule1, DataModule1);
-  Application.CreateForm(TfrmLucroAtual, frmLucroAtual);
-  Application.CreateForm(TRelComparativo, RelComparativo);
-  Application.CreateForm(TFormApresentacaoGrafico, FormApresentacaoGrafico);
-  Application.CreateForm(TfrmFiltoGrafico, frmFiltoGrafico);
-  Application.CreateForm(TformCadEndereco, formCadEndereco);
   Application.Run;
 end.

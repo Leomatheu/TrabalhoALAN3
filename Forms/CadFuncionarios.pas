@@ -8,7 +8,7 @@ uses
   Vcl.Imaging.pngimage, FireDAC.Phys.MySQLDef, FireDAC.Stan.Intf, FireDAC.Phys,
   FireDAC.Phys.MySQL, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
   FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
-  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, uFuncionario, Vcl.DBCtrls;
+  FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client, uFuncionario, Vcl.DBCtrls, uEndereco;
 
 type
   TfrmCadFuncionario = class(TForm)
@@ -39,11 +39,14 @@ type
     Label10: TLabel;
     edtValor: TMaskEdit;
     edtPF: TMaskEdit;
+    Label7: TLabel;
+    cbEndereco: TComboBox;
     function fValidaCampo(Key : char; Text : String; Tag : integer) : Boolean;
     procedure FormActivate(Sender: TObject);
     procedure btnCancelarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
     procedure pPopulaComboBox;
+    procedure pPopulaComboEndereco;
     procedure cbEmpresaChange(Sender: TObject);
     procedure edtNomeKeyPress(Sender: TObject; var Key: Char);
     procedure edtRegistroGeralKeyPress(Sender: TObject; var Key: Char);
@@ -87,9 +90,11 @@ begin
   self.ckAtivo.Enabled := true;
 end;
 
+
 procedure TfrmCadFuncionario.edtDataNascChange(Sender: TObject);
 begin
   self.edtDataNasc.Tag := 1;
+   self.pPopulaComboEndereco;
 end;
 
 procedure TfrmCadFuncionario.edtDataNascKeyPress(Sender: TObject;
@@ -172,6 +177,22 @@ begin
 
     FreeAndNil(lista);
 
+end;
+
+procedure TfrmCadFuncionario.pPopulaComboEndereco;
+var
+  i : integer;
+  listaEnd : TList;
+begin
+  listaEnd := DataModule1.fSelecaoEndereco;
+  cbEndereco.Clear;
+    for I := 0 to listaEnd.count -1 do
+      begin
+          cbEndereco.AddItem(IntToSTR(TEndereco(listaEnd[i]).getIdEndereco) +' - '+ TEndereco(listaEnd[i]).getRua + ' - ' + TEndereco(listaEnd[i]).getNumero, listaEnd[i]);
+      end;
+
+
+    FreeAndNil(listaEnd);
 end;
 
 end.

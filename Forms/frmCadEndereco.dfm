@@ -11,6 +11,7 @@ object formCadEndereco: TformCadEndereco
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  OnActivate = FormActivate
   PixelsPerInch = 96
   TextHeight = 13
   object pnBotoes: TPanel
@@ -24,7 +25,6 @@ object formCadEndereco: TformCadEndereco
     ParentBackground = False
     ShowCaption = False
     TabOrder = 0
-    ExplicitTop = 334
     object Image2: TImage
       Left = 97
       Top = 32
@@ -984,6 +984,7 @@ object formCadEndereco: TformCadEndereco
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      OnClick = btnSalvarClick
     end
     object btnCancelar: TButton
       Left = 390
@@ -1012,7 +1013,6 @@ object formCadEndereco: TformCadEndereco
     ParentBackground = False
     ShowCaption = False
     TabOrder = 1
-    ExplicitTop = -6
     object Image1: TImage
       Left = 416
       Top = 32

@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
   FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, uEmpresa, Vcl.Dialogs, System.ImageList, Vcl.ImgList,
-  Vcl.Controls, uFuncionario, Datasnap.DBClient, uLancamentosMensais;
+  Vcl.Controls, uFuncionario, Datasnap.DBClient, uLancamentosMensais, uEndereco;
 
 type
   TDataModule1 = class(TDataModule)
@@ -27,7 +27,9 @@ type
     procedure pInsertEmpresa(objEmpresa: TEmpresa);
     procedure pInsereFuncionario(objFuncionario : TFuncionario);
     procedure pInsereLancamento(objLancamento : TLancamento);
+    procedure pInsertEndereco(objEndereco : TEndereco);
     function fSelecaoEmpresa: TList;
+    function fSelecaoEndereco: TList;
     function fSelecaoFuncionario(codigoEmpresa : integer) : Tlist;
     function fSelecaoLancamentosMensais(refIni : String; refFim : String; idFunc : integer) : Tlist;
     function fSelecaoLancamentosMensaisRef(referencia : String) : Tlist;
@@ -96,6 +98,46 @@ begin
 
    query.Close;
    query.Free;
+end;
+
+function TDataModule1.fSelecaoEndereco: TList;
+var
+  query : TFDQuery;
+  listaEndereco : TList;
+  objEndereco : TEndereco;
+begin
+  query := TFDQuery.Create(nil);
+  query.Connection := DataModule1.Conexao;
+
+  query.SQL.Add('select * from cadEndereco;');
+
+  try
+    query.Open;
+    query.First;
+    listaEndereco := TList.Create;
+
+    while not (query.eof) do
+      begin
+        objEndereco := TEndereco.Create;
+        objEndereco.setIdEndereco(query.Fields[0].AsInteger);
+        objEndereco.setCep(query.Fields[1].asString);
+        objEndereco.setRua(query.Fields[2].asString);
+        objEndereco.setComplemento(query.Fields[3].asString);
+        objEndereco.setNumero(query.Fields[4].asString);
+        objEndereco.setBairro(query.Fields[5].asString);
+        objEndereco.setCidade(query.Fields[6].asString);
+        objEndereco.setEstado(query.Fields[6].asString);
+
+        listaEndereco.Add(objEndereco);
+        query.Next;
+      end;
+
+      result := listaEndereco;
+  except
+    on e: Exception do
+      ShowMessage('Falha na consulta do endereço : ' + e.ToString);
+  end;
+
 end;
 
 function TDataModule1.fSelecaoFuncionario(codigoEmpresa : integer): Tlist;
@@ -319,7 +361,7 @@ begin
    query := TFDQuery.Create(nil);
    query.Connection := DataModule1.Conexao;
 
-   query.SQL.Add('insert into cadFuncionario values(0, :nomeFuncionario, :dataNascimento, :statusFuncionario, :valorHora, :generoFuncionario, :cpfFuncionario, :rgFuncionario, :codigoEmpresa);');
+   query.SQL.Add('insert into cadFuncionario values(0, :nomeFuncionario, :dataNascimento, :statusFuncionario, :valorHora, :generoFuncionario, :cpfFuncionario, :rgFuncionario, :codigoEmpresa, :endereco);');
    query.Params[0].AsString := objFuncionario.getNomeFunc;
    query.Params[1].AsString := objFuncionario.getDataNasc;
    query.Params[2].AsString := objFuncionario.getStatusFunc;
@@ -328,6 +370,8 @@ begin
    query.Params[5].AsString := objFuncionario.getCPF;
    query.Params[6].AsString := objFuncionario.getRG;
    query.Params[7].AsInteger := objFuncionario.getCodigoEmpresa;
+   query.Params[8].AsInteger := objFuncionario.getCodigoEndereco;
+
 
    try
      query.ExecSQL;
@@ -392,5 +436,36 @@ begin
 end;
 
 
+
+procedure TDataModule1.pInsertEndereco(objEndereco: TEndereco);
+var
+  query : TFDQuery;
+
+begin
+  query := TFDQuery.Create(nil);
+  query.Connection := DataModule1.Conexao;
+
+  query.SQL.Add('insert into cadEndereco values (0, :cep, :rua, :complemento, :numero, :bairro, :cidade, :estado);');
+
+  query.Params[0].AsString := objEndereco.getCep;
+  query.Params[1].AsString := objEndereco.getRua;
+  query.Params[2].AsString := objEndereco.getComplemento;
+  query.Params[3].AsString := objEndereco.getNumero;
+  query.Params[4].AsString := objEndereco.getBairro;
+  query.Params[5].AsString := objEndereco.getCidade;
+   query.Params[6].AsString := objEndereco.getEstado;
+
+  try
+      query.ExecSQL;
+      ShowMessage('Inserção realizada com sucesso !!');
+  except
+      on e:Exception do
+         showMessage('Erro na inserção do endereço : ' + e.ToString);
+   end;
+
+  query.Close;
+  query.Free;
+
+end;
 
 end.

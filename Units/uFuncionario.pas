@@ -14,6 +14,7 @@ interface
        cpfFuncionario : String;
        rgFuncionario : String;
        codigoEmpresa : integer;
+       codigoEndereco : integer;
 
      public
         procedure setCodFunc(codigoFuncionario:integer);
@@ -42,6 +43,10 @@ interface
 
         procedure setCodigoEmpresa(codigoEmpresa:integer);
         function getCodigoEmpresa:integer;
+
+        procedure setCodigoEndereco(codigoEndereco:integer);
+        function getCodigoEndereco:integer;
+
    end;
 
 implementation
@@ -56,6 +61,11 @@ end;
 function TFuncionario.getCodigoEmpresa: integer;
 begin
    result := self.codigoEmpresa;
+end;
+
+function TFuncionario.getCodigoEndereco: integer;
+begin
+  result := codigoEndereco;
 end;
 
 function TFuncionario.getCPF: String;
@@ -101,6 +111,11 @@ end;
 procedure TFuncionario.setCodigoEmpresa(codigoEmpresa: integer);
 begin
    self.codigoEmpresa := codigoEmpresa;
+end;
+
+procedure TFuncionario.setCodigoEndereco(codigoEndereco: integer);
+begin
+  self.codigoEndereco := codigoEndereco;
 end;
 
 procedure TFuncionario.setCPF(cpfFuncionario: String);

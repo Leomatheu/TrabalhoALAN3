@@ -3,7 +3,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'CADASTRO FUNCION'#193'RIO'
-  ClientHeight = 537
+  ClientHeight = 612
   ClientWidth = 505
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -17,7 +17,7 @@ object frmCadFuncionario: TfrmCadFuncionario
   TextHeight = 13
   object pnBotoes: TPanel
     Left = 0
-    Top = 473
+    Top = 548
     Width = 505
     Height = 64
     Align = alBottom
@@ -974,7 +974,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object btnSalvar: TButton
       Left = 118
-      Top = 6
+      Top = 14
       Width = 75
       Height = 25
       Caption = 'Salvar'
@@ -1007,7 +1007,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     Left = 0
     Top = 0
     Width = 505
-    Height = 473
+    Height = 548
     Align = alClient
     BorderStyle = bsSingle
     Caption = 'pnAtributosFuncionarios'
@@ -1035,8 +1035,8 @@ object frmCadFuncionario: TfrmCadFuncionario
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 29
-      Top = 127
+      Left = 30
+      Top = 125
       Width = 130
       Height = 17
       Caption = 'Data de nascimento'
@@ -2366,7 +2366,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object Label1: TLabel
       Left = 31
-      Top = 178
+      Top = 175
       Width = 19
       Height = 17
       Caption = 'RG'
@@ -2383,6 +2383,19 @@ object frmCadFuncionario: TfrmCadFuncionario
       Width = 26
       Height = 17
       Caption = 'CPF'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Arial Black'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 30
+      Top = 459
+      Width = 62
+      Height = 17
+      Caption = 'Endere'#231'o'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -12
@@ -2460,7 +2473,7 @@ object frmCadFuncionario: TfrmCadFuncionario
       ShowCaption = False
       TabOrder = 5
       object ckFeminino: TCheckBox
-        Left = 119
+        Left = 117
         Top = 16
         Width = 97
         Height = 17
@@ -2490,7 +2503,7 @@ object frmCadFuncionario: TfrmCadFuncionario
     end
     object cbEmpresa: TComboBox
       Left = 29
-      Top = 38
+      Top = 39
       Width = 316
       Height = 23
       TabOrder = 6
@@ -2527,6 +2540,14 @@ object frmCadFuncionario: TfrmCadFuncionario
       Text = ''
       OnChange = edtPFChange
       OnKeyPress = edtPFKeyPress
+    end
+    object cbEndereco: TComboBox
+      Left = 30
+      Top = 482
+      Width = 344
+      Height = 23
+      TabOrder = 8
+      Text = 'Selecione...'
     end
   end
 end

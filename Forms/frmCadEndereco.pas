@@ -32,6 +32,8 @@ type
     RESTResponse1: TRESTResponse;
     procedure btnCancelarClick(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,12 +44,28 @@ var
   formCadEndereco: TformCadEndereco;
 
 implementation
+uses
+  uControler;
 
 {$R *.dfm}
 
 procedure TformCadEndereco.btnCancelarClick(Sender: TObject);
 begin
   close;
+end;
+
+procedure TformCadEndereco.btnSalvarClick(Sender: TObject);
+var
+  controler : TControler;
+begin
+  controler := TControler.Create;
+  controler.pCadastroEndereco;
+end;
+
+procedure TformCadEndereco.FormActivate(Sender: TObject);
+begin
+  if(formCadEndereco = nil)then
+     formCadEndereco := TformCadEndereco.Create(nil);
 end;
 
 procedure TformCadEndereco.SpeedButton1Click(Sender: TObject);
